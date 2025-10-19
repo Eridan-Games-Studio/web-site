@@ -65,7 +65,7 @@ async function populateGamePage(game) {
     if (game.wiki_url) {
         gameWikiLink.href = game.wiki_url;
     } else {
-        gameWikiLink.href = 'https://eridan-studios.github.io/eridan-wiki/';
+        gameWikiLink.href = 'https://eridan-games-studio.github.io/eridan-wiki/';
     }
     
     // Populate screenshots

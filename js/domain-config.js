@@ -2,7 +2,7 @@
 class DomainConfig {
     constructor() {
         this.primaryDomain = 'https://eridangames.com';
-        this.fallbackDomain = 'https://eridan-studios.github.io';
+        this.fallbackDomain = 'https://eridan-games-studio.github.io';
         this.cache = new Map();
     }
 

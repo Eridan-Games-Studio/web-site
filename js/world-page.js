@@ -67,7 +67,7 @@ async function populateWorldPage(world) {
         wikiLink.textContent = '📖 Dive Deeper into the Wiki';
         wikiLink.style.display = 'inline-block';
     } else {
-        wikiLink.href = 'https://eridan-studios.github.io/eridan-wiki/';
+        wikiLink.href = 'https://eridan-games-studio.github.io/eridan-wiki/';
         wikiLink.textContent = '📖 Dive Deeper into the Wiki';
         wikiLink.style.display = 'inline-block';
     }

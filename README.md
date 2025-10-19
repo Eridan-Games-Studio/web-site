@@ -99,7 +99,7 @@ web-site/
 
 - **Discord**: ~~Join our Discord community~~ (Currently disabled)
 - **Newsletter**: Subscribe through the website footer
-- **Social Media**: Follow us on YouTube, Gamefound, and Twitter (links coming soon)
+- **Social Media**: Follow us on [YouTube](https://www.youtube.com/@EridanGamesStudio), Gamefound, and Twitter (links coming soon)
 
 ## 📜 License
 
