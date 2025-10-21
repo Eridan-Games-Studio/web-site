@@ -1,27 +1,27 @@
 {
   "id": "tomislav",
-  "name": "Tomislav",
-  "class": "Lead Narrative Designer",
-  "vibe": "Neutral Storyteller",
-  "avatar": "content/images/sven.jpg",
-  "backstory": "Master storyteller weaving intricate lore and compelling characters. Tom brings the Rule of Rika universe to life through rich, immersive narratives. He wrote the initial thirty pages of fiction that created the foundational setting and the primary eleven races. His expertise in world-building and character development ensures that every game tells a meaningful story. Tom's narrative vision guides the therapeutic RPG development, creating experiences that promote growth and connection.",
+  "name": "Tomislav Furlanis",
+  "class": "Conceptual Engineer",
+  "vibe": "Doing impossible with the available",
+  "avatar": "path/to/avatar-image.jpg",
+  "backstory": "LOTR and Greg Bear’s Eon started my golden-age sci-fi childhood at nine and high school sparked my first PC game design attempts. Two decades followed absorbed in Forgotten Realms, TTRPGs, and Extra Credits. Now, armed with research in narrative theories, degrees in humanities and packed insights from the real and fictional worlds, I manifest my passion for embodied games—a profound art that uniquely expresses embodied human experience beyond any other medium.",
   "strengths": [
-    "Can craft entire civilizations with their own languages and cultures",
-    "Created the foundational lore for the Rule of Rika universe"
+    "Experientally divergent"
+    "Embodiment first approach",
+    
   ],
   "weaknesses": [
-    "Writes character dialogue while walking around the office",
-    "Sometimes gets too deep into lore details that players might not notice"
+    "Lost in complex mechanics",
+    "Talks too much"
   ],
   "proficiencies": [
-    "World Building",
-    "Character Development",
-    "Therapeutic RPG Design",
-    "Lore Creation"
+    "Conceptual engineering",
+    "Deep worldbuilding",
+    "Team motivation"
   ],
   "currentQuest": [
-    "Developing Rika: Aliens as Allies RPG",
-    "Expanding Rule of Rika narrative universe",
-    "Creating therapeutic gaming experiences"
+    "Designing narratives",
+    "Developing the Rika IP",
+    "Studio Strategizing"
   ]
 }
