@@ -26,7 +26,7 @@ Eridan Games Studio is dedicated to creating authentic, boldly contrasted worlds
 - **Status**: Testing Phase
 - **Description**: Step into Haven City—a place where crime, corruption, and the paranormal overlap. Investigate mysteries, confront the supernatural, and navigate shifting alliances in this urban nightmare.
 
-#### **Rika: Aliens as Allies**
+#### **Rika RPG: We are all aliens here**
 - **Type**: Therapeutically inspired narrative RPG
 - **Status**: In Development
 - **Description**: A deeply relational space-opera RPG inspired by psychotherapeutic principles. Explore radically different alien minds and discover your own character through their distinct ways of sensing, thinking, and relating.
