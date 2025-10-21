@@ -114,7 +114,7 @@ web-site/
 - Sven Vukelić
 - Tomislav Furlanis
 
-**Additional Team Members**:
+**Team Members**:
 - Matej Pupačić
 - Siniša Družeta
 - Vuk Dragičević
