@@ -1,27 +1,27 @@
 {
-  "id": "sinisa",
-  "name": "Siniša",
-  "class": "Game Designer",
-  "vibe": "Chaotic Innovator",
-  "avatar": "content/images/sven.jpg",
-  "backstory": "Innovative designer pushing creative boundaries with fresh mechanics and unexpected gameplay twists. Siniša joined Eridan Games Studio in September 2025, bringing his own games and creative vision to the team. His approach to game design emphasizes innovation and surprise, always exploring new ways to delight players with unexpected mechanics and creative solutions. Siniša's experimental mindset keeps the studio pushing boundaries and trying new approaches to familiar problems.",
+  "id": "Sinisa",
+  "name": "Siniša Družeta",
+  "class": "The Analyst",
+  "vibe": "Fixing flaws, enhancing quality",
+  "avatar": "path/to/avatar-image.jpg",
+  "backstory": "Being a half-centenarian, playing and thinking about board games since childhood makes him a gaming lifer. Otherwise, he is a university professor of fluid mechanics, computational engineering, numerical optimization, and mathematical modeling. A trained analytical mind, he is perpetually interested in finding what makes games come alive, why they work and why they don’t. Still, he would be the first one to admit that the games are magic and that we all could be ultimately entirely incapable of cracking that code (thankfully).",
   "strengths": [
-    "Can find creative solutions to impossible design problems",
-    "Designed Rika: Red Alert's unique crisis-solving mechanics"
+    "Three decades of board games and wargames experience",
+    "Proficient in system thinking and analysis"
   ],
   "weaknesses": [
-    "Prototypes new mechanics during coffee breaks",
-    "Sometimes over-complicates simple problems with innovative solutions"
+    "Storytelling games are not my cup of tea",
+    "Rather straightforward in communication"
   ],
   "proficiencies": [
-    "Mechanic Innovation",
-    "Creative Problem Solving",
-    "Experimental Design",
-    "Player Surprise"
+    "Quality Assurance Specialist",
+    "System Design Analyst",
+    "Market Specialist"
   ],
   "currentQuest": [
-    "Developing Rika: Red Alert game mechanics",
-    "Creating innovative puzzle-solving systems",
-    "Exploring new gameplay paradigms"
+    "Game Director for Rika: Red Alert",
+    "Investigating new system relations"
+    "Scrutinizing promising games on the market",
+    
   ]
 }
