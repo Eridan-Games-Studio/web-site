@@ -64,10 +64,12 @@ async function populateWorldPage(world) {
     // Set wiki link if available
     if (world.wiki_url) {
         wikiLink.href = world.wiki_url;
+        wikiLink.target = '_blank';
         wikiLink.textContent = '📖 Dive Deeper into the Wiki';
         wikiLink.style.display = 'inline-block';
     } else {
-        wikiLink.href = 'https://eridan-games-studio.github.io/eridan-wiki/';
+        wikiLink.href = 'https://eridan-games-studio.github.io/eridan-wiki/#/';
+        wikiLink.target = '_blank';
         wikiLink.textContent = '📖 Dive Deeper into the Wiki';
         wikiLink.style.display = 'inline-block';
     }
@@ -229,8 +231,8 @@ function showError(message) {
 function initializeFeaturesCarousel() {
     const indicators = document.querySelectorAll('.indicator');
     const slides = document.querySelectorAll('.feature-slide');
-    const prevBtn = document.querySelector('.btn-prev .carousel-btn');
-    const nextBtn = document.querySelector('.btn-next .carousel-btn');
+    const prevBtn = document.querySelector('.carousel-controls .btn-prev .carousel-btn');
+    const nextBtn = document.querySelector('.carousel-controls .btn-next .carousel-btn');
     const carousel = document.querySelector('.features-carousel');
     
     let currentIndex = 0;
@@ -243,30 +245,9 @@ function initializeFeaturesCarousel() {
     nextBtn.replaceWith(nextBtn.cloneNode(true));
     
     // Get fresh references after cloning
-    const newPrevBtn = document.querySelector('.btn-prev .carousel-btn');
-    const newNextBtn = document.querySelector('.btn-next .carousel-btn');
+    const newPrevBtn = document.querySelector('.carousel-controls .btn-prev .carousel-btn');
+    const newNextBtn = document.querySelector('.carousel-controls .btn-next .carousel-btn');
     
-    // Calculate the height needed for the tallest slide
-    function calculateCarouselHeight() {
-        let maxHeight = 0;
-        
-        // Temporarily show all slides to measure their heights
-        slides.forEach(slide => {
-            slide.style.display = 'block';
-            const height = slide.offsetHeight;
-            if (height > maxHeight) {
-                maxHeight = height;
-            }
-            slide.style.display = '';
-        });
-        
-        // Set the carousel height to accommodate the tallest slide
-        carousel.style.height = maxHeight + 'px';
-    }
-    
-    // Calculate height on load and resize
-    calculateCarouselHeight();
-    window.addEventListener('resize', calculateCarouselHeight);
     
     // Function to show specific slide
     function showSlide(index) {

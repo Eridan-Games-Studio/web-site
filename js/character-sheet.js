@@ -105,14 +105,7 @@ class CharacterSheetModal {
             }
         });
 
-        // Prevent body scroll when modal is open
-        this.modal.addEventListener('transitionend', () => {
-            if (this.isOpen) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = '';
-            }
-        });
+        // Note: Body scroll prevention is now handled directly in open() and close() methods
 
         // Handle window resize for starfield
         window.addEventListener('resize', () => {
@@ -247,6 +240,9 @@ class CharacterSheetModal {
 
     open() {
         if (this.modal) {
+            // Immediately prevent body scroll
+            document.body.classList.add('modal-open');
+            
             this.modal.classList.add('active');
             this.isOpen = true;
             
@@ -269,7 +265,7 @@ class CharacterSheetModal {
         if (this.modal) {
             this.modal.classList.remove('active');
             this.isOpen = false;
-            document.body.style.overflow = '';
+            document.body.classList.remove('modal-open');
             
             // Stop starfield animation
             this.stopStarfieldAnimation();

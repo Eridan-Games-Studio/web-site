@@ -1,27 +1,30 @@
 {
-  "id": "sven",
-  "name": "Sven",
-  "class": "Community Manager & Producer",
-  "vibe": "Neutral Diplomat",
+  "id": "sven-vukelic",
+  "name": "Sven Vukelić",
+  "class": "Architect of Systems and Worlds",
+  "vibe": "Lawful Neutral in the streets, Chaotic Neutral in the sheets",
   "avatar": "content/images/sven.jpg",
-  "backstory": "Bridge between the studio and the community, ensuring every player's voice is heard while keeping projects on track and teams aligned. Sven joined the Arena RPG group and quickly became essential to the studio's operations. His role as Community Manager & Producer means he's constantly balancing creative vision with practical constraints. Sven's ability to communicate complex ideas clearly makes him invaluable in coordinating between different team members and external partners.",
+  "backstory": "A systems thinker equally at home designing intricate narrative universes and scalable software architectures. With deep experience in a variety of programming languages and frameworks, Sven has developed solutions that balance performance, maintainability, and elegance. His technical career is complemented by a parallel creative pursuit — developing tabletop RPG systems and speculative fiction universes. This duality defines his work: structured precision meets narrative imagination. Sven’s driving force is synthesis — merging disciplines, frameworks, and mythologies into cohesive systems where logic and creativity coexist harmoniously.",
   "strengths": [
-    "Can translate between creative vision and practical reality",
-    "Successfully launched Eridan Games Studio website and community"
+    "Bridges technical engineering with creative worldbuilding",
+    "Visualizes and designs robust systems across software, game mechanics, and worldbuilding",
+    "Direct communication style that cuts through ambiguity"
   ],
   "weaknesses": [
-    "Keeps detailed notes on every team meeting and decision",
-    "Sometimes over-analyzes simple decisions"
+    "Frequently gets lost in the creative or systemic depth of a problem space",
+    "Low tolerance for dancing around issues instead of fixing them",
+    "Utter refusal to accept own limitations"
   ],
   "proficiencies": [
-    "Project Management",
-    "Community Building",
-    "Communication",
-    "Team Coordination"
+    "Narrative systems design for TTRPGs and interactive worlds",
+    "Strategic thinking across organizational and creative structures",
+    "A one-man-army with technology - be it web, game or system development",
+    "Building teams and helping them work better together",
+    "Ethical decision-making around AI usage"
   ],
   "currentQuest": [
-    "Managing Atomic Horizon: Warcaskets development",
-    "Building Eridan Games community",
-    "Coordinating studio operations"
+    "Developing Atomic Horizon: Warcaskets, a tactical co-op tabletop skirmish game",
+    "Shaping organizational frameworks at Eridan that merge autonomy, meritocracy, and clarity of purpose",
+    "Building systems that enable human empowerment through AI"
   ]
 }

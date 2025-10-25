@@ -84,6 +84,13 @@ nav {
     gap: 0.75rem;
     font-size: 1.1rem;
     font-weight: 600;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s ease;
+}
+
+.logo:hover {
+    opacity: 0.8;
 }
 
 .logo span {
@@ -2016,7 +2023,7 @@ footer {
 
 .game-hero-content {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 3% auto;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -2148,11 +2155,16 @@ footer {
     text-align: justify;
 }
 
+.other-games {
+    text-align: center;
+}
+
 .other-games h3 {
     color: var(--text-primary);
     font-size: 1.2rem;
     margin-bottom: 1rem;
     font-weight: 600;
+    text-align: center;
 }
 
 .other-games-list {
@@ -2361,11 +2373,77 @@ footer {
     color: var(--accent-green);
 }
 
+/* Medium screen responsiveness for game details */
+@media (max-width: 1024px) {
+    .game-details-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .world-section-content {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .world-image {
+        flex: none;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .world-info {
+        text-align: center;
+    }
+    
+    .world-info .cta-secondary {
+        display: inline-block;
+        margin: 0 auto;
+    }
+    
+    .other-games {
+        text-align: center;
+    }
+    
+    .other-games h3 {
+        text-align: center;
+    }
+}
+
 /* Mobile responsiveness for game details */
 @media (max-width: 768px) {
     .game-details-grid {
         grid-template-columns: 1fr;
         gap: 3rem;
+    }
+    
+    .world-section-content {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .world-image {
+        flex: none;
+        width: 100%;
+        max-width: 250px;
+        margin: 0 auto;
+    }
+    
+    .world-info {
+        text-align: center;
+    }
+    
+    .world-info .cta-secondary {
+        display: inline-block;
+        margin: 0 auto;
+    }
+    
+    .other-games {
+        text-align: center;
+    }
+    
+    .other-games h3 {
+        text-align: center;
     }
 
     .features-mechanics-grid {
@@ -2379,12 +2457,12 @@ footer {
     .key-features h2,
     .game-info-card h2,
     .synopsis-card h2 {
-        text-align: center;
+        /*text-align: center;*/
     }
 
     .features-section h3,
     .mechanics-section h3 {
-        text-align: center;
+        /*text-align: center;*/
     }
 
     .tags-list,
@@ -2451,18 +2529,13 @@ footer {
 
 .features-carousel {
     position: relative;
-    display: grid;
-    width: 80%;
-    grid-template-columns: 10% 80% 10%;
-    align-items: center;
-    gap: 1rem;
+    width: 90%;
     margin: 2rem auto 0;
 }
 
 .carousel-content {
-    grid-column: 2;
-    /* position: relative; */
-    /* justify-self: center; */
+    position: relative;
+    justify-self: center;
 }
 
 .feature-slide {
@@ -2490,18 +2563,38 @@ footer {
     backdrop-filter: blur(10px);
 }
 
-.btn-prev {
-    grid-column: 1;
+.carousel-controls {
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
-.btn-next {
-    grid-column: 3;
+.carousel-controls .btn-prev {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
+}
+
+.carousel-controls .btn-next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-controls .carousel-btn {
+    position: static;
+    transform: none;
+    top: auto;
+    left: auto;
+    right: auto;
+}
+
+.carousel-controls .carousel-btn:hover {
+    background: rgba(30, 41, 59, 0.95);
+    border-color: var(--accent-green);
+    color: var(--accent-green);
+    transform: scale(1.1);
 }
 
 .features-carousel .carousel-btn:hover {
@@ -2567,6 +2660,11 @@ footer {
         width: 40px;
         height: 40px;
         font-size: 1.2rem;
+    }
+    
+    .carousel-controls {
+        gap: 1rem;
+        margin-top: 1rem;
     }
 }
 
@@ -2666,29 +2764,15 @@ footer {
         padding: 3rem 5%;
     }
     
-    .features-carousel {
-        height: 500px;
-    }
-    
-    .features-carousel .carousel-track {
-        top: 90px;
-        height: calc(100% - 90px);
-    }
-    
     .features-carousel .carousel-btn {
         width: 50px;
         height: 50px;
         font-size: 1.3rem;
     }
     
-    .features-carousel .carousel-indicators {
-        gap: 0.8rem;
-    }
-    
-    .features-carousel .carousel-indicator {
-        width: 40px;
-        height: 40px;
-        font-size: 0.8rem;
+    .carousel-controls {
+        gap: 1.5rem;
+        margin-top: 1.5rem;
     }
     
     .feature-title {
@@ -2702,7 +2786,7 @@ footer {
     }
     
     .feature-content {
-        padding: 1.5rem 2rem;
+        padding: 1.5rem 0.5rem;
         max-width: 90%;
     }
     
