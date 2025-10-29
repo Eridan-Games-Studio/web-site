@@ -1,27 +1,27 @@
 {
   "id": "borjan",
-  "name": "Borjan",
-  "class": "Gameplay Systems Designer",
-  "vibe": "Lawful Architect",
+  "name": "Borjan Dujmović",
+  "class": "The Cardivore",
+  "vibe": "Shuffle the rules, deal the fun!",
   "avatar": "content/images/sven.jpg",
-  "backstory": "Systems architect who transforms creative visions into elegant, balanced mechanics. Borjan joined the Arena design group early in development and has been instrumental in creating engaging gameplay loops that keep players coming back. His expertise in mathematical game design ensures that complex systems remain intuitive and fun. Borjan's analytical approach to game mechanics makes him the go-to person for balancing asymmetric gameplay and ensuring fair competitive experiences.",
+  "backstory": "My journey began as a card game connoisseur deeply immersed in the TCG and LCG genres. This background provided a strong analytical foundation for identifying opportunities to develop truly innovative mechanics. My core focus is the pursuit of interesting gameplay, driven by the insight that strategic depth must be inherently rewarding. I am trying to transition this passion into design work, prioritizing the seamless integration of narrative themes with complex mechanical systems. My aspiration is to become a designer who consistently elevates player engagement through thoughtful, cohesive, and compelling card and strategy game architecture.",
   "strengths": [
-    "Can mathematically predict game balance before playtesting",
-    "Designed the core mechanics for Rika: The Board Game"
+    "Designing innovative mechanics",
+    "Expert knowledge of competitive card ecosystems"
   ],
   "weaknesses": [
-    "Keeps detailed spreadsheets of every game mechanic",
-    "Sometimes over-engineers simple solutions"
+    "Complexity often exceeds player intuition",
+    "Visual design often neglected"
   ],
   "proficiencies": [
-    "Mathematical Game Design",
-    "System Architecture",
-    "Game Balance",
-    "Mechanic Innovation"
+    "System Innovation",
+    "Strategy Mastery",
+    "Mechanics Debugging",
+    "On-the-Fly Design"
   ],
   "currentQuest": [
-    "Perfecting asymmetric gameplay mechanics",
-    "Balancing competitive game systems",
-    "Developing modular game components"
+    "Lead design for the Rule of Rika BGG",
+    "Systematically analying all strategic and card interactions I can get my hands on",
+    "Deconstructing core loops and mechanics"
   ]
 }
