@@ -9,26 +9,27 @@
     "tagline": "A mythic space opera with radically alien species at the forefront. Political intrigue, galaxy-spanning conflicts, and high-stakes adventures!",
     "wiki_url": "https://eridan-games-studio.github.io/eridan-wiki/#/",
     "gameplay_pillars": [
-      {
-        "title": "Deep Embodiment",
-        "text": "In The Rule of Rika, civilizations aren't merely distinct cultures; they are <strong>fundamentally alien realities</strong>. You'll step into mindsets so unique that the very laws of physics and society operate differently. What one race perceives as impossible magic, another experiences as basic, everyday existence.\n\nHere, you don't just play as different races—you undergo a <em>profound transformation of perspective</em>. Biology isn't just cosmetic; it dictates technology, shapes society, and defines consciousness itself. Technology isn't merely invented; it emerges organically from each race's very physical form, entwined with their being. Cognition isn't universal; it's shaped by the fundamental structure of each being's existence.\n\nIn this universe, to understand a civilization is to become it—to think with alien minds, perceive through alien senses, and exist according to alien laws that redefine what's truly possible."
-      },
-      {
-        "title": "Ascended Legacy",
-        "text": "In this galaxy, history doesn't just unfold—it pulses through <strong>cosmic cycles</strong>, orchestrated by beings who've already transcended our reality. The purpose of each cycle, as history affirms, is only one: <em>Ascension</em>.\n\nThis isn't about mere survival or conquest. Every political maneuver, every war waged, every cultural stride is driven by a singular, transcendent goal: to prove your civilization worthy of evolving beyond mortality and joining the ranks of the <strong>godlike Guardians</strong> who are shaping this universe."
-      },
-      {
-        "title": "The Current Cycle",
-        "text": "The current epoch is governed by a single, enigmatic force: <strong>Rika</strong>, a super-sentient planetoid that serves as the galaxy's final arbiter and guide. This cosmic judge doesn't offer straightforward wisdom—its decrees are deliberately inscrutable, as its logic remains beyond mortal comprehension.\n\nWhen Rika calls, civilizations and individuals answer without hesitation—but only those that have accepted Rika's rule. Champions will clash on Rika's shifting terrain, while unlikely heroes from across the galaxy will undertake mysterious quests to fulfill the planetoid's byzantine will.\n\nUnder Rika's ever watchful eye, every battle, every alliance, every sacrifice can serve a higher purpose: <em>validating your civilization's entire way of life</em>."
-      },
-      {
-        "title": "Ritual as Reality",
-        "text": "In The Rule of Rika, belief isn't merely cultural backdrop—it's the <strong>fundamental code that runs the universe</strong>. When you perform an ancient rite, you're not just honoring tradition—you are reaffirming your civilization's existence by actively rewriting reality itself.\n\nEvery civilization operates by rules that transcend conventional physics. Here, <em>rituals function as executable programs</em>. Myths serve as operating systems.\n\nTo master a civilization, you must first master its myths and lore—because in this universe, the universe doesn't just respond to what you do—it responds to what you believe needs to be done."
-      },
-      {
-        "title": "Layered Truths",
-        "text": "In this vast galaxy, every civilization holds its own viewpoint with <strong>unwavering authenticity</strong>. Each race possesses its own coherent cultural system and perspective of the galaxy—one that makes perfect sense to them, yet often challenges or contradicts the realities of others.\n\nThese conflicting truths create natural tensions among civilizations with no simple resolution. The cosmic reality emerges not from absolutes, but like an archaeologist piecing together fragments from different excavations.\n\nThis is a universe where <em>understanding must be earned</em>. The most profound cosmic revelations won't come from convenient exposition, but from connecting dots between sources—to uncover the deeper patterns that shape this complex reality."
-      }
+{
+  "title": "Deep Embodiment",
+  "text": "In The Rule of Rika, civilizations aren't merely distinct cultures; they are <strong>fundamentally alien realities</strong>. You'll step into mindsets so unique that the very laws of physics and society operate differently.\n\nIn this universe, to understand a civilization is to become it—to think with alien minds, perceive through alien senses, and exist according to alien laws that redefine what's truly possible."
+},
+{
+  "title": "Ascended Legacy",
+  "text": "In this galaxy, history pulses through <strong>cosmic cycles</strong>, orchestrated by races who have already ascended beyond the material realm. For those who wish to attain it, every cycle offers the same opportunity—to prove your civilization worthy and evolve beyond mortality, to join the ranks of the <strong>godlike Guardians</strong> who are shaping this galaxy from the Henceforth."
+},
+{
+  "title": "The Current Cycle",
+  "text": "The current epoch is governed by a single, enigmatic force: <strong>Rika</strong>, a transcendent planetoid that serves as the galaxy's final arbiter and guide. This cosmic judge doesn't offer straightforward wisdom—its decrees are deliberately inscrutable, as its logic remains beyond mortal comprehension.\n\nUnder Rika's ever-watchful eye, every battle, every alliance, every sacrifice can serve a higher purpose: <em>validating your civilization's entire way of life</em>."
+},
+{
+  "title": "Ritual as Reality",
+  "text": "In The Rule of Rika, belief isn't merely cultural backdrop—it's the <strong>fundamental code that runs the universe</strong>. Every civilization operates by rules that transcend conventional physics. To master a civilization, you must first master its myths and culture, for the universe doesn't just respond to what you do—it responds to what you believe needs to be done."
+},
+{
+  "title": "Layered Truths",
+  "text": "In this vast galaxy, every civilization holds its own viewpoint with <strong>unwavering authenticity</strong>. The unique perspectives are internally coherent, yet they often challenge or contradict the realities of other races.\n\nThese conflicting truths create natural tensions among civilizations with no simple resolution. The most profound cosmic revelations won't come from convenient exposition, but from connecting dots between sources—to uncover the deeper patterns that shape this complex reality."
+}
+      
     ]
   },
 
