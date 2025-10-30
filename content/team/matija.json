@@ -1,27 +1,25 @@
 {
-  "id": "matija",
-  "name": "Matija",
-  "class": "World Designer",
-  "vibe": "Lawful Architect",
-  "avatar": "content/images/avatar-image.jpg",
-  "backstory": "Architect of immersive game worlds, crafting detailed environments that feel lived-in and authentic. Matija joined Eridan Games Studio in September 2025, bringing his own games and worlds to the studio. His expertise in world-building ensures that every location tells a story and feels like a real place with its own history, culture, and secrets. Matija's attention to detail makes game worlds feel alive and believable, enhancing player immersion and engagement.",
+  "id": "Matija",
+  "name": "Matija Dukić",
+  "class": "Jack of all trades",
+  "vibe": "...is good!",
+  "avatar": "path/to/avatar-image.jpg",
+  "backstory": "(Only) a decade into my board gaming journey, I feel I barely scratched the surface of all the experiences waiting out there. Always on the lookout for new discoveries, innovative mechanics, and interactions that push the boundaries of what's expected. And while I'm at it, might as well try and design a few of my own. With a special interest in translating real-world concepts and themes into game environments.",
   "strengths": [
-    "Can design worlds that feel like they existed before the game",
-    "Created detailed world designs for multiple game projects"
+    "Over 300 games' worth of experience",
+    "Jack of all trades...",
   ],
   "weaknesses": [
-    "Maps out every location with architectural precision",
-    "Can get too focused on world details and lose sight of gameplay flow"
+    "...master of none",
+    "Love playing devil's advocate a bit too much",
+    "Focusing on *how* a game plays often makes me bad at actually playing it",
   ],
   "proficiencies": [
-    "Environmental Design",
-    "World Architecture",
-    "Cultural World-Building",
-    "Immersive Design"
+    "Community leader",
+    "Spreadsheet aficionado",
   ],
   "currentQuest": [
-    "Designing H.A.V.E.N RPG world",
-    "Creating detailed location maps",
-    "Developing world lore systems"
+    "Game Director for Rivers of the World",
+    "Playtesting anything and everything that gets thrown my way"    
   ]
 }
