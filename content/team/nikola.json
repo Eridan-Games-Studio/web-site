@@ -1,27 +1,27 @@
 {
-  "id": "nikola",
-  "name": "Nikola",
-  "class": "RPG Systems Lead",
-  "vibe": "Chaotic Healer",
-  "avatar": "content/images/avatar-image.jpg",
-  "backstory": "Therapeutic RPG specialist crafting meaningful player experiences. Nikola joined the Arena RPG group and brings a unique perspective to game design, focusing on systems that promote growth, connection, and personal discovery through play. His background in therapeutic gaming ensures that every RPG experience has the potential to be transformative. Nikola's approach to game design emphasizes player agency and emotional engagement over traditional power progression.",
+  "id": "theDMGnome",
+  "name": "Nikola Serdarević",
+  "class": "System Therapist",
+  "vibe": "Emergent Kindness",
+  "avatar": "path/to/avatar-image.jpg",
+  "backstory": "I am a lifelong lover of science, science fiction and fantasy who loves to dive into the strange new worlds and ideas of the books, movies and games of the genre. As an avid TTRPG player and GM I am able to express myself through the narrative of the story as well as the mathematics of a system. Little did I know the games I played prepared me for a career of systemic and family therapy. Now I am thrilled to bring my professional experience back into the games I love.
   "strengths": [
-    "Can design games that heal while entertaining",
-    "Pioneered therapeutic RPG mechanics for Eridan Games"
+   “12 years of experience as a systemic family therapist ”,
+    "25 years experience as a GM in various systems."
   ],
   "weaknesses": [
-    "Always asks 'How does this make players feel?' during design meetings",
-    "Can get too focused on emotional impact at the expense of gameplay mechanics"
+    "Storytelling games are not my cup of tea",
+    "Rather straightforward in communication"
   ],
   "proficiencies": [
-    "Therapeutic Game Design",
-    "Player Psychology",
-    "RPG System Design",
-    "Emotional Engagement"
+    "System Design",
+    "SF writing",
+    "Mediating Communication"
   ],
   "currentQuest": [
-    "Leading Rika: Aliens as Allies RPG development",
-    "Creating therapeutic gaming frameworks",
-    "Designing player growth systems"
+    "Lead Designer on Rika RPG",
+    "Exploring the interconnectedness of games, communication, creativity and therapy."
+    "Discovering the the alien minds of the Rika Universe",
+    
   ]
 }
