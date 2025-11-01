@@ -7,7 +7,7 @@
     "image": "world-rika2.png",
     "games": ["rika-board-game", "rika-rpg", "rika-red-alert"],
     "tagline": "A mythic space opera with radically alien species at the forefront. Political intrigue, galaxy-spanning conflicts, and high-stakes adventures!",
-    "wiki_url": "https://eridan-games-studio.github.io/eridan-wiki/#/",
+    "wiki_url": "https://eridan-games-studio.github.io/eridan-wiki/#/worlds/rule-of-rika/rule-of-rika",
     "gameplay_pillars": [
 {
   "title": "Deep Embodiment",
@@ -41,7 +41,7 @@
     "image": "world-atomic-horizon.png",
     "games": ["atomic-horizon-warcaskets"],
     "tagline": "The homeworld is forbidden. The future is fusion. Survival is negotiable.",
-    "wiki_url": "https://eridan-games-studio.github.io/eridan-wiki/#/atomic-horizon",
+    "wiki_url": "https://eridan-games-studio.github.io/eridan-wiki/#/worlds/atomic-horizon/atomic-horizon",
     "gameplay_pillars": [
       {
         "title": "Hard Vacuum, Harder Choices",
@@ -75,7 +75,7 @@
     "image": "world-haven.png",
     "games": ["haven-rpg"],
     "tagline": "In a city that feeds on secrets, survival is the only truth that matters.",
-    "wiki_url": "https://eridan-games-studio.github.io/eridan-wiki/#/haven-noir",
+    "wiki_url": "https://eridan-games-studio.github.io/eridan-wiki/#/worlds/haven/home",
     "core_mechanism": {
       "icon_url": "/placeholder.svg",
       "title": "The Occult Undercurrent",

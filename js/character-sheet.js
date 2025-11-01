@@ -66,7 +66,7 @@ class CharacterSheetModal {
                                 </div>
 
                                 <div class="panel current-quest">
-                                    <h2>Current Quest</h2>
+                                    <h2>Current Quests</h2>
                                     <ul class="list">
                                         <li>Loading...</li>
                                     </ul>
