@@ -1,17 +1,17 @@
 {
-  "id": "vuk",
-  "name": "Vuk",
-  "class": "Art Director",
-  "vibe": "Chaotic Artist",
-  "avatar": "content/images/avatar-image.jpg",
-  "backstory": "Visual storyteller bringing worlds to life through stunning artwork. Vuk joined Eridan Games Studio as a freelancer through Sven's connection and quickly became the Art Director. He creates the visual language that defines the Rule of Rika universe, ensuring that every piece of art tells a story and enhances the player experience. Vuk's artistic vision helps players connect emotionally with the game worlds, making abstract concepts tangible through visual design.",
+  "id": "Vuk",
+  "name": "Vuk Dragičević",
+  "class": "The Art Knight",
+  "vibe": "Epic Nostalgist",
+  "avatar": "path/to/avatar-image.jpg",
+  "backstory": "I am an artist, swordsman, and devoted lover of the '80s, as well as of epic and science fiction. I discovered my passion for drawing at an early age and began designing simple board games during elementary school. Years later, I graduated from the Academy of Fine Arts in Belgrade while pursuing my other passion — two-handed sword fighting — competing in Bohurt and HEMA tournaments. As a member of DAZBOG GAMES and ORDER CHAOS GAMES, I’ve contributed as an artist, designer, and concept artist. Today, I serve as Art Director at Eridan Games, leading the visual development of the Rika Board Game, where I channel my love of science fiction into creating entirely original races, heroes, and monsters.",
   "strengths": [
-    "Can visualize entire game worlds before they're described",
-    "Created the visual identity for the Rule of Rika universe"
+    "Meticulous concept development",
+    "Maximum effort and excellent teamwork (with excellent people!)"
   ],
   "weaknesses": [
-    "Sketches character concepts during every conversation",
-    "Sometimes gets lost in artistic details and misses deadlines"
+    "If a satisfying concept solution isn't found, inspiration may vanish",
+    "Tends to get lost in details"
   ],
   "proficiencies": [
     "Visual Storytelling",
@@ -20,8 +20,8 @@
     "Art Direction"
   ],
   "currentQuest": [
-    "Creating art assets for Rika: The Board Game",
-    "Developing visual style guides",
-    "Building the Rule of Rika art library"
+    "Art Director for the Rika Board Game",
+    "Visualizing the original species and characters of the Rika space opera",
+    "Always seeking how to merge classic fantasy with science fiction aesthetics and modern game design"
   ]
 }
