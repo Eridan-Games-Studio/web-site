@@ -19,6 +19,7 @@
     "mechanics": ["Dice", "Cards", "Draft", "Unit placement"],
     "features": ["Unique races", "Assymetric strategies", "Designed for Pro play"],
     "world": "the-age-of-rika",
+    "wiki_url": "https://eridan-games-studio.github.io/eridan-wiki/#/games/rika-board-game",
     "distributionOrder": 2,
     "developers": {
       "gameDirector": "Dino Đorić",
@@ -47,6 +48,7 @@
     "mechanics": ["Dice rolling", "Resource management", "Narrative control"],
     "features": ["Narrative freedom", "Creative storytelling", "Tough choices", "Short campaigns", "Easy to learn"],
     "world": "haven-world",
+    "wiki_url": "https://eridan-games-studio.github.io/eridan-wiki/#/games/haven-rpg",
     "distributionOrder": 1,
     "developers": {
       "gameDirector": "Matej Pupačić"
@@ -71,6 +73,7 @@
     "mechanics": ["Dice rolling", "Guided Imagination", "Narrative control"],
     "features": ["Physical Components", "Print-and-Play"],
     "world": "the-age-of-rika",
+    "wiki_url": "https://eridan-games-studio.github.io/eridan-wiki/#/games/rika-rpg",
     "distributionOrder": 3,
     "developers": {
       "gameDirector": "Tomislav Furlanis",
@@ -99,6 +102,7 @@
     "mechanics": ["Card-driven Combat", "Dice Rolling", "Modular Scenarios", "Character Customization", "Asymmetric Gameplay"],
     "features": ["Deck-building", "Mission-based Play", "Free-to-Play", "Overarching Narrative", "Cooperation"],
     "world": "atomic-horizon",
+    "wiki_url": "https://eridan-games-studio.github.io/eridan-wiki/#/games/atomic-horizon-warcaskets",
     "distributionOrder": 5,
     "developers": {
       "gameDirector": "Sven Vukelić"
@@ -125,6 +129,7 @@
     "mechanics": ["Resource management", "Puzzle", "Individual goals", "Engine building", "Semi-cooperative"],
     "features": ["Crisis Solving", "Cooperation", "Physical Components"],
     "world": "the-age-of-rika",
+    "wiki_url": "https://eridan-games-studio.github.io/eridan-wiki/#/games/rika-red-alert",
     "distributionOrder": 4,
     "developers": {
       "gameDirector": "Siniša Družeta",
