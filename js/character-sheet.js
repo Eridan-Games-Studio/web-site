@@ -291,7 +291,7 @@ class CharacterSheetModal {
         // Update avatar
         const avatarEl = sheet.querySelector('.avatar');
         if (avatarEl && characterData.avatar) {
-            avatarEl.innerHTML = `<img src="${characterData.avatar}" alt="${characterData.name}" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">`;
+            avatarEl.innerHTML = `<img src="${characterData.avatar}" alt="${characterData.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">`;
         }
 
 
