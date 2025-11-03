@@ -58,7 +58,7 @@ body.menu-open {
 }
 
 /* Ensure content is above starfield */
-nav, section, footer, .content-banner {
+nav, section, footer, .content-banner, .updates-notification {
     position: relative;
     z-index: 1;
 }
