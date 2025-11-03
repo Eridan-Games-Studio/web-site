@@ -430,6 +430,46 @@ nav {
     border-bottom: 1px solid var(--border-color);
 }
 
+/* Important Updates Notification */
+.updates-notification {
+    max-width: 600px;
+    margin: 1.5rem auto;
+    padding: 0.9rem 1.5rem;
+    background: rgba(245, 158, 11, 0.15);
+    border: 2px solid var(--accent-gold);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    animation: subtlePulse 3s ease-in-out infinite;
+}
+
+.notification-icon {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.notification-text {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.notification-text strong {
+    color: var(--accent-gold);
+    font-weight: 600;
+}
+
+@keyframes subtlePulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 15px 3px rgba(245, 158, 11, 0.2);
+    }
+}
+
 .banner-content {
     max-width: 800px;
     margin: 0 auto;
