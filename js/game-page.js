@@ -81,31 +81,45 @@ async function populateGamePage(game) {
 // Populate game screenshots
 function populateGameScreenshots(gallery) {
     const screenshotsGrid = document.getElementById('screenshots-grid');
-    
+    const screenshotsCard = screenshotsGrid.closest('.screenshots-card');
+
     // Clear existing content
     screenshotsGrid.innerHTML = '';
-    
-    if (!gallery || gallery.length === 0 || gallery.every(img => img.includes('placeholder.svg'))) {
-        // Show placeholder screenshots if no images or all are placeholders
+
+    // If no gallery exists or is empty, hide the entire screenshots section
+    if (!gallery || gallery.length === 0) {
+        if (screenshotsCard) {
+            screenshotsCard.style.display = 'none';
+        }
+        return;
+    }
+
+    // Show the screenshots section if it was hidden
+    if (screenshotsCard) {
+        screenshotsCard.style.display = '';
+    }
+
+    // If all images are placeholders, show placeholder screenshots
+    if (gallery.every(img => img.includes('placeholder.svg'))) {
         for (let i = 0; i < 3; i++) {
             const screenshot = document.createElement('img');
             screenshot.src = 'content/images/placeholder.svg';
             screenshot.alt = `Screenshot placeholder ${i + 1}`;
-            
+
             screenshotsGrid.appendChild(screenshot);
         }
         return;
     }
-    
+
     // Create screenshot images
     gallery.forEach((imagePath, index) => {
         const screenshot = document.createElement('img');
-        
+
         const fullImagePath = `content/images/${imagePath}`;
-        
+
         screenshot.src = fullImagePath;
         screenshot.alt = `Game screenshot ${index + 1}`;
-        
+
         screenshotsGrid.appendChild(screenshot);
     });
 }
