@@ -36,8 +36,8 @@
     "shortDescription": "A supernatural-noir RPG steeped in crime, occult mystery, and urban paranoia.",
     "image": "haven.png",
     "gallery": [
-      "makitest1.jpg",
-      "makitest2.jpg"
+      "haventest1.jpg",
+      "haventest2.jpg"
     ],
     "status": "Testing Phase",
     "releaseDate": "Upcoming",
@@ -60,10 +60,7 @@
     "description": "A <strong>deeply relational space‑opera RPG</strong> inspired by psychotherapeutic principles.\n\nBy inhabiting radically different alien minds, you'll explore the world—and discover your own character—through their <em>distinct ways of sensing, thinking, and relating</em>.",
     "shortDescription": "Therapeutically inspired deeply relational narrative RPG",
     "image": "rika-dindra-zemlja.png",
-    "gallery": [
-      
-    ],
-    "status": "In Development",
+     "status": "In Development",
     "platforms": ["Tabletop", "Gamefound", "DriveThru RPG"],
     "synopsis": "Can you truly understand what it means to be <strong>alien</strong>—and in doing so, discover who you really are?",
     "genre": ["RPG", "Therapeutic", "Space Opera", "Narrative"],
@@ -113,9 +110,6 @@
     "description": "Your spaceship's systems are <strong>spiraling into chaos</strong>. Balance the ship's resources and player progression before time, resources, or friendships run out.\n\nA semi-cooperative strategy game where <em>every solved crisis flips into a fresh dilemma</em>.",
     "shortDescription": "Multiplayer semi-cooperative puzzle solving and engine building game.",
     "image": "game-rika-red-alert.png",
-    "gallery": [
-      
-    ],
     "status": "In Development",
     "releaseDate": "Upcoming",
     "platforms": ["Tabletop", "Gamefound"],
