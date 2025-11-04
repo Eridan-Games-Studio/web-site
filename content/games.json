@@ -36,9 +36,8 @@
     "shortDescription": "A supernatural-noir RPG steeped in crime, occult mystery, and urban paranoia.",
     "image": "haven.png",
     "gallery": [
-      "/placeholder.svg?height=400&width=600",
-      "/placeholder.svg?height=400&width=600",
-      "/placeholder.svg?height=400&width=600"
+      "makitest1.jpg",
+      "makitest2.jpg"
     ],
     "status": "Testing Phase",
     "releaseDate": "Upcoming",
@@ -62,9 +61,7 @@
     "shortDescription": "Therapeutically inspired deeply relational narrative RPG",
     "image": "rika-dindra-zemlja.png",
     "gallery": [
-      "/placeholder.svg?height=400&width=600",
-      "/placeholder.svg?height=400&width=600",
-      "/placeholder.svg?height=400&width=600"
+      
     ],
     "status": "In Development",
     "platforms": ["Tabletop", "Gamefound", "DriveThru RPG"],
@@ -117,9 +114,7 @@
     "shortDescription": "Multiplayer semi-cooperative puzzle solving and engine building game.",
     "image": "game-rika-red-alert.png",
     "gallery": [
-      "/placeholder.svg?height=400&width=600",
-      "/placeholder.svg?height=400&width=600",
-      "/placeholder.svg?height=400&width=600"
+      
     ],
     "status": "In Development",
     "releaseDate": "Upcoming",
