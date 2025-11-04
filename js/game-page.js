@@ -47,19 +47,25 @@ async function loadGameData() {
 async function populateGamePage(game) {
     // Update page title
     document.getElementById('page-title').textContent = `${game.title} - Eridan Games`;
-    
+
+    // Update game title in hero section
+    const gameTitle = document.getElementById('game-title');
+    if (gameTitle) {
+        gameTitle.textContent = game.title;
+    }
+
     // Update hero section
     const gameBannerImage = document.getElementById('game-banner-image');
     const gameDescription = document.getElementById('game-description');
-    
+
     // Set banner image
     const imagePath = game.image.startsWith('/') ? game.image : `content/images/${game.image}`;
     gameBannerImage.src = imagePath;
     gameBannerImage.alt = game.title;
-    
+
     // Set description - use innerHTML to render any HTML content and convert newlines to breaks
     gameDescription.innerHTML = game.description.replace(/\n/g, '<br>');
-    
+
     // Only update wiki link if there's an actual URL
     const gameWikiLink = document.getElementById('game-wiki-link');
     if (game.wiki_url) {
@@ -69,13 +75,13 @@ async function populateGamePage(game) {
         gameWikiLink.href = 'https://eridan-games-studio.github.io/eridan-wiki/#/';
         gameWikiLink.target = '_blank';
     }
-    
+
     // Populate screenshots
     populateGameScreenshots(game.gallery || []);
-    
+
     // Populate game details
     populateGameDetails(game);
-    
+
 }
 
 // Populate game screenshots
