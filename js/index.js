@@ -3,6 +3,7 @@
 const CAROUSEL_IMAGES = [
     'rika-akvira-maro-1.png',
     'rika-dindra-zemlja.png',
+    'rika-zohar-zohar1.png',
     'rika-liguni-zeleni.png'
 ];
 
