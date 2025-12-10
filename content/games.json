@@ -105,11 +105,11 @@
 
   {
     "id": "rika-red-alert",
-    "title": "Rika: Red Alert",
-    "slug": "rika-red-alert",
+    "title": "Rika: Engines of Discord",
+    "slug": "engines-of-discord",
     "description": "Your spaceship's systems are <strong>spiraling into chaos</strong>. Balance the ship's resources and player progression before time, resources, or friendships run out.\n\nA semi-cooperative strategy game where <em>every solved crisis flips into a fresh dilemma</em>.",
-    "shortDescription": "Multiplayer semi-cooperative puzzle solving and engine building game.",
-    "image": "game-rika-red-alert.png",
+    "shortDescription": "Multiplayer semi-cooperative event solving and engine building game.",
+    "image": "discord.jpg",
     "status": "In Development",
     "releaseDate": "Upcoming",
     "platforms": ["Tabletop", "Gamefound"],
@@ -122,7 +122,7 @@
     "distributionOrder": 4,
     "developers": {
       "gameDirector": "Siniša Družeta",
-      "leadNarrativeDesigner": "Tomislav Furlanis"
+      "leadDesigner": "Tomislav Furlanis"
     }
   }
 ]
