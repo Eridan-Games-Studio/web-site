@@ -16,7 +16,7 @@ Eridan Games Studio is dedicated to creating authentic, boldly contrasted worlds
 
 ### Current Projects
 
-#### **Rika: The Board Game**
+#### **The Rite of Rika**
 - **Type**: 2vs2 asymmetrical card-driven skirmish game
 - **Status**: In Development
 - **Description**: A tactical 2vs2 board game experience where you jointly command one of four unique races in an asymmetric strategic battle fought on two fronts using powerful cards, units and limited communication.
@@ -36,7 +36,7 @@ Eridan Games Studio is dedicated to creating authentic, boldly contrasted worlds
 - **Status**: In Development
 - **Description**: Deploy as Solar Navy operators in customizable exosuits through a corporate-dominated Solar System. Breach installations, extract hostages, and suppress insurgencies in tactical co-op missions.
 
-#### **Rika: Red Alert**
+#### **Rika: Engines of Discord**
 - **Type**: Semi-cooperative strategy game
 - **Status**: In Development
 - **Description**: Balance your spaceship's resources and player progression before time, resources, or friendships run out. A semi-cooperative strategy game where every solved crisis flips into a fresh dilemma.
