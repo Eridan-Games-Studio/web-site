@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://f.convertkit.com https://app.kit.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://app.kit.com https://eridangames.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://app.kit.com;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Worlds - Eridan Games Studio</title>
     <link rel="icon" type="image/png" href="content/images/eridan-logo-vuk.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +29,7 @@
             <li><a href="games.html">Games</a></li>
             <li><a href="worlds.html">Worlds</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="https://eridan-games-studio.github.io/eridan-wiki/#/" target="_blank" rel="noopener">Wiki</a></li>
+            <li><a href="https://eridan-games-studio.github.io/eridan-wiki/#/" target="_blank" rel="noopener noreferrer">Wiki</a></li>
         </ul>
         <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
             <span></span>
@@ -78,8 +82,8 @@
                     <div class="footer-column">
                         <h3>Community</h3>
                         <a class="cta-tertiary disabled">Discord</a>
-                        <a href="https://eridan-games-studio.github.io/eridan-wiki/#/" class="cta-tertiary" target="_blank" rel="noopener">Wiki</a>
-                        <a href="https://www.youtube.com/@EridanGamesStudio" class="cta-tertiary" target="_blank" rel="noopener">YouTube</a>
+                        <a href="https://eridan-games-studio.github.io/eridan-wiki/#/" class="cta-tertiary" target="_blank" rel="noopener noreferrer">Wiki</a>
+                        <a href="https://www.youtube.com/@EridanGamesStudio" class="cta-tertiary" target="_blank" rel="noopener noreferrer">YouTube</a>
                     </div>
                 </div>
             </div>
@@ -111,6 +115,7 @@
         </div>
     </template>
 
+    <script src="js/security-utils.js"></script>
     <script src="js/domain-config.js"></script>
     <script src="js/starfield.js"></script>
     <script src="js/worlds.js"></script>

@@ -4,10 +4,13 @@
     
     // Local constants to avoid conflicts
 
-// Get URL parameters
+// Get URL parameters with validation
 function getUrlParameter(name) {
     const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(name);
+    const param = urlParams.get(name);
+
+    // Validate the parameter
+    return window.SecurityUtils.validateUrlParameter(param);
 }
 
 // Load world data from JSON
@@ -38,7 +41,6 @@ async function loadWorldData() {
         populateWorldPage(world);
         
     } catch (error) {
-        console.error('Error loading world data:', error);
         showError('Unable to load world data. Please try again later.');
     }
 }
@@ -58,8 +60,8 @@ async function populateWorldPage(world) {
     worldBannerImage.src = imagePath;
     worldBannerImage.alt = world.name;
     
-    // Set description - use innerHTML to render any HTML content and convert newlines to breaks
-    worldDescription.innerHTML = world.description.replace(/\n/g, '<br>');
+    // Set description - sanitize HTML content and convert newlines to breaks
+    worldDescription.innerHTML = window.SecurityUtils.sanitizeTextWithBreaks(world.description);
     
     // Set wiki link if available
     if (world.wiki_url) {
@@ -124,14 +126,23 @@ function populateWorldFeatures(features) {
             slide.classList.add('active');
         }
         
-        slide.innerHTML = `
-            <div class="feature-content">
-                <h3 class="feature-title">${feature.title}</h3>
-                <div class="feature-description">
-                    <p>${feature.text}</p>
-                </div>
-            </div>
-        `;
+        const featureTitle = document.createElement('h3');
+        featureTitle.className = 'feature-title';
+        featureTitle.textContent = feature.title;
+
+        const featureText = document.createElement('p');
+        featureText.innerHTML = window.SecurityUtils.sanitizeRichText(feature.text);
+
+        const featureDescription = document.createElement('div');
+        featureDescription.className = 'feature-description';
+        featureDescription.appendChild(featureText);
+
+        const featureContent = document.createElement('div');
+        featureContent.className = 'feature-content';
+        featureContent.appendChild(featureTitle);
+        featureContent.appendChild(featureDescription);
+
+        slide.appendChild(featureContent);
         
         carouselContent.appendChild(slide);
     });
@@ -176,7 +187,6 @@ async function populateWorldGames(gameIds) {
         });
         
     } catch (error) {
-        console.error('Error loading games data:', error);
         worldGamesGrid.innerHTML = '<p>Unable to load games information.</p>';
     }
 }
@@ -185,23 +195,53 @@ async function populateWorldGames(gameIds) {
 function createGameCard(game) {
     const gameCard = document.createElement('div');
     gameCard.className = 'game-card';
-    
+
     const imagePath = game.image.startsWith('/') ? game.image : `content/images/${game.image}`;
-    
-    gameCard.innerHTML = `
-        <div class="game-card-image">
-            <img src="${imagePath}" alt="${game.title}">
-            <div class="status-badge">${game.status || 'In Development'}</div>
-        </div>
-        <div class="game-card-content">
-            <h3>${game.title}</h3>
-            <p>${game.description}</p>
-        </div>
-        <div class="game-card-footer">
-            <a href="game.html?game=${game.slug}" class="game-card-cta">Learn More →</a>
-        </div>
-    `;
-    
+
+    // Create image section
+    const imageDiv = document.createElement('div');
+    imageDiv.className = 'game-card-image';
+
+    const img = document.createElement('img');
+    img.src = imagePath;
+    img.alt = game.title;
+
+    const statusBadge = document.createElement('div');
+    statusBadge.className = 'status-badge';
+    statusBadge.textContent = game.status || 'In Development';
+
+    imageDiv.appendChild(img);
+    imageDiv.appendChild(statusBadge);
+
+    // Create content section
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'game-card-content';
+
+    const title = document.createElement('h3');
+    title.textContent = game.title;
+
+    const description = document.createElement('p');
+    description.innerHTML = window.SecurityUtils.sanitizeRichText(game.description);
+
+    contentDiv.appendChild(title);
+    contentDiv.appendChild(description);
+
+    // Create footer section
+    const footerDiv = document.createElement('div');
+    footerDiv.className = 'game-card-footer';
+
+    const link = document.createElement('a');
+    link.href = `game.html?game=${game.slug}`;
+    link.className = 'game-card-cta';
+    link.textContent = 'Learn More →';
+
+    footerDiv.appendChild(link);
+
+    // Assemble card
+    gameCard.appendChild(imageDiv);
+    gameCard.appendChild(contentDiv);
+    gameCard.appendChild(footerDiv);
+
     return gameCard;
 }
 
@@ -217,7 +257,7 @@ function showError(message) {
     
     // Show error in hero section
     const worldDescription = document.getElementById('world-description');
-    worldDescription.innerHTML = message;
+    worldDescription.innerHTML = window.SecurityUtils.sanitizeRichText(message, ['a', 'br']);
     worldDescription.style.color = '#ff6b6b';
     worldDescription.style.textAlign = 'center';
     worldDescription.style.padding = '2rem';

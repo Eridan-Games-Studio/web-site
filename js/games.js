@@ -18,7 +18,6 @@ async function loadGames() {
         
         populateGamesGrid(games);
     } catch (error) {
-        console.error('Error loading games:', error);
         // Fallback: show error message or placeholder content
         const gamesGrid = document.getElementById('games-grid');
         if (gamesGrid) {
@@ -46,8 +45,8 @@ function populateGamesGrid(games) {
         // Set title
         gameCard.querySelector('h3').textContent = game.title;
         
-        // Set description
-        gameCard.querySelector('p').innerHTML = game.shortDescription;
+        // Set description (sanitized to prevent XSS)
+        gameCard.querySelector('p').innerHTML = window.SecurityUtils.sanitizeRichText(game.shortDescription);
         
         // Set platforms
         const platformsContainer = gameCard.querySelector('.game-platforms');

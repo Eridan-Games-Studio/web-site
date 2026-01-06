@@ -17,7 +17,6 @@ function loadCarouselImages() {
     try {
         populateCarousel(CAROUSEL_IMAGES);
     } catch (error) {
-        console.error('Error loading carousel images:', error);
         // Fallback: use default images
         const fallbackImages = [
             'https://eridangames.com/Maro1.png',
@@ -191,7 +190,6 @@ async function loadGames() {
         const games = await response.json();
         populateGamesGallery(games);
     } catch (error) {
-        console.error('Error loading games:', error);
         // Fallback: show error message or placeholder content
         if (gamesGallery) {
             gamesGallery.innerHTML = '<p>Unable to load games. Please try again later.</p>';
@@ -253,7 +251,7 @@ function createGameCard(game) {
     
     // Set title and description
     cardTitle.textContent = game.title;
-    cardDescription.innerHTML = game.shortDescription;
+    cardDescription.innerHTML = window.SecurityUtils.sanitizeRichText(game.shortDescription);
     
     // Set platforms
     platformsContainer.innerHTML = '';
@@ -304,7 +302,6 @@ async function loadWorlds() {
         const worlds = await response.json();
         populateWorldsGrid(worlds);
     } catch (error) {
-        console.error('Error loading worlds:', error);
         // Fallback: show error message or placeholder content
         if (worldsGrid) {
             worldsGrid.innerHTML = '<p>Unable to load worlds. Please try again later.</p>';
@@ -382,7 +379,7 @@ function createWorldCard(world) {
     // Set description (use tagline if available, otherwise fall back to description)
     // Convert newlines to breaks and use innerHTML to render HTML content
     const descriptionText = world.tagline || world.description;
-    cardDescription.innerHTML = descriptionText.replace(/\n/g, '<br>');
+    cardDescription.innerHTML = window.SecurityUtils.sanitizeTextWithBreaks(descriptionText);
     
     // Handle games count for index page or games grid for worlds page
     if (isWorldsPage) {
@@ -455,7 +452,7 @@ async function populateWorldGamesGrid(gamesGrid, gameIds) {
             gamesGrid.appendChild(gameItem);
         });
     } catch (error) {
-        console.error('Error loading games data for world:', error);
+        // Error loading games data
     }
 }
 
@@ -469,7 +466,6 @@ async function loadGamesData() {
         }
         return await response.json();
     } catch (error) {
-        console.error('Error loading games data:', error);
         return [];
     }
 }

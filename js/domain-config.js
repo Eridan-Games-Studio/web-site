@@ -24,7 +24,7 @@ class DomainConfig {
                 return this.primaryDomain;
             }
         } catch (error) {
-            console.log(`Primary domain failed for ${path}, trying fallback:`, error.message);
+            // Primary domain failed, trying fallback
         }
 
         // Fallback to secondary domain
@@ -55,7 +55,7 @@ class DomainConfig {
                 return primaryUrl;
             }
         } catch (error) {
-            console.log(`Primary domain failed for content/${path}, trying fallback:`, error.message);
+            // Primary domain failed, trying fallback
         }
 
         // Fallback to GitHub domain (with web-site prefix)

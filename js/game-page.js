@@ -4,10 +4,13 @@
     
     // Local constants to avoid conflicts
 
-// Get URL parameters
+// Get URL parameters with validation
 function getUrlParameter(name) {
     const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(name);
+    const param = urlParams.get(name);
+
+    // Validate the parameter
+    return window.SecurityUtils.validateUrlParameter(param);
 }
 
 // Load game data from JSON
@@ -36,9 +39,8 @@ async function loadGameData() {
         }
         
         populateGamePage(game);
-        
+
     } catch (error) {
-        console.error('Error loading game data:', error);
         showError('Unable to load game data. Please try again later.');
     }
 }
@@ -63,8 +65,8 @@ async function populateGamePage(game) {
     gameBannerImage.src = imagePath;
     gameBannerImage.alt = game.title;
 
-    // Set description - use innerHTML to render any HTML content and convert newlines to breaks
-    gameDescription.innerHTML = game.description.replace(/\n/g, '<br>');
+    // Set description - sanitize HTML content and convert newlines to breaks
+    gameDescription.innerHTML = window.SecurityUtils.sanitizeTextWithBreaks(game.description);
 
     // Only update wiki link if there's an actual URL
     const gameWikiLink = document.getElementById('game-wiki-link');
@@ -173,12 +175,12 @@ function populateGameDetails(game) {
     `;
     gameInfoContent.innerHTML = gameInfoHTML;
     
-    // Populate synopsis - use innerHTML to parse HTML content
+    // Populate synopsis - sanitize HTML content
     const gameSynopsis = document.getElementById('game-synopsis');
     if (game.synopsis) {
-        gameSynopsis.innerHTML = game.synopsis;
+        gameSynopsis.innerHTML = window.SecurityUtils.sanitizeRichText(game.synopsis);
     } else {
-        gameSynopsis.innerHTML = 'No synopsis available.';
+        gameSynopsis.textContent = 'No synopsis available.';
     }
     
     // Populate developers
@@ -232,7 +234,7 @@ async function populateWorldSection(game) {
         
         // Set world description
         const worldDescription = document.getElementById('world-description');
-        worldDescription.innerHTML = world.description.replace(/\n/g, '<br>');
+        worldDescription.innerHTML = window.SecurityUtils.sanitizeTextWithBreaks(world.description);
         
         // Set explore link
         const exploreLink = document.getElementById('world-explore-link');
@@ -273,9 +275,8 @@ async function populateWorldSection(game) {
         } else {
             otherGamesList.innerHTML = '<p style="color: var(--text-secondary); font-style: italic;">No other games in this world yet.</p>';
         }
-        
+
     } catch (error) {
-        console.error('Error loading world data:', error);
         document.querySelector('.world-section-card').style.display = 'none';
     }
 }
@@ -291,7 +292,7 @@ function showError(message) {
     
     // Show error in hero section
     const gameDescription = document.getElementById('game-description');
-    gameDescription.innerHTML = message;
+    gameDescription.innerHTML = window.SecurityUtils.sanitizeRichText(message, ['a', 'br']);
     gameDescription.style.color = '#ff6b6b';
     gameDescription.style.textAlign = 'center';
     gameDescription.style.padding = '2rem';
