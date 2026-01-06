@@ -8,6 +8,8 @@ class NewsletterForm {
         this.formId = '8653748';
         this.uid = '55ed862996';
         this.apiUrl = 'https://app.kit.com/forms/8653748/subscriptions';
+        this.lastSubmitTime = 0;
+        this.rateLimitMs = 5000; // 5 seconds between submissions
         this.init();
     }
 
@@ -78,9 +80,24 @@ class NewsletterForm {
         const checkbox = form.querySelector('input[type="checkbox"]');
         const submitBtn = form.querySelector('.subscribe-btn');
 
+        // Check rate limiting
+        const now = Date.now();
+        if (now - this.lastSubmitTime < this.rateLimitMs) {
+            const waitSeconds = Math.ceil((this.rateLimitMs - (now - this.lastSubmitTime)) / 1000);
+            this.showError(`Please wait ${waitSeconds} seconds before submitting again.`);
+            return;
+        }
+
         // Validate form
         if (!emailInput.value || !checkbox.checked) {
             this.showError('Please enter your email and agree to receive marketing emails.');
+            return;
+        }
+
+        // Sanitize email
+        const sanitizedEmail = this.sanitizeEmail(emailInput.value);
+        if (!sanitizedEmail) {
+            this.showError('Please enter a valid email address.');
             return;
         }
 
@@ -90,20 +107,44 @@ class NewsletterForm {
         try {
             // Use ConvertKit's JavaScript SDK if available, otherwise fall back to fetch
             if (window.ConvertKit) {
-                await this.submitViaConvertKitSDK(emailInput.value);
+                await this.submitViaConvertKitSDK(sanitizedEmail);
             } else {
-                await this.submitViaFetch(emailInput.value);
+                await this.submitViaFetch(sanitizedEmail);
             }
-            
+
+            // Update last submit time on success
+            this.lastSubmitTime = Date.now();
+
             this.showSuccess('Success! Now check your email to confirm your subscription.');
             form.reset();
             this.updateSubmitButtonState(); // Reset button state after form reset
         } catch (error) {
-            console.error('Newsletter subscription error:', error);
             this.showError('Something went wrong. Please try again.');
         } finally {
             this.setLoadingState(submitBtn, false);
         }
+    }
+
+    sanitizeEmail(email) {
+        // Remove leading/trailing whitespace
+        email = email.trim();
+
+        // Basic email validation regex
+        const emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+        if (!emailRegex.test(email)) {
+            return null;
+        }
+
+        // Convert to lowercase for consistency
+        email = email.toLowerCase();
+
+        // Check maximum length (RFC 5321)
+        if (email.length > 254) {
+            return null;
+        }
+
+        return email;
     }
 
     async submitViaConvertKitSDK(email) {
@@ -114,11 +155,9 @@ class NewsletterForm {
                 formId: this.formId,
                 uid: this.uid,
                 success: () => {
-                    console.log('ConvertKit SDK submission successful');
                     resolve();
                 },
                 error: (error) => {
-                    console.error('ConvertKit SDK submission error:', error);
                     reject(error);
                 }
             });
@@ -157,14 +196,12 @@ class NewsletterForm {
         try {
             // Submit the form
             tempForm.submit();
-            
+
             // Wait a bit to see if submission was successful
             await new Promise(resolve => setTimeout(resolve, 2000));
-            
-            console.log('Form submitted via form submission method');
+
             return true;
         } catch (error) {
-            console.error('Form submission error:', error);
             return false;
         } finally {
             // Clean up
@@ -179,13 +216,6 @@ class NewsletterForm {
         formData.append('form_id', this.formId);
         formData.append('uid', this.uid);
 
-        console.log('Submitting to ConvertKit via fetch:', {
-            email: email,
-            formId: this.formId,
-            uid: this.uid,
-            apiUrl: this.apiUrl
-        });
-
         const response = await fetch(this.apiUrl, {
             method: 'POST',
             body: formData,
@@ -194,15 +224,10 @@ class NewsletterForm {
             }
         });
 
-        console.log('ConvertKit response:', response.status, response.statusText);
-
         if (response.ok) {
-            const responseData = await response.text();
-            console.log('ConvertKit response data:', responseData);
             return true;
         } else {
             const errorText = await response.text();
-            console.error('ConvertKit error:', response.status, errorText);
             throw new Error(`HTTP ${response.status}: ${errorText}`);
         }
     }
@@ -255,22 +280,5 @@ class NewsletterForm {
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    const newsletterForm = new NewsletterForm();
-    
-    // Add a test method to window for debugging
-    window.testNewsletterForm = () => {
-        console.log('Testing newsletter form...');
-        console.log('Form ID:', newsletterForm.formId);
-        console.log('UID:', newsletterForm.uid);
-        console.log('API URL:', newsletterForm.apiUrl);
-        console.log('ConvertKit SDK available:', !!window.ConvertKit);
-        
-        // Test with a dummy email
-        const testEmail = 'test@example.com';
-        console.log('Testing submission with email:', testEmail);
-        
-        newsletterForm.submitViaFetch(testEmail)
-            .then(() => console.log('Test submission successful'))
-            .catch(error => console.error('Test submission failed:', error));
-    };
+    new NewsletterForm();
 });
