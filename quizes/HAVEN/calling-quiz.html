@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Which Haven Calling Are You? - Eridan Games</title>
+    <link rel="icon" type="image/png" href="../../content/images/eridan-logo-vuk.png">
+    <link rel="stylesheet" href="calling-quiz-styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Which Haven Calling Are You?</h1>
+            <p class="subtitle">Find your place in the city that never stops raining</p>
+            <p class="description">
+                In the city of Haven, where neon lights hum with spirits and technology conducts the paranormal,
+                everyone has a <strong>Calling</strong> — a role that defines how you navigate the shadows.
+                Are you a street-wise <strong>Private Investigator</strong>? A reality-weaving <strong>Rumormonger</strong>?
+                An occult <strong>Demonologist</strong>? A dimension-hopping <strong>Agent</strong>?
+                Or a <strong>Haunted One</strong> who walks between the living and the dead?
+            </p>
+            <p class="instructions">
+                Answer all questions honestly. The city is watching, and it knows when you lie.
+                Choose the option that resonates most with who you are — or who you would become
+                in a place where every truth comes with a price tag.
+            </p>
+        </header>
+
+        <form id="quiz-form">
+            <!-- Question 1: First Instinct -->
+            <div class="question">
+                <p class="question-text"><strong>1.</strong> When you walk into a room, the first thing you do is:</p>
+                <label><input type="radio" name="q1" value="investigator" required> Notice the exits, who's armed, and what doesn't belong</label>
+                <label><input type="radio" name="q1" value="rumormonger"> Listen to conversations and gauge who holds influence</label>
+                <label><input type="radio" name="q1" value="demonologist"> Sense the unseen — temperature shifts, whispers, lingering energies</label>
+                <label><input type="radio" name="q1" value="agent"> Assess angles of attack and identify alternate realities where the room is different</label>
+                <label><input type="radio" name="q1" value="haunted"> Feel whether any spirits are present and if they're watching you</label>
+            </div>
+
+            <!-- Question 2: Source of Power -->
+            <div class="question">
+                <p class="question-text"><strong>2.</strong> Your greatest strength comes from:</p>
+                <label><input type="radio" name="q2" value="investigator" required> Experience, grit, and a network of people who owe you favors</label>
+                <label><input type="radio" name="q2" value="rumormonger"> Controlling information and shaping reality through whispered words</label>
+                <label><input type="radio" name="q2" value="demonologist"> Contracts with beings most people pretend don't exist</label>
+                <label><input type="radio" name="q2" value="agent"> Not belonging to this world — you see possibilities others can't</label>
+                <label><input type="radio" name="q2" value="haunted"> A constant companion that exists between life and death</label>
+            </div>
+
+            <!-- Question 3: Problem Solving -->
+            <div class="question">
+                <p class="question-text"><strong>3.</strong> When facing an impossible situation, you:</p>
+                <label><input type="radio" name="q3" value="investigator" required> Call in a favor or rely on street smarts to find another angle</label>
+                <label><input type="radio" name="q3" value="rumormonger"> Plant a rumor that makes the impossible seem inevitable</label>
+                <label><input type="radio" name="q3" value="demonologist"> Invoke powers beyond mortal comprehension, consequences be damned</label>
+                <label><input type="radio" name="q3" value="agent"> Step sideways into a reality where it's not impossible</label>
+                <label><input type="radio" name="q3" value="haunted"> Let your ghostly companion handle what the living cannot</label>
+            </div>
+
+            <!-- Question 4: Relationship with Technology -->
+            <div class="question">
+                <p class="question-text"><strong>4.</strong> Your relationship with technology is:</p>
+                <label><input type="radio" name="q4" value="investigator" required> Practical — tape recorders, cameras, whatever gets the job done</label>
+                <label><input type="radio" name="q4" value="rumormonger"> Strategic — phones, radios, and networks are how you weave truth</label>
+                <label><input type="radio" name="q4" value="demonologist"> Wary — you know demons don't need rituals anymore, just passwords</label>
+                <label><input type="radio" name="q4" value="agent"> Familiar but foreign — the tech here works differently than where you're from</label>
+                <label><input type="radio" name="q4" value="haunted"> Haunted — lights flicker, radios whisper, screens glitch when you're near</label>
+            </div>
+
+            <!-- Question 5: The City's Effect -->
+            <div class="question">
+                <p class="question-text"><strong>5.</strong> Haven has shaped you by:</p>
+                <label><input type="radio" name="q5" value="investigator" required> Teaching you that truth is buried under lies, and someone has to dig</label>
+                <label><input type="radio" name="q5" value="rumormonger"> Showing you that whispers can topple empires if spoken right</label>
+                <label><input type="radio" name="q5" value="demonologist"> Revealing that the old bargains still work, just with new terms</label>
+                <label><input type="radio" name="q5" value="agent"> Trapping you here, in a world that shouldn't exist in your timeline</label>
+                <label><input type="radio" name="q5" value="haunted"> Binding you to something that won't let you be alone</label>
+            </div>
+
+            <!-- Question 6: Trust -->
+            <div class="question">
+                <p class="question-text"><strong>6.</strong> When someone offers you information, you:</p>
+                <label><input type="radio" name="q6" value="investigator" required> Cross-reference it with your contacts before believing a word</label>
+                <label><input type="radio" name="q6" value="rumormonger"> Already know it — or you'll make sure everyone thinks you do</label>
+                <label><input type="radio" name="q6" value="demonologist"> Check for supernatural influence or hidden contracts</label>
+                <label><input type="radio" name="q6" value="agent"> Consider which reality they're speaking from</label>
+                <label><input type="radio" name="q6" value="haunted"> Ask your spirit companion if they're lying</label>
+            </div>
+
+            <!-- Question 7: Combat Style -->
+            <div class="question">
+                <p class="question-text"><strong>7.</strong> When a fight breaks out, you:</p>
+                <label><input type="radio" name="q7" value="investigator" required> React instantly — you've been in enough scrapes to know when to shoot first</label>
+                <label><input type="radio" name="q7" value="rumormonger"> Use words or planted information to turn enemies against each other</label>
+                <label><input type="radio" name="q7" value="demonologist"> Summon thunder, illusions, or eldritch might through your pact</label>
+                <label><input type="radio" name="q7" value="agent"> Attack from impossible angles, bending geometry to your will</label>
+                <label><input type="radio" name="q7" value="haunted"> Command your ghost to possess weapons, technology, or corpses</label>
+            </div>
+
+            <!-- Question 8: Living Situation -->
+            <div class="question">
+                <p class="question-text"><strong>8.</strong> Your living space is:</p>
+                <label><input type="radio" name="q8" value="investigator" required> A small office or apartment cluttered with case files and bourbon</label>
+                <label><input type="radio" name="q8" value="rumormonger"> A comfortable place with sharp clothes and hidden identities</label>
+                <label><input type="radio" name="q8" value="demonologist"> Simple and eccentric, filled with occult tools and ritual offerings</label>
+                <label><input type="radio" name="q8" value="agent"> Surprisingly well-equipped, with gadgets that shouldn't exist here</label>
+                <label><input type="radio" name="q8" value="haunted"> Wherever spirits don't drive away landlords — cheap and lonely</label>
+            </div>
+
+            <!-- Question 9: Secrets -->
+            <div class="question">
+                <p class="question-text"><strong>9.</strong> You keep secrets by:</p>
+                <label><input type="radio" name="q9" value="investigator" required> Only sharing with people you trust, and that list is very short</label>
+                <label><input type="radio" name="q9" value="rumormonger"> Burying them under layers of misinformation and alternate identities</label>
+                <label><input type="radio" name="q9" value="demonologist"> Binding them in contracts or hiding them in occult symbols</label>
+                <label><input type="radio" name="q9" value="agent"> Storing them in realities no one else can access</label>
+                <label><input type="radio" name="q9" value="haunted"> Whispering them to your ghost, who remembers everything</label>
+            </div>
+
+            <!-- Question 10: Money -->
+            <div class="question">
+                <p class="question-text"><strong>10.</strong> Your financial situation is:</p>
+                <label><input type="radio" name="q10" value="investigator" required> Scraping by on small jobs — bills always nipping at your heels</label>
+                <label><input type="radio" name="q10" value="rumormonger"> Comfortable — secrets sell, and you know all the best ones</label>
+                <label><input type="radio" name="q10" value="demonologist"> Modest — you spend money on bizarre rituals, not luxury</label>
+                <label><input type="radio" name="q10" value="agent"> Surprisingly good — you're resourceful in any reality</label>
+                <label><input type="radio" name="q10" value="haunted"> Barely surviving — work doesn't last when lights flicker around you</label>
+            </div>
+
+            <!-- Question 11: The Paranormal -->
+            <div class="question">
+                <p class="question-text"><strong>11.</strong> Your view on the supernatural is:</p>
+                <label><input type="radio" name="q11" value="investigator" required> It exists, and it leaves evidence like anything else</label>
+                <label><input type="radio" name="q11" value="rumormonger"> A tool — belief shapes reality, so shape the belief</label>
+                <label><input type="radio" name="q11" value="demonologist"> A negotiation — power for power, blood for favor</label>
+                <label><input type="radio" name="q11" value="agent"> One more variable in an already strange existence</label>
+                <label><input type="radio" name="q11" value="haunted"> Intimate and inescapable — you're never truly alone</label>
+            </div>
+
+            <!-- Question 12: Allies -->
+            <div class="question">
+                <p class="question-text"><strong>12.</strong> Your most reliable allies are:</p>
+                <label><input type="radio" name="q12" value="investigator" required> Informants, ex-cops, and people who know the streets</label>
+                <label><input type="radio" name="q12" value="rumormonger"> Journalists, whisper networks, and people who trade secrets</label>
+                <label><input type="radio" name="q12" value="demonologist"> The entities you've bargained with — for better or worse</label>
+                <label><input type="radio" name="q12" value="agent"> No one — you don't truly belong here, and they know it</label>
+                <label><input type="radio" name="q12" value="haunted"> The dead, who speak in static and remember what the living forget</label>
+            </div>
+
+            <!-- Question 13: Reputation -->
+            <div class="question">
+                <p class="question-text"><strong>13.</strong> People in Haven see you as:</p>
+                <label><input type="radio" name="q13" value="investigator" required> The stubborn one who doesn't quit until the case is solved</label>
+                <label><input type="radio" name="q13" value="rumormonger"> A ghost in the conversation — they heard your name but can't pin you down</label>
+                <label><input type="radio" name="q13" value="demonologist"> Dangerous and untrustworthy, someone who traffics with demons</label>
+                <label><input type="radio" name="q13" value="agent"> An outsider who doesn't quite fit the city's rhythm</label>
+                <label><input type="radio" name="q13" value="haunted"> Unsettling — people's eyes slide off you like you're half-real</label>
+            </div>
+
+            <!-- Question 14: Investigation Method -->
+            <div class="question">
+                <p class="question-text"><strong>14.</strong> When investigating a mystery, you start by:</p>
+                <label><input type="radio" name="q14" value="investigator" required> Hitting the streets, knocking on doors, following the evidence</label>
+                <label><input type="radio" name="q14" value="rumormonger"> Listening to what people are saying — and planting what they should say</label>
+                <label><input type="radio" name="q14" value="demonologist"> Sensing for paranormal traces and consulting forbidden knowledge</label>
+                <label><input type="radio" name="q14" value="agent"> Looking for inconsistencies that suggest dimensional interference</label>
+                <label><input type="radio" name="q14" value="haunted"> Asking your spirit companion to scout locations you can't reach</label>
+            </div>
+
+            <!-- Question 15: Past -->
+            <div class="question">
+                <p class="question-text"><strong>15.</strong> Your past is defined by:</p>
+                <label><input type="radio" name="q15" value="investigator" required> Cases solved, favors earned, and scars that won't fade</label>
+                <label><input type="radio" name="q15" value="rumormonger"> Identities shed and secrets buried deep beneath new names</label>
+                <label><input type="radio" name="q15" value="demonologist"> The moment you made your first pact and crossed a line</label>
+                <label><input type="radio" name="q15" value="agent"> A world you can barely remember, glimpsed through dimensional fractures</label>
+                <label><input type="radio" name="q15" value="haunted"> Tragedy — the day the ghost found you, or you found it</label>
+            </div>
+
+            <!-- Question 16: Social Interaction -->
+            <div class="question">
+                <p class="question-text"><strong>16.</strong> In social situations, you:</p>
+                <label><input type="radio" name="q16" value="investigator" required> Read the room, stay sharp, and watch for tells</label>
+                <label><input type="radio" name="q16" value="rumormonger"> Control the narrative and make sure you're three steps ahead</label>
+                <label><input type="radio" name="q16" value="demonologist"> Feel uncomfortable — most people can sense you're different</label>
+                <label><input type="radio" name="q16" value="agent"> Adapt quickly, playing the role that fits this reality</label>
+                <label><input type="radio" name="q16" value="haunted"> Struggle to connect — your ghost makes people uneasy</label>
+            </div>
+
+            <!-- Question 17: Rain -->
+            <div class="question">
+                <p class="question-text"><strong>17.</strong> The constant rain in Haven makes you feel:</p>
+                <label><input type="radio" name="q17" value="investigator" required> Alert — it's good cover for footsteps and whispered conversations</label>
+                <label><input type="radio" name="q17" value="rumormonger"> Powerful — every storm spreads your rumors farther</label>
+                <label><input type="radio" name="q17" value="demonologist"> Connected — the elements recognize your pact</label>
+                <label><input type="radio" name="q17" value="agent"> Nostalgic for a world where weather followed normal patterns</label>
+                <label><input type="radio" name="q17" value="haunted"> Accompanied — your ghost hums louder when it rains</label>
+            </div>
+
+            <!-- Question 18: Danger Response -->
+            <div class="question">
+                <p class="question-text"><strong>18.</strong> When danger finds you, your first thought is:</p>
+                <label><input type="radio" name="q18" value="investigator" required> "I've been here before. Act fast, think faster."</label>
+                <label><input type="radio" name="q18" value="rumormonger"> "Who can I turn against whom to survive this?"</label>
+                <label><input type="radio" name="q18" value="demonologist"> "What price am I willing to pay to invoke power?"</label>
+                <label><input type="radio" name="q18" value="agent"> "Which reality gives me the advantage here?"</label>
+                <label><input type="radio" name="q18" value="haunted"> "Let the ghost handle this — I'm already half-dead anyway."</label>
+            </div>
+
+            <!-- Question 19: Ethics -->
+            <div class="question">
+                <p class="question-text"><strong>19.</strong> Your moral code is:</p>
+                <label><input type="radio" name="q19" value="investigator" required> Protect the innocent, find the truth, even if it costs you</label>
+                <label><input type="radio" name="q19" value="rumormonger"> Flexible — reality is what people believe, so why not shape it?</label>
+                <label><input type="radio" name="q19" value="demonologist"> Transactional — every power has a price, and you pay it</label>
+                <label><input type="radio" name="q19" value="agent"> Pragmatic — you do what's needed to survive between worlds</label>
+                <label><input type="radio" name="q19" value="haunted"> Blurred — the living and dead have different rules</label>
+            </div>
+
+            <!-- Question 20: Nighttime -->
+            <div class="question">
+                <p class="question-text"><strong>20.</strong> The nights in Haven are when you:</p>
+                <label><input type="radio" name="q20" value="investigator" required> Work best — darkness reveals what daylight hides</label>
+                <label><input type="radio" name="q20" value="rumormonger"> Weave your best rumors in jazz lounges and smoky bars</label>
+                <label><input type="radio" name="q20" value="demonologist"> Feel your pact strongest, when the veil is thinnest</label>
+                <label><input type="radio" name="q20" value="agent"> Notice reality becoming more unstable and layered</label>
+                <label><input type="radio" name="q20" value="haunted"> Can't escape your ghost's presence — it's loudest in the dark</label>
+            </div>
+
+            <!-- Question 21: Neon Lights -->
+            <div class="question">
+                <p class="question-text"><strong>21.</strong> The neon lights of Haven:</p>
+                <label><input type="radio" name="q21" value="investigator" required> Illuminate crime scenes and cast suspicious shadows</label>
+                <label><input type="radio" name="q21" value="rumormonger"> Create the perfect atmosphere for secrets and deals</label>
+                <label><input type="radio" name="q21" value="demonologist"> Conduct supernatural energy in ways most don't see</label>
+                <label><input type="radio" name="q21" value="agent"> Remind you of the wrong frequencies from your home reality</label>
+                <label><input type="radio" name="q21" value="haunted"> Flicker and buzz when your ghost draws near</label>
+            </div>
+
+            <!-- Question 22: Influence -->
+            <div class="question">
+                <p class="question-text"><strong>22.</strong> You gain influence over others by:</p>
+                <label><input type="radio" name="q22" value="investigator" required> Earning respect through competence and keeping your word</label>
+                <label><input type="radio" name="q22" value="rumormonger"> Controlling what they know and when they know it</label>
+                <label><input type="radio" name="q22" value="demonologist"> Demonstrating power that makes them fear or revere you</label>
+                <label><input type="radio" name="q22" value="agent"> Being unpredictable and showing capabilities they can't explain</label>
+                <label><input type="radio" name="q22" value="haunted"> Making them uncomfortable enough to give you what you want</label>
+            </div>
+
+            <!-- Question 23: Preparation -->
+            <div class="question">
+                <p class="question-text"><strong>23.</strong> Before a dangerous job, you:</p>
+                <label><input type="radio" name="q23" value="investigator" required> Call in favors, check your gun, and review the exits</label>
+                <label><input type="radio" name="q23" value="rumormonger"> Plant rumors that will work in your favor when things go wrong</label>
+                <label><input type="radio" name="q23" value="demonologist"> Make offerings to your contracted entity and prepare rituals</label>
+                <label><input type="radio" name="q23" value="agent"> Map dimensional weak points for potential escape routes</label>
+                <label><input type="radio" name="q23" value="haunted"> Communicate with your ghost about what you'll need</label>
+            </div>
+
+            <!-- Question 24: The City's Voice -->
+            <div class="question">
+                <p class="question-text"><strong>24.</strong> When people say "Haven is alive," you think:</p>
+                <label><input type="radio" name="q24" value="investigator" required> It's a metaphor — but one that explains a lot of weird cases</label>
+                <label><input type="radio" name="q24" value="rumormonger"> It's true if enough people believe it, so I'll make sure they do</label>
+                <label><input type="radio" name="q24" value="demonologist"> It's literally true — I've felt its pulse in my rituals</label>
+                <label><input type="radio" name="q24" value="agent"> It's one of many Havens, and each version has its own awareness</label>
+                <label><input type="radio" name="q24" value="haunted"> It is — and it's just as haunted as I am</label>
+            </div>
+
+            <!-- Question 25: Ultimate Goal -->
+            <div class="question">
+                <p class="question-text"><strong>25.</strong> What drives you forward in this rain-soaked city?</p>
+                <label><input type="radio" name="q25" value="investigator" required> Finding truth in a city built on lies</label>
+                <label><input type="radio" name="q25" value="rumormonger"> Mastering reality by controlling its stories</label>
+                <label><input type="radio" name="q25" value="demonologist"> Understanding the price of power and whether you can afford it</label>
+                <label><input type="radio" name="q25" value="agent"> Finding a way home — or accepting this strange new world</label>
+                <label><input type="radio" name="q25" value="haunted"> Making peace with the ghost that won't leave your side</label>
+            </div>
+
+            <div class="submit-container">
+                <button type="submit" class="submit-btn">Discover Your Calling</button>
+            </div>
+        </form>
+
+        <div id="results" class="results hidden">
+            <h2>Your Calling:</h2>
+            <div id="result-content"></div>
+            <button onclick="location.reload()" class="retry-btn">Take the Quiz Again</button>
+            <div class="back-home">
+                <a href="../../index.html" class="home-btn">Return to Eridan Games</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="calling-quiz-script.js"></script>
+</body>
+</html>

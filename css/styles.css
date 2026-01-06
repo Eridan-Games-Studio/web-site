@@ -438,21 +438,79 @@ nav {
 }
 
 
-/* Important Updates Notification */
+/* Quiz Call-to-Action */
 .updates-notification {
-    max-width: 600px;
+    max-width: 700px;
     margin: 1.5rem auto;
-    padding: 0.9rem 1.5rem;
-    background: rgba(245, 158, 11, 0.15);
-    border: 2px solid var(--accent-gold);
+    padding: 0;
+    background: transparent;
+    border: none;
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
-    animation: subtlePulse 3s ease-in-out infinite;
 }
 
+.quiz-cta-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.2rem 2.5rem;
+    background: linear-gradient(135deg, rgba(0, 100, 100, 0.3) 0%, rgba(0, 150, 150, 0.3) 100%);
+    border: 2px solid rgba(0, 255, 255, 0.5);
+    border-radius: 8px;
+    color: #00ffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow:
+        0 0 20px rgba(0, 255, 255, 0.2),
+        0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: subtlePulse 3s ease-in-out infinite;
+    letter-spacing: 0.5px;
+}
+
+.quiz-cta-button:hover {
+    background: linear-gradient(135deg, rgba(0, 150, 150, 0.4) 0%, rgba(0, 200, 200, 0.4) 100%);
+    border-color: rgba(0, 255, 255, 0.8);
+    transform: translateY(-3px);
+    box-shadow:
+        0 0 30px rgba(0, 255, 255, 0.4),
+        0 8px 20px rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+}
+
+.quiz-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.5));
+}
+
+.quiz-text {
+    font-family: 'Cinzel', serif;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    text-align: center;
+    line-height: 1.4;
+}
+
+.quiz-subtitle {
+    font-size: 0.85em;
+    opacity: 0.9;
+}
+
+.quiz-arrow {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.quiz-cta-button:hover .quiz-arrow {
+    transform: translateX(5px);
+}
+
+/* Legacy notification styles (kept for backwards compatibility) */
 .notification-icon {
     font-size: 1.3rem;
     flex-shrink: 0;
