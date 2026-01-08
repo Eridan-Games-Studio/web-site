@@ -37,11 +37,43 @@ class NewsletterForm {
         const form = document.querySelector('.newsletter-form');
         if (!form) return;
 
+        // Set custom validation messages in English
+        const emailInput = form.querySelector('input[type="email"]');
+        const checkbox = form.querySelector('input[type="checkbox"]');
+
+        if (emailInput) {
+            emailInput.addEventListener('invalid', (e) => {
+                e.preventDefault();
+                if (emailInput.validity.valueMissing) {
+                    emailInput.setCustomValidity('Please enter your email address.');
+                } else if (emailInput.validity.typeMismatch) {
+                    emailInput.setCustomValidity('Please enter a valid email address.');
+                } else {
+                    emailInput.setCustomValidity('Please enter a valid email address.');
+                }
+            });
+
+            emailInput.addEventListener('input', () => {
+                emailInput.setCustomValidity('');
+            });
+        }
+
+        if (checkbox) {
+            checkbox.addEventListener('invalid', (e) => {
+                e.preventDefault();
+                checkbox.setCustomValidity('You must agree to receive marketing emails to subscribe.');
+            });
+
+            checkbox.addEventListener('change', () => {
+                checkbox.setCustomValidity('');
+            });
+        }
+
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             this.handleSubmit(e);
         });
-        
+
         // Initially disable the submit button
         this.updateSubmitButtonState();
     }

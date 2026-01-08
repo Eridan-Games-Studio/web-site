@@ -71,7 +71,7 @@
     "id": "haven-world",
     "name": "H.A.V.E.N",
     "slug": "haven-world",
-    "description": "A <strong>supernatural-noir setting</strong> steeped in crime, occult mystery, and urban paranoia.\n\nHere, every deal has a price and every truth is poisoned, drawing players into webs of power, corruption, and forbidden knowledge, as <em>unseen forces twist fate</em> in this endless night.\n\nNarrative Director: Matej Pupačić",
+    "description": "A supernatural-noir setting steeped in crime, occult mystery, and urban paranoia.\n\nHere, every deal has a price and every truth is poisoned, drawing players into webs of power, corruption, and forbidden knowledge, as <em>unseen forces twist fate</em> in this endless night.\n\nNarrative Director: Matej Pupačić",
     "image": "world-haven.png",
     "games": ["haven-rpg"],
     "tagline": "In a city that feeds on secrets, survival is the only truth that matters.",
@@ -79,7 +79,7 @@
     "core_mechanism": {
       "icon_url": "/placeholder.svg",
       "title": "The Occult Undercurrent",
-      "text": "Haven's streets hum with whispers of the <strong>unnatural</strong>—strange symbols, forgotten rites, and rumors that twist into reality.\n\nThe occult isn't hidden; it waits in plain sight for those <em>reckless enough to notice</em>."
+      "text": "Haven's streets hum with whispers of the <strong>unnatural</strong>—strange symbols, forgotten rites, and rumors that twist into reality.\n\nThe occult isn't hidden; it waits in plain sight for those reckless enough to notice."
     },
     "gameplay_pillars": [
       {
