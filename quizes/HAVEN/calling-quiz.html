@@ -311,11 +311,36 @@
         <div id="results" class="results hidden">
             <h2>Your Calling:</h2>
             <div id="result-content"></div>
-            <button onclick="location.reload()" class="retry-btn">Take the Quiz Again</button>
+            <button class="retry-btn" id="retry-quiz-btn">Take the Quiz Again</button>
             <div class="back-home">
                 <a href="https://discord.gg/Xtf2ehPPt4" class="home-btn" target="_blank" rel="noopener noreferrer">Join the H.A.V.E.N. Community</a>
                 <a href="../../index.html" class="home-btn">Return to Eridan Games</a>
             </div>
+        </div>
+
+        <!-- Poll Results Section -->
+        <div class="poll-results-section">
+            <h2>Community Results</h2>
+            <p class="poll-subtitle">See how your calling compares to other Haven residents</p>
+            <div class="poll-table-wrapper">
+                <table class="poll-table">
+                    <thead>
+                        <tr>
+                            <th>Calling</th>
+                            <th>Count</th>
+                            <th>Percentage</th>
+                            <th class="visual-bar-header">Distribution</th>
+                        </tr>
+                    </thead>
+                    <tbody id="poll-results-body">
+                        <!-- Results will be populated by JavaScript -->
+                        <tr>
+                            <td colspan="4" class="loading">Loading poll results...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="poll-note">All results are anonymous and collected locally</p>
         </div>
     </div>
 
