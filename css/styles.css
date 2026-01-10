@@ -440,15 +440,17 @@ nav {
 
 /* Quiz Call-to-Action */
 .updates-notification {
-    max-width: 700px;
+    max-width: 1200px;
     margin: 1.5rem auto;
-    padding: 0;
+    padding: 0 1rem;
     background: transparent;
     border: none;
     border-radius: 8px;
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
 }
 
 .quiz-cta-button {
@@ -456,12 +458,12 @@ nav {
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    padding: 1.2rem 2.5rem;
+    padding: 1.2rem 2rem;
     background: linear-gradient(135deg, rgba(0, 100, 100, 0.3) 0%, rgba(0, 150, 150, 0.3) 100%);
     border: 2px solid rgba(0, 255, 255, 0.5);
     border-radius: 8px;
     color: #00ffff;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 600;
     text-decoration: none;
     transition: all 0.3s ease;
@@ -470,6 +472,9 @@ nav {
         0 5px 15px rgba(0, 0, 0, 0.3);
     animation: subtlePulse 3s ease-in-out infinite;
     letter-spacing: 0.5px;
+    flex: 1;
+    min-width: 300px;
+    max-width: 550px;
 }
 
 .quiz-cta-button:hover {
