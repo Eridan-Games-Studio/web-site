@@ -45,6 +45,11 @@ body.menu-open {
     overflow: hidden;
 }
 
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
 /* ============================================
    ANIMATED STARFIELD BACKGROUND
    Radial gradient nebula overlay for depth
