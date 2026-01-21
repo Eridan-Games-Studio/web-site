@@ -70,7 +70,7 @@ body.menu-open {
 }
 
 /* Ensure content is above starfield */
-nav, section, footer, .content-banner, .updates-notification {
+nav, section, footer, .content-banner, .updates-notification, .news-box {
     position: relative;
     z-index: 1;
 }
