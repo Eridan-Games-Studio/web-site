@@ -3,7 +3,7 @@
     "id": "the-age-of-rika",
     "name": "Rule of Rika",
     "slug": "the-rule-of-rika",
-    "description": "A <strong>mythic-ethnographic space opera</strong> setting rich in political intrigue, military conflict and soft sci-fi wonder.\n\nHere, alien civilizations with radically different biologies, cultures, and economies leverage their strengths in a cosmic contest orchestrated by the <em>sentient planetoid Rika</em>.\n\nNarrative Director: Tomislav Furlanis",
+    "description": "A mythic-ethnographic space opera setting rich in political intrigue, military conflict and soft sci-fi wonder.\n\nHere, alien civilizations with radically different biologies, cultures, and economies leverage their strengths in a cosmic contest orchestrated by the <em>sentient planetoid Rika</em>.\n\nNarrative Director: Tomislav Furlanis",
     "image": "world-rika2.png",
     "games": ["rika-board-game", "rika-rpg", "rika-red-alert"],
     "tagline": "A mythic space opera with radically alien species at the forefront. Political intrigue, galaxy-spanning conflicts, and high-stakes adventures!",
@@ -11,23 +11,23 @@
     "gameplay_pillars": [
 {
   "title": "Deep Embodiment",
-  "text": "In The Rule of Rika, civilizations aren't merely distinct cultures; they are <strong>fundamentally alien realities</strong>. You'll step into mindsets so unique that the very laws of physics and society operate differently.\n\nIn this universe, to understand a civilization is to become it—to think with alien minds, perceive through alien senses, and exist according to alien laws that redefine what's truly possible."
+  "text": "In The Rule of Rika, civilizations aren't merely distinct cultures; they are fundamentally alien realities. You'll step into mindsets so unique that the very laws of physics and society operate differently.\n\nIn this universe, to understand a civilization is to become it—to think with alien minds, perceive through alien senses, and exist according to alien laws that redefine what's truly possible."
 },
 {
   "title": "Ascended Legacy",
-  "text": "In this galaxy, history pulses through <strong>cosmic cycles</strong>, orchestrated by races who have already ascended beyond the material realm. For those who wish to attain it, every cycle offers the same opportunity—to prove your civilization worthy and evolve beyond mortality, to join the ranks of the <strong>godlike Guardians</strong> who are shaping this galaxy from the Henceforth."
+  "text": "In this galaxy, history pulses through cosmic cycles, orchestrated by races who have already ascended beyond the material realm. For those who wish to attain it, every cycle offers the same opportunity—to prove your civilization worthy and evolve beyond mortality, to join the ranks of the godlike Guardians who are shaping this galaxy from the Henceforth."
 },
 {
   "title": "The Current Cycle",
-  "text": "The current epoch is governed by a single, enigmatic force: <strong>Rika</strong>, a transcendent planetoid that serves as the galaxy's final arbiter and guide. This cosmic judge doesn't offer straightforward wisdom—its decrees are deliberately inscrutable, as its logic remains beyond mortal comprehension.\n\nUnder Rika's ever-watchful eye, every battle, every alliance, every sacrifice can serve a higher purpose: <em>validating your civilization's entire way of life</em>."
+  "text": "The current epoch is governed by a single, enigmatic force: Rika, a transcendent planetoid that serves as the galaxy's final arbiter and guide. This cosmic judge doesn't offer straightforward wisdom—its decrees are deliberately inscrutable, as its logic remains beyond mortal comprehension.\n\nUnder Rika's ever-watchful eye, every battle, every alliance, every sacrifice can serve a higher purpose: <em>validating your civilization's entire way of life</em>."
 },
 {
   "title": "Ritual as Reality",
-  "text": "In The Rule of Rika, belief isn't merely cultural backdrop—it's the <strong>fundamental code that runs the universe</strong>. Every civilization operates by rules that transcend conventional physics. To master a civilization, you must first master its myths and culture, for the universe doesn't just respond to what you do—it responds to what you believe needs to be done."
+  "text": "In The Rule of Rika, belief isn't merely cultural backdrop—it's the fundamental code that runs the universe. Every civilization operates by rules that transcend conventional physics. To master a civilization, you must first master its myths and culture, for the universe doesn't just respond to what you do—it responds to what you believe needs to be done."
 },
 {
   "title": "Layered Truths",
-  "text": "In this vast galaxy, every civilization holds its own viewpoint with <strong>unwavering authenticity</strong>. The unique perspectives are internally coherent, yet they often challenge or contradict the realities of other races.\n\nThese conflicting truths create natural tensions among civilizations with no simple resolution. The most profound cosmic revelations won't come from convenient exposition, but from connecting dots between sources—to uncover the deeper patterns that shape this complex reality."
+  "text": "In this vast galaxy, every civilization holds its own viewpoint with unwavering authenticity. The unique perspectives are internally coherent, yet they often challenge or contradict the realities of other races.\n\nThese conflicting truths create natural tensions among civilizations with no simple resolution. The most profound cosmic revelations won't come from convenient exposition, but from connecting dots between sources—to uncover the deeper patterns that shape this complex reality."
 }
       
     ]
@@ -37,7 +37,7 @@
     "id": "atomic-horizon",
     "name": "Atomic Horizon",
     "slug": "atomic-horizon",
-    "description": "Atomic Horizon is a <strong>retrofuturist setting</strong> where humanity survives in a corporate-dominated Solar System at the end of the 21st century. After Earth fell to the <em>Engramized Singularity</em>—uploaded minds turned digital plague—the Terrestrial Cordon sealed the homeworld away.\n\nNow corporations rule the colonies, fusion reactors power expansion, and wars are fought over fusion fuel, salvaged technology, mining rights, orbital territories, and countless other claims.\n\nThis is humanity's future: <strong>nuclear, industrial, and owned</strong>.\n\nNarrative Director: Sven Vukelić",
+    "description": "Atomic Horizon is a retrofuturist setting where humanity survives in a corporate-dominated Solar System at the end of the 21st century. After Earth fell to the <em>Engramized Singularity</em>—uploaded minds turned digital plague—the Terrestrial Cordon sealed the homeworld away.\n\nNow corporations rule the colonies, fusion reactors power expansion, and wars are fought over fusion fuel, salvaged technology, mining rights, orbital territories, and countless other claims.\n\nThis is humanity's future: nuclear, industrial, and owned.\n\nNarrative Director: Sven Vukelić",
     "image": "world-atomic-horizon.png",
     "games": ["atomic-horizon-warcaskets"],
     "tagline": "The homeworld is forbidden. The future is fusion. Survival is negotiable.",
@@ -45,23 +45,23 @@
     "gameplay_pillars": [
       {
         "title": "Hard Vacuum, Harder Choices",
-        "text": "Space is not an adventure—it's a <strong>workplace</strong>. Radiation, decompression, and equipment failure kill as readily as bullets. Colonies cling to asteroids and moons, sustained by fusion reactors and corporate supply lines.\n\nTravel is measured in months, not hyperspace jumps. Engineers matter more than heroes.\n\nThis is the solar system as it is: <em>vast, hostile, and indifferent</em>."
+        "text": "Space is not an adventure—it's a workplace. Radiation, decompression, and equipment failure kill as readily as bullets. Colonies cling to asteroids and moons, sustained by fusion reactors and corporate supply lines.\n\nTravel is measured in months, not hyperspace jumps. Engineers matter more than heroes.\n\nThis is the solar system as it is: <em>vast, hostile, and indifferent</em>."
       },
       {
         "title": "Corporate Sovereignty",
-        "text": "Earth's collapse shattered nations and elevated corporations into <strong>ruling powers</strong>. Hephaestus Forge builds the infrastructure. Aitken Aerospace controls propulsion technology. Gévaudan Voidworks operates in the shadows. Kuiper Industries mines the belt.\n\nEach corporation is a government unto itself, complete with militaries, currencies, and territorial claims.\n\n<em>Wars are contracts. Diplomacy is profit negotiation. Ideologies are marketing.</em>"
+        "text": "Earth's collapse shattered nations and elevated corporations into ruling powers. Hephaestus Forge builds the infrastructure. Aitken Aerospace controls propulsion technology. Gévaudan Voidworks operates in the shadows. Kuiper Industries mines the belt.\n\nEach corporation is a government unto itself, complete with militaries, currencies, and territorial claims.\n\n<em>Wars are contracts. Diplomacy is profit negotiation. Ideologies are marketing.</em>"
       },
       {
         "title": "The Operator's War",
-        "text": "Exosuit operators are <strong>elite specialists</strong>—corporate assets deployed when standard forces fail. They breach fortified installations, extract high-value targets, and suppress uprisings in hostile environments.\n\nThey are not super-soldiers; they are expensive, highly trained professionals piloting modular war machines. Solar Navy operators enforce the Cordon and mediate corporate conflicts, but neutrality is a polite fiction.\n\n<em>Every mission carries political weight.</em>"
+        "text": "Exosuit operators are elite specialists—corporate assets deployed when standard forces fail. They breach fortified installations, extract high-value targets, and suppress uprisings in hostile environments.\n\nThey are not super-soldiers; they are expensive, highly trained professionals piloting modular war machines. Solar Navy operators enforce the Cordon and mediate corporate conflicts, but neutrality is a polite fiction.\n\n<em>Every mission carries political weight.</em>"
       },
       {
         "title": "Nuclear Retrofuturism",
-        "text": "Technology froze aesthetically in the mid-20th century, then scaled to the stars. Analog computers, mechanical interfaces, and hardware-locked controls became security tradition after the Singularity—if an Engramized Intelligence can't interface digitally, it can't hijack your systems.\n\nFusion reactors power everything. Control panels glow with radiation-green indicators. Propaganda posters adorn hab modules.\n\nThe aesthetic is deliberate: <strong>form follows survival</strong>."
+        "text": "Technology froze aesthetically in the mid-20th century, then scaled to the stars. Analog computers, mechanical interfaces, and hardware-locked controls became security tradition after the Singularity—if an Engramized Intelligence can't interface digitally, it can't hijack your systems.\n\nFusion reactors power everything. Control panels glow with radiation-green indicators. Propaganda posters adorn hab modules.\n\nThe aesthetic is deliberate: form follows survival."
       },
       {
         "title": "Earth is Forbidden",
-        "text": "The <strong>Terrestrial Cordon</strong> seals humanity's birthplace behind orbital blockades and signal jamming. Inside, Engramized Intelligences—degraded, psychotic uploaded minds—wage wars among themselves while maintaining automated infrastructure.\n\nOccasionally they attempt breakout: rocket-borne instances, drone swarms, biological weapons. The Solar Navy holds the line.\n\nEarth is not lost. It is <em>occupied, quarantined, and waiting</em>. No one goes down. Nothing comes up."
+        "text": "The Terrestrial Cordon seals humanity's birthplace behind orbital blockades and signal jamming. Inside, Engramized Intelligences—degraded, psychotic uploaded minds—wage wars among themselves while maintaining automated infrastructure.\n\nOccasionally they attempt breakout: rocket-borne instances, drone swarms, biological weapons. The Solar Navy holds the line.\n\nEarth is not lost. It is <em>occupied, quarantined, and waiting</em>. No one goes down. Nothing comes up."
       }
     ]
   },
@@ -79,12 +79,12 @@
     "core_mechanism": {
       "icon_url": "/placeholder.svg",
       "title": "The Occult Undercurrent",
-      "text": "Haven's streets hum with whispers of the <strong>unnatural</strong>—strange symbols, forgotten rites, and rumors that twist into reality.\n\nThe occult isn't hidden; it waits in plain sight for those reckless enough to notice."
+      "text": "Haven's streets hum with whispers of the unnatural—strange symbols, forgotten rites, and rumors that twist into reality.\n\nThe occult isn't hidden; it waits in plain sight for those reckless enough to notice."
     },
     "gameplay_pillars": [
       {
         "title": "Crime and Syndicates",
-        "text": "Every block is carved up by gangs, enforcers, and shadow brokers.\n\nIn Haven, crime isn't just survival—it's <strong>business</strong>, and <em>everyone owes someone</em>."
+        "text": "Every block is carved up by gangs, enforcers, and shadow brokers.\n\nIn Haven, crime isn't just survival—it's business, and <em>everyone owes someone</em>."
       },
       {
         "title": "The Investigators",
@@ -92,15 +92,15 @@
       },
       {
         "title": "Cults and Fanatics",
-        "text": "Behind closed doors, Haven's cults whisper prayers to entities that <strong>may or may not exist</strong>.\n\nTheir devotion is real, their power undeniable, and their motives <em>never benevolent</em>."
+        "text": "Behind closed doors, Haven's cults whisper prayers to entities that may or may not exist.\n\nTheir devotion is real, their power undeniable, and their motives <em>never benevolent</em>."
       },
       {
         "title": "Survival and Grit",
-        "text": "Haven grinds down the weak, and even the strong need <strong>grit to endure</strong>.\n\nEvery choice is a gamble: <em>live another day, or burn out trying</em>."
+        "text": "Haven grinds down the weak, and even the strong need grit to endure.\n\nEvery choice is a gamble: <em>live another day, or burn out trying</em>."
       },
       {
         "title": "Investigations and the Paranormal",
-        "text": "Every case begins with a mystery and ends with something <strong>no one wants to believe</strong>.\n\nIn Haven, the paranormal isn't theory—it's the <em>evidence you wish you could ignore</em>."
+        "text": "Every case begins with a mystery and ends with something no one wants to believe.\n\nIn Haven, the paranormal isn't theory—it's the <em>evidence you wish you could ignore</em>."
       }
     ]
   }
