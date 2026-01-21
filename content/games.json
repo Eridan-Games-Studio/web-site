@@ -111,7 +111,12 @@
     "description": "Your spaceship's systems are <strong>spiraling into chaos</strong>. Balance the ship's resources and player progression before time, resources, or friendships run out.\n\nA semi-cooperative strategy game where <em>every solved crisis flips into a fresh dilemma</em>.",
     "shortDescription": "Multiplayer semi-cooperative event solving and engine building game.",
     "image": "discord.jpg",
-    "status": "In Development",
+     "gallery": [
+      "EOD.20.01.png",
+      "EOD.20.01.two.png",
+      "EOD.20.01.three.png"
+    ],
+    "status": "Development Phase",
     "releaseDate": "Upcoming",
     "platforms": ["Tabletop", "Gamefound"],
     "synopsis": "Will your team manage to solve <strong>escalating problems</strong> endangering your spaceship?",
