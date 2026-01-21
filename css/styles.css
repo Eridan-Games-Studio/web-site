@@ -443,6 +443,62 @@ nav {
 }
 
 
+/* News Box */
+.news-box {
+    max-width: 1200px;
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+}
+
+.news-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(251, 191, 36, 0.15) 100%);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    border-radius: 6px;
+    color: var(--accent-gold);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(245, 158, 11, 0.1);
+}
+
+.news-link:hover {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(251, 191, 36, 0.25) 100%);
+    border-color: rgba(245, 158, 11, 0.7);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
+}
+
+.news-label {
+    background: var(--accent-gold);
+    color: var(--darker-bg);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.news-text {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.news-arrow {
+    font-size: 1.1rem;
+    opacity: 0.7;
+    transition: transform 0.3s ease;
+}
+
+.news-link:hover .news-arrow {
+    transform: translateX(3px);
+    opacity: 1;
+}
+
 /* Quiz Call-to-Action */
 .updates-notification {
     max-width: 1200px;
