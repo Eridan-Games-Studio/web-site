@@ -3,7 +3,7 @@
     "id": "the-age-of-rika",
     "name": "Rule of Rika",
     "slug": "the-rule-of-rika",
-    "description": "A mythic-ethnographic space opera setting rich in political intrigue, military conflict and soft sci-fi wonder.\n\nHere, alien civilizations with radically different biologies, cultures, and economies leverage their strengths in a cosmic contest orchestrated by the <em>sentient planetoid Rika</em>.\n\nNarrative Director: Tomislav Furlanis",
+    "description": "A mythic-ethnographic space opera setting rich in political intrigue, military conflict and soft sci-fi wonder.\n\nHere, alien civilizations with radically different biologies, cultures, and economies leverage their strengths in a cosmic contest orchestrated by the sentient planetoid Rika.\n\nNarrative Director: Tomislav Furlanis",
     "image": "world-rika2.png",
     "games": ["rika-board-game", "rika-rpg", "rika-red-alert"],
     "tagline": "A mythic space opera with radically alien species at the forefront. Political intrigue, galaxy-spanning conflicts, and high-stakes adventures!",
@@ -19,7 +19,7 @@
 },
 {
   "title": "The Current Cycle",
-  "text": "The current epoch is governed by a single, enigmatic force: Rika, a transcendent planetoid that serves as the galaxy's final arbiter and guide. This cosmic judge doesn't offer straightforward wisdom—its decrees are deliberately inscrutable, as its logic remains beyond mortal comprehension.\n\nUnder Rika's ever-watchful eye, every battle, every alliance, every sacrifice can serve a higher purpose: <em>validating your civilization's entire way of life</em>."
+  "text": "The current epoch is governed by a single, enigmatic force: Rika, a transcendent planetoid that serves as the galaxy's final arbiter and guide. This cosmic judge doesn't offer straightforward wisdom—its decrees are deliberately inscrutable, as its logic remains beyond mortal comprehension.\n\nUnder Rika's ever-watchful eye, every battle, every alliance, every sacrifice can serve a higher purpose: validating your civilization's entire way of life."
 },
 {
   "title": "Ritual as Reality",
@@ -37,7 +37,7 @@
     "id": "atomic-horizon",
     "name": "Atomic Horizon",
     "slug": "atomic-horizon",
-    "description": "Atomic Horizon is a retrofuturist setting where humanity survives in a corporate-dominated Solar System at the end of the 21st century. After Earth fell to the <em>Engramized Singularity</em>—uploaded minds turned digital plague—the Terrestrial Cordon sealed the homeworld away.\n\nNow corporations rule the colonies, fusion reactors power expansion, and wars are fought over fusion fuel, salvaged technology, mining rights, orbital territories, and countless other claims.\n\nThis is humanity's future: nuclear, industrial, and owned.\n\nNarrative Director: Sven Vukelić",
+    "description": "Atomic Horizon is a retrofuturist setting where humanity survives in a corporate-dominated Solar System at the end of the 21st century. After Earth fell to the Engramized Singularity—uploaded minds turned digital plague—the Terrestrial Cordon sealed the homeworld away.\n\nNow corporations rule the colonies, fusion reactors power expansion, and wars are fought over fusion fuel, salvaged technology, mining rights, orbital territories, and countless other claims.\n\nThis is humanity's future: nuclear, industrial, and owned.\n\nNarrative Director: Sven Vukelić",
     "image": "world-atomic-horizon.png",
     "games": ["atomic-horizon-warcaskets"],
     "tagline": "The homeworld is forbidden. The future is fusion. Survival is negotiable.",
@@ -45,15 +45,15 @@
     "gameplay_pillars": [
       {
         "title": "Hard Vacuum, Harder Choices",
-        "text": "Space is not an adventure—it's a workplace. Radiation, decompression, and equipment failure kill as readily as bullets. Colonies cling to asteroids and moons, sustained by fusion reactors and corporate supply lines.\n\nTravel is measured in months, not hyperspace jumps. Engineers matter more than heroes.\n\nThis is the solar system as it is: <em>vast, hostile, and indifferent</em>."
+        "text": "Space is not an adventure—it's a workplace. Radiation, decompression, and equipment failure kill as readily as bullets. Colonies cling to asteroids and moons, sustained by fusion reactors and corporate supply lines.\n\nTravel is measured in months, not hyperspace jumps. Engineers matter more than heroes.\n\nThis is the solar system as it is: vast, hostile, and indifferent."
       },
       {
         "title": "Corporate Sovereignty",
-        "text": "Earth's collapse shattered nations and elevated corporations into ruling powers. Hephaestus Forge builds the infrastructure. Aitken Aerospace controls propulsion technology. Gévaudan Voidworks operates in the shadows. Kuiper Industries mines the belt.\n\nEach corporation is a government unto itself, complete with militaries, currencies, and territorial claims.\n\n<em>Wars are contracts. Diplomacy is profit negotiation. Ideologies are marketing.</em>"
+        "text": "Earth's collapse shattered nations and elevated corporations into ruling powers. Hephaestus Forge builds the infrastructure. Aitken Aerospace controls propulsion technology. Gévaudan Voidworks operates in the shadows. Kuiper Industries mines the belt.\n\nEach corporation is a government unto itself, complete with militaries, currencies, and territorial claims.\n\nWars are contracts. Diplomacy is profit negotiation. Ideologies are marketing."
       },
       {
         "title": "The Operator's War",
-        "text": "Exosuit operators are elite specialists—corporate assets deployed when standard forces fail. They breach fortified installations, extract high-value targets, and suppress uprisings in hostile environments.\n\nThey are not super-soldiers; they are expensive, highly trained professionals piloting modular war machines. Solar Navy operators enforce the Cordon and mediate corporate conflicts, but neutrality is a polite fiction.\n\n<em>Every mission carries political weight.</em>"
+        "text": "Exosuit operators are elite specialists—corporate assets deployed when standard forces fail. They breach fortified installations, extract high-value targets, and suppress uprisings in hostile environments.\n\nThey are not super-soldiers; they are expensive, highly trained professionals piloting modular war machines. Solar Navy operators enforce the Cordon and mediate corporate conflicts, but neutrality is a polite fiction.\n\nEvery mission carries political weight."
       },
       {
         "title": "Nuclear Retrofuturism",
@@ -61,7 +61,7 @@
       },
       {
         "title": "Earth is Forbidden",
-        "text": "The Terrestrial Cordon seals humanity's birthplace behind orbital blockades and signal jamming. Inside, Engramized Intelligences—degraded, psychotic uploaded minds—wage wars among themselves while maintaining automated infrastructure.\n\nOccasionally they attempt breakout: rocket-borne instances, drone swarms, biological weapons. The Solar Navy holds the line.\n\nEarth is not lost. It is <em>occupied, quarantined, and waiting</em>. No one goes down. Nothing comes up."
+        "text": "The Terrestrial Cordon seals humanity's birthplace behind orbital blockades and signal jamming. Inside, Engramized Intelligences—degraded, psychotic uploaded minds—wage wars among themselves while maintaining automated infrastructure.\n\nOccasionally they attempt breakout: rocket-borne instances, drone swarms, biological weapons. The Solar Navy holds the line.\n\nEarth is not lost. It is occupied, quarantined, and waiting. No one goes down. Nothing comes up."
       }
     ]
   },
@@ -71,7 +71,7 @@
     "id": "haven-world",
     "name": "H.A.V.E.N",
     "slug": "haven-world",
-    "description": "A supernatural-noir setting steeped in crime, occult mystery, and urban paranoia.\n\nHere, every deal has a price and every truth is poisoned, drawing players into webs of power, corruption, and forbidden knowledge, as <em>unseen forces twist fate</em> in this endless night.\n\nNarrative Director: Matej Pupačić",
+    "description": "A supernatural-noir setting steeped in crime, occult mystery, and urban paranoia.\n\nHere, every deal has a price and every truth is poisoned, drawing players into webs of power, corruption, and forbidden knowledge, as unseen forces twist fate in this endless night.\n\nNarrative Director: Matej Pupačić",
     "image": "world-haven.png",
     "games": ["haven-rpg"],
     "tagline": "In a city that feeds on secrets, survival is the only truth that matters.",
@@ -84,23 +84,23 @@
     "gameplay_pillars": [
       {
         "title": "Crime and Syndicates",
-        "text": "Every block is carved up by gangs, enforcers, and shadow brokers.\n\nIn Haven, crime isn't just survival—it's business, and <em>everyone owes someone</em>."
+        "text": "Every block is carved up by gangs, enforcers, and shadow brokers.\n\nIn Haven, crime isn't just survival—it's business, and everyone owes someone."
       },
       {
         "title": "The Investigators",
-        "text": "Whether detectives, rumormongers, or drifters with too many questions, investigators pry open the city's locked doors.\n\nTruth is their trade—though it often <em>costs more than coin</em>."
+        "text": "Whether detectives, rumormongers, or drifters with too many questions, investigators pry open the city's locked doors.\n\nTruth is their trade—though it often costs more than coin."
       },
       {
         "title": "Cults and Fanatics",
-        "text": "Behind closed doors, Haven's cults whisper prayers to entities that may or may not exist.\n\nTheir devotion is real, their power undeniable, and their motives <em>never benevolent</em>."
+        "text": "Behind closed doors, Haven's cults whisper prayers to entities that may or may not exist.\n\nTheir devotion is real, their power undeniable, and their motives never benevolent."
       },
       {
         "title": "Survival and Grit",
-        "text": "Haven grinds down the weak, and even the strong need grit to endure.\n\nEvery choice is a gamble: <em>live another day, or burn out trying</em>."
+        "text": "Haven grinds down the weak, and even the strong need grit to endure.\n\nEvery choice is a gamble: live another day, or burn out trying."
       },
       {
         "title": "Investigations and the Paranormal",
-        "text": "Every case begins with a mystery and ends with something no one wants to believe.\n\nIn Haven, the paranormal isn't theory—it's the <em>evidence you wish you could ignore</em>."
+        "text": "Every case begins with a mystery and ends with something no one wants to believe.\n\nIn Haven, the paranormal isn't theory—it's the evidence you wish you could ignore."
       }
     ]
   }
