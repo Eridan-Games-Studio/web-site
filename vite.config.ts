@@ -5,8 +5,8 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // Base path for GitHub Pages deployment (github.com/EridanGamesStudio/website)
-  base: "/website/",
+  // Base path - using root since custom domain (eridangames.com) is configured
+  base: "/",
   server: {
     host: "::",
     port: 8080,
