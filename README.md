@@ -1,124 +1,73 @@
-# Eridan Games Studio Website
+# Welcome to your Lovable project
 
-The official website for Eridan Games Studio - an independent game development studio creating challenging gaming experiences that emphasize player agency in worlds filled with wonder and contrastive realities.
+## Project info
 
-## 🌟 About Eridan Games Studio
+**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
 
-Eridan Games Studio is dedicated to creating authentic, boldly contrasted worlds where every layer invites discovery. We believe that games have the power to empower, inspire, connect, and transform. Our mission is to push the boundaries of systems and storytelling while maintaining player-first design.
+## How can I edit this code?
 
-### Our Values
-- **Player-First**: We design around the player's journey—experience, agency, and meaningful choices at every turn
-- **Innovation**: We explore mechanical limits and bold worlds, crafting fresh frontiers for experienced players
-- **Community**: We build games together with our community—sharing ideas, playtesting openly, and refining together
-- **Approachability**: Our tables give you space to learn, then space to shine
+There are several ways of editing your application.
 
-## 🎮 Our Games
+**Use Lovable**
 
-### Current Projects
+Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
 
-#### **The Rite of Rika**
-- **Type**: 2vs2 asymmetrical card-driven skirmish game
-- **Status**: In Development
-- **Description**: A tactical 2vs2 board game experience where you jointly command one of four unique races in an asymmetric strategic battle fought on two fronts using powerful cards, units and limited communication.
+Changes made via Lovable will be committed automatically to this repo.
 
-#### **H.A.V.E.N RPG**
-- **Type**: Supernatural-noir RPG
-- **Status**: Testing Phase
-- **Description**: Step into Haven City—a place where crime, corruption, and the paranormal overlap. Investigate mysteries, confront the supernatural, and navigate shifting alliances in this urban nightmare.
+**Use your preferred IDE**
 
-#### **Rika RPG: We are all aliens here**
-- **Type**: Therapeutically inspired narrative RPG
-- **Status**: In Development
-- **Description**: A deeply relational space-opera RPG inspired by psychotherapeutic principles. Explore radically different alien minds and discover your own character through their distinct ways of sensing, thinking, and relating.
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
 
-#### **Atomic Horizon: Warcaskets**
-- **Type**: Co-op tactical skirmish game
-- **Status**: In Development
-- **Description**: Deploy as Solar Navy operators in customizable exosuits through a corporate-dominated Solar System. Breach installations, extract hostages, and suppress insurgencies in tactical co-op missions.
+The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-#### **Rika: Engines of Discord**
-- **Type**: Semi-cooperative strategy game
-- **Status**: In Development
-- **Description**: Balance your spaceship's resources and player progression before time, resources, or friendships run out. A semi-cooperative strategy game where every solved crisis flips into a fresh dilemma.
+Follow these steps:
 
-## 🌍 Our Worlds
+```sh
+# Step 1: Clone the repository using the project's Git URL.
+git clone <YOUR_GIT_URL>
 
-### **Rule of Rika**
-A mythic-ethnographic space opera setting rich in political intrigue, military conflict and soft sci-fi wonder. Alien civilizations with radically different biologies, cultures, and economies leverage their strengths in a cosmic contest orchestrated by the sentient planetoid Rika.
+# Step 2: Navigate to the project directory.
+cd <YOUR_PROJECT_NAME>
 
-### **Atomic Horizon**
-A retrofuturist setting where humanity survives in a corporate-dominated Solar System at the end of the 21st century. After Earth fell to the Engramized Singularity, corporations rule the colonies, fusion reactors power expansion, and wars are fought over fusion fuel and orbital territories.
+# Step 3: Install the necessary dependencies.
+npm i
 
-### **H.A.V.E.N**
-A supernatural-noir setting steeped in crime, occult mystery, and urban paranoia. Every deal has a price and every truth is poisoned, drawing players into webs of power, corruption, and forbidden knowledge.
-
-## 🛠️ Technical Details
-
-This website is built with:
-- **HTML5** - Semantic markup structure
-- **CSS3** - Modern styling with custom properties and responsive design
-- **Vanilla JavaScript** - Dynamic content loading and interactive features
-- **Canvas API** - Animated starfield background
-- **JSON** - Data-driven content management for games, worlds, and carousel
-
-### Key Features
-- Responsive design optimized for all devices
-- Dynamic content loading from JSON files
-- Interactive starfield background animation
-- Mobile-friendly navigation with hamburger menu
-- Newsletter subscription functionality
-- Game and world showcase galleries
-- Carousel with automatic rotation
-
-## 📁 Project Structure
-
-```
-web-site/
-├── index.html              # Main homepage
-├── about.html              # About page with studio history
-├── worlds.html             # Worlds showcase page
-├── styles.css              # Main stylesheet
-├── script.js               # Main JavaScript functionality
-├── starfield.js            # Starfield animation script
-├── worlds.js               # Worlds page specific functionality
-├── content/
-│   ├── games.json          # Game data and metadata
-│   ├── worlds.json         # World descriptions and lore
-│   ├── carousel.json       # Carousel image data
-│   └── images/             # All website images and assets
-└── README.md               # This file
+# Step 4: Start the development server with auto-reloading and an instant preview.
+npm run dev
 ```
 
-## 🚀 Getting Started
+**Edit a file directly in GitHub**
 
-1. Clone the repository
-2. Open `index.html` in a web browser
-3. No build process required - it's a static website!
+- Navigate to the desired file(s).
+- Click the "Edit" button (pencil icon) at the top right of the file view.
+- Make your changes and commit the changes.
 
-## 🤝 Community
+**Use GitHub Codespaces**
 
-- **Discord**: ~~Join our Discord community~~ (Currently disabled)
-- **Newsletter**: Subscribe through the website footer
-- **Social Media**: Follow us on [YouTube](https://www.youtube.com/@EridanGamesStudio), Gamefound, and Twitter (links coming soon)
+- Navigate to the main page of your repository.
+- Click on the "Code" button (green button) near the top right.
+- Select the "Codespaces" tab.
+- Click on "New codespace" to launch a new Codespace environment.
+- Edit files directly within the Codespace and commit and push your changes once you're done.
 
-## 📜 License
+## What technologies are used for this project?
 
-© 2025 Eridan Games Studio. All rights reserved.
+This project is built with:
 
-## 👥 Team
+- Vite
+- TypeScript
+- React
+- shadcn-ui
+- Tailwind CSS
 
-**Founding Members** (alphabetically):
-- Borjan Dujmović
-- Dino Đorić  
-- Nikola Serdarević
-- Sven Vukelić
-- Tomislav Furlanis
+## How can I deploy this project?
 
-**Team Members**:
-- Matej Pupačić
-- Siniša Družeta
-- Vuk Dragičević
+Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
 
----
+## Can I connect a custom domain to my Lovable project?
 
-*"Where shores meet stars"* - Eridan Games Studio
+Yes, you can!
+
+To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+
+Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)

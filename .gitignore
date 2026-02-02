@@ -1,0 +1,52 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Testing
+coverage
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Vite cache
+.vite
+
+# Legacy/backup folders (not part of React app)
+Original.website/
+
+# AI/IDE configuration folders
+.agents/
+.claude/
+.windsurf/
+
+# Template files
+wiki-template/

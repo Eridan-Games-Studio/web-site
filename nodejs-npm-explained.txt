@@ -1,0 +1,87 @@
+NODE.JS & NPM EXPLAINED
+========================
+
+WHAT IS NODE.JS?
+----------------
+Node.js is JavaScript that runs on your computer (not in a browser).
+Before Node.js, JavaScript only worked inside web browsers.
+Now it can run servers, build tools, and desktop apps.
+
+
+WHAT IS NPM?
+------------
+NPM = Node Package Manager
+It's a tool that:
+  1. Downloads code libraries other people wrote (called "packages")
+  2. Manages which versions you need
+  3. Runs scripts/commands defined in your project
+
+
+KEY FILES
+---------
+package.json
+  - The "recipe" for your project
+  - Lists all packages your project needs (dependencies)
+  - Defines commands you can run (scripts)
+  - Example: "dev": "vite" means "npm run dev" executes "vite"
+
+package-lock.json
+  - Auto-generated, don't edit manually
+  - Locks exact versions of every package
+  - Ensures everyone gets identical installs
+
+node_modules/
+  - Folder where all downloaded packages live
+  - Can be HUGE (hundreds of MB)
+  - Never commit to git (that's why .gitignore excludes it)
+  - Delete it anytime, recreate with "npm install"
+
+
+THE WORKFLOW
+------------
+1. npm install
+   - Reads package.json
+   - Downloads all listed packages into node_modules/
+   - Only needed once (or after deleting node_modules)
+
+2. npm run dev
+   - Looks in package.json under "scripts"
+   - Finds "dev": "vite"
+   - Runs the Vite dev server
+
+3. Vite (the dev server)
+   - Watches your files for changes
+   - Auto-reloads browser when you edit code
+   - Compiles TypeScript, JSX, etc. on the fly
+   - Runs at localhost:8080
+
+
+WHY THIS COMPLEXITY?
+--------------------
+Modern web projects use:
+  - TypeScript (needs compilation to JavaScript)
+  - JSX/React (needs transformation)
+  - Tailwind CSS (needs processing)
+  - Many small libraries (React, routing, UI components)
+
+The dev server handles all this automatically.
+When you're done, "npm run build" creates optimized static files.
+
+
+COMMON COMMANDS
+---------------
+npm install          - Download all dependencies
+npm run dev          - Start development server
+npm run build        - Create production files
+npm run preview      - Preview production build
+npm install <pkg>    - Add a new package
+
+
+ANALOGY
+-------
+Think of it like cooking:
+  - package.json = recipe (lists ingredients)
+  - npm install = shopping (get all ingredients)
+  - node_modules = your pantry (stores ingredients)
+  - npm run dev = cooking (turns ingredients into a meal)
+  - localhost:8080 = the served dish (what you see)

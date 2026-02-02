@@ -1,228 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://f.convertkit.com https://app.kit.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://app.kit.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://app.kit.com;">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <title>Eridan Games - Where Shores Meet Stars</title>
-    <link rel="icon" type="image/png" href="content/images/eridan-logo-vuk.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <!-- Starfield Background -->
-    <canvas id="starfield"></canvas>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/content/images/eridan-logo-vuk.png">
+    <title>Eridan Games Studio</title>
+    <meta name="description" content="Crafting immersive worlds and unforgettable gaming experiences" />
+    <meta name="author" content="Eridan Games" />
 
-    <!-- Navigation -->
-    <nav>
-        <a href="index.html" class="logo">
-            <div class="logo-icon"><img src="content/images/eridan-logo-vuk.png" alt="E"></div>
-            <span>Eridan Games</span>
-        </a>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="games.html">Games</a></li>
-            <li><a href="worlds.html">Worlds</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="https://eridan-games-studio.github.io/eridan-wiki/#/" target="_blank" rel="noopener noreferrer">Wiki</a></li>
-        </ul>
-        <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </nav>
+    <meta property="og:title" content="Eridan Games Studio" />
+    <meta property="og:description" content="Crafting immersive worlds and unforgettable gaming experiences" />
+    <meta property="og:type" content="website" />
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Where shores meet <span class="accent">stars</span></h1>
-                <p>Worlds filled with wonder, challenge, and contrast where your choices shape the narrative.</p>
-            </div>
-            <div class="hero-carousel">
-                <div class="carousel-track" id="carousel-track">
-                    <!-- Carousel slides will be dynamically populated here -->
-                </div>
-                <button class="carousel-btn prev" aria-label="Previous">‹</button>
-                <button class="carousel-btn next" aria-label="Next">›</button>
-                <div class="carousel-indicators" id="carousel-indicators">
-                    <!-- Carousel indicators will be dynamically populated here -->
-                </div>
-            </div>
-        </div>
-    </section>
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
 
-    <!-- News Box -->
-    <div class="news-box">
-        <a href="https://discord.com/channels/1423612173627818034/1445393883327369371" class="news-link" target="_blank" rel="noopener noreferrer">
-            <span class="news-label">NEWS</span>
-            <span class="news-text">Engines of Discord enters development!</span>
-            <span class="news-arrow">→</span>
-        </a>
-    </div>
-
-    <!-- Community Banner -->
-    <div class="content-banner">
-        <h1 class="accent-green">Join Our Community</h1>
-            <div class="banner-content">
-            <p>Connect with fellow adventurers, share your stories, and stay updated on our latest developments. Be part of the journey as we craft new worlds together.</p>
-            <div class="community-buttons">
-                <a href="https://discord.gg/Xtf2ehPPt4" class="cta-primary" target="_blank" rel="noopener noreferrer">Join our Discord</a>
-                <a href="#newsletter" class="cta-primary">Subscribe to Newsletter</a>
-                <a href="https://www.youtube.com/@EridanGamesStudio" class="cta-primary" target="_blank" rel="noopener noreferrer">Follow us on Youtube</a>
-            </div>
-
-        </div>
-       </div>
-
-    <!-- Quiz Call-to-Action -->
-    <div class="updates-notification">
-        <a href="quizes/HAVEN/calling-quiz.html" class="quiz-cta-button">
-            <span class="quiz-icon">🌆</span>
-            <span class="quiz-text">
-                Which Haven Calling Are You?<br>
-                <span class="quiz-subtitle">(H.A.V.E.N RPG QUIZ)</span>
-            </span>
-            <span class="quiz-arrow">→</span>
-        </a>
-        <a href="quizes/world-poll.html" class="quiz-cta-button world-poll-button hidden">
-            <span class="quiz-icon">🌌</span>
-            <span class="quiz-text">
-                Pick Your Favorite Eridan World!<br>
-                <span class="quiz-subtitle">(COMMUNITY POLL)</span>
-            </span>
-            <span class="quiz-arrow">→</span>
-        </a>
-    </div>
-
-    <!-- Featured Games -->
-    <section id="games">
-        <div class="section-header">
-            <h2>Featured Games</h2>
-            <p>Worlds in development, stories in motion.</p>
-        </div>
-        <div class="games-gallery-wrapper">
-            <div class="games-gallery" id="games-gallery">
-                <!-- Game cards will be dynamically populated here -->
-            </div>
-        </div>
-        <div class="cta-center">
-            <a href="games.html" class="cta-secondary">View All Games →</a>
-        </div>
-    </section>
-
-    <!-- Divider -->
-    <div class="section-divider"></div>
-
-    <!-- Worlds -->
-    <section id="worlds">
-        <div class="section-header">
-            <h2>Our Worlds</h2>
-            <p>We build authentic, boldly contrasted worlds, where every layer invites discovery.</p>
-        </div>
-        <div class="worlds-grid" id="worlds-grid">
-            <!-- World cards will be dynamically populated here -->
-        </div>
-        <div class="cta-center">
-            <a href="worlds.html" class="cta-secondary">Explore Our Worlds →</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-main">
-            <div class="footer-content">
-                <div class="footer-newsletter">
-                    <h2 id="newsletter">Stay Updated</h2>
-                    <p>Get the latest news about our games and worlds.</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Enter your email address" required>
-                        <label class="checkbox-label">
-                            <input type="checkbox" required>
-                            <span>I agree to receive <strong>marketing emails</strong> from <strong>Eridan Games Studio</strong> and understand I can <strong>unsubscribe at any time</strong>.</span>
-                        </label>
-                        <button type="submit" class="subscribe-btn">Subscribe to Newsletter</button>
-                    </form>
-                </div>
-
-                
-                
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h3>Studio</h3>
-                        <a href="index.html" class="cta-tertiary">Home</a>
-                        <a href="games.html" class="cta-tertiary">Games</a>
-                        <a href="worlds.html" class="cta-tertiary">Worlds</a>
-                        <a href="about.html" class="cta-tertiary">About Us</a>
-                    </div>
-                    
-                   <div class="footer-column">
-                    <h3>Community</h3>
-                    <a href="https://discord.gg/Xtf2ehPPt4" class="cta-tertiary" target="_blank" rel="noopener noreferrer">Discord</a>
-                    <a href="https://eridan-games-studio.github.io/eridan-wiki/#/" class="cta-tertiary" target="_blank" rel="noopener noreferrer">Wiki</a>
-                    <a href="https://www.youtube.com/@EridanGamesStudio" class="cta-tertiary" target="_blank" rel="noopener noreferrer">YouTube</a>
-                </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>Eridan Games Studio. All rights reserved. 2025.</p>
-        </div>
-    </footer>
-
-    <!-- Game Card Template -->
-    <template id="game-card-template">
-        <div class="game-card-games">
-            <div class="game-card-image">
-                <img src="" alt="">
-                <div class="status-badge"></div>
-            </div>
-            <div class="game-card-content">
-                <h3></h3>
-                <p></p>
-                <div class="game-platforms">
-                    <!-- Platforms will be populated dynamically -->
-                </div>
-                <div class="game-tags">
-                    <!-- Tags will be populated dynamically -->
-                </div>
-            </div>
-            <div class="game-card-footer">
-                Learn more →
-            </div>
-        </div>
-    </template>
-
-    <!-- World Card Template -->
-    <template id="world-card-template">
-        <a href="#" class="world-card">
-            <div class="world-card-image">
-                <img src="" alt="">
-            </div>
-            <div class="world-card-content">
-                <div class="world-card-header">
-                    <h3></h3>
-                    <span class="games-count"></span>
-                </div>
-                <p></p>
-            </div>
-        </a>
-    </template>
-
-
-    <script src="js/security-utils.js"></script>
-    <script src="js/domain-config.js"></script>
-    <script src="js/starfield.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/index.js"></script>
-    <script src="js/newsletter.js"></script>
-
-</body>
+  <body>
+    <!-- SPA redirect handler for GitHub Pages -->
+    <script>
+      (function(l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search.slice(1).split('&').map(function(s) {
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
