@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Eridan Games - Cosmic Fantasy Design System
+   All colors MUST be HSL for theming consistency
+*/
+
+@layer base {
+  :root {
+    /* Core cosmic palette */
+    --background: 232 47% 4%;
+    --foreground: 210 40% 98%;
+
+    --card: 232 47% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 232 47% 6%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Cosmic cyan primary */
+    --primary: 192 91% 60%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Electric blue secondary */
+    --secondary: 217 91% 60%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 232 30% 15%;
+    --muted-foreground: 215 20% 65%;
+
+    /* Cosmic accent blend */
+    --accent: 270 60% 50%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 232 30% 20%;
+    --input: 232 30% 15%;
+    --ring: 192 91% 60%;
+
+    --radius: 0.75rem;
+
+    /* Custom cosmic colors */
+    --cosmic-purple: 263 70% 58%;
+    --cosmic-blue: 217 91% 60%;
+    --cosmic-cyan: 192 91% 60%;
+    --cosmic-dark: 232 47% 4%;
+    --cosmic-glow: 263 100% 70%;
+    --star-white: 210 40% 98%;
+
+    /* Sidebar theming */
+    --sidebar-background: 232 47% 6%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 192 91% 60%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 232 30% 15%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 232 30% 20%;
+    --sidebar-ring: 192 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+
+  /* Fantasy heading font */
+  h1, h2, h3, h4 {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.05em;
+  }
+}
+
+@layer utilities {
+  /* Cosmic gradient backgrounds */
+  .bg-cosmic-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--cosmic-dark)) 0%,
+      hsl(232 47% 8%) 50%,
+      hsl(263 50% 12%) 100%
+    );
+  }
+
+  .bg-cosmic-radial {
+    background: radial-gradient(
+      ellipse at 50% 0%,
+      hsl(263 50% 20% / 0.4) 0%,
+      hsl(var(--cosmic-dark)) 70%
+    );
+  }
+
+  /* Text gradients */
+  .text-cosmic-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--cosmic-purple)) 0%,
+      hsl(var(--cosmic-cyan)) 100%
+    );
+  }
+
+  .text-star-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      90deg,
+      hsl(var(--cosmic-cyan)) 0%,
+      hsl(var(--star-white)) 50%,
+      hsl(var(--cosmic-purple)) 100%
+    );
+  }
+
+  /* Glow effects */
+  .glow-purple {
+    box-shadow: 
+      0 0 20px hsl(var(--cosmic-purple) / 0.3),
+      0 0 40px hsl(var(--cosmic-purple) / 0.2),
+      0 0 60px hsl(var(--cosmic-purple) / 0.1);
+  }
+
+  .glow-blue {
+    box-shadow: 
+      0 0 20px hsl(var(--cosmic-blue) / 0.3),
+      0 0 40px hsl(var(--cosmic-blue) / 0.2);
+  }
+
+  .glow-text {
+    text-shadow: 
+      0 0 10px hsl(var(--cosmic-purple) / 0.5),
+      0 0 20px hsl(var(--cosmic-purple) / 0.3);
+  }
+
+  /* Border glow */
+  .border-glow {
+    @apply border border-primary/30;
+    box-shadow: 
+      inset 0 0 20px hsl(var(--cosmic-purple) / 0.1),
+      0 0 20px hsl(var(--cosmic-purple) / 0.15);
+  }
+
+  /* Cosmic card styling */
+  .cosmic-card {
+    @apply bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl;
+    background: linear-gradient(
+      145deg,
+      hsl(var(--card)) 0%,
+      hsl(232 47% 6%) 100%
+    );
+  }
+
+  /* Floating animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Pulse glow animation */
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 1;
+      box-shadow: 0 0 20px hsl(var(--cosmic-purple) / 0.4);
+    }
+    50% {
+      opacity: 0.8;
+      box-shadow: 0 0 40px hsl(var(--cosmic-purple) / 0.6);
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  /* Shimmer effect */
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--cosmic-purple) / 0.1) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  /* Scroll indicator animation */
+  @keyframes scroll-bounce {
+    0%, 100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(8px);
+      opacity: 0.5;
+    }
+  }
+
+  .animate-scroll-bounce {
+    animation: scroll-bounce 2s ease-in-out infinite;
+  }
+
+  /* Star twinkle */
+  @keyframes twinkle {
+    0%, 100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  .animate-twinkle {
+    animation: twinkle 3s ease-in-out infinite;
+  }
+}
