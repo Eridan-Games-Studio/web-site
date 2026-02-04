@@ -1,7 +1,7 @@
-import { useState, useMemo, useRef } from 'react';
+import { useState, useMemo, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, X, SlidersHorizontal } from 'lucide-react';
 import { Starfield } from '@/components/Starfield';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
@@ -52,6 +52,34 @@ const activeFilterGroups = Object.entries(filterGroups).reduce((acc, [group, val
   }
   return acc;
 }, {} as Record<string, string[]>);
+
+// Reusable FilterChip component
+interface FilterChipProps {
+  value: string;
+  isSelected: boolean;
+  onClick: () => void;
+}
+
+const FilterChip = ({ value, isSelected, onClick }: FilterChipProps) => (
+  <button
+    type="button"
+    onClick={onClick}
+    className={`
+      relative px-3 py-1.5 rounded-full text-[11px] font-medium
+      transition-all duration-300 ease-out
+      border backdrop-blur-sm
+      ${isSelected
+        ? 'bg-primary/20 border-primary/60 text-primary shadow-[0_0_12px_rgba(139,92,246,0.4)] scale-105'
+        : 'bg-card/40 border-border/40 text-muted-foreground hover:border-primary/40 hover:text-foreground hover:bg-card/60'
+      }
+    `}
+  >
+    {isSelected && (
+      <span className="absolute inset-0 rounded-full bg-primary/10 blur-sm" />
+    )}
+    <span className="relative">{value}</span>
+  </button>
+);
 
 interface ScrollableRowProps {
   title: string;
@@ -111,6 +139,22 @@ const ScrollableRow = ({ title, children, isEmpty }: ScrollableRowProps) => {
 
 const Games = () => {
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const filterPanelRef = useRef<HTMLDivElement>(null);
+
+  // Close filter panel when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (filterPanelRef.current && !filterPanelRef.current.contains(event.target as Node)) {
+        setIsFilterOpen(false);
+      }
+    };
+
+    if (isFilterOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isFilterOpen]);
 
   // Toggle genre selection
   const toggleGenre = (genre: string) => {
@@ -168,71 +212,132 @@ const Games = () => {
             </p>
           </motion.div>
 
-          {/* Horizontal Filter Bar */}
+          {/* Filter Section */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.1 }}
             className="mb-8"
           >
-            {/* Filter Groups */}
-            <div className="flex flex-wrap items-center gap-6">
-              {Object.entries(activeFilterGroups).map(([groupName, values]) => (
-                <div key={groupName} className="flex items-center gap-2">
-                  <span className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground/60">
-                    {groupName}
+            {/* Mobile: Collapsible Filter Panel */}
+            <div className="md:hidden relative" ref={filterPanelRef}>
+              {/* Filter Toggle Button */}
+              <button
+                type="button"
+                onClick={() => setIsFilterOpen(!isFilterOpen)}
+                className={`
+                  flex items-center gap-2 px-4 py-2.5 rounded-xl
+                  border transition-all duration-300
+                  ${isFilterOpen || selectedGenres.length > 0
+                    ? 'bg-primary/10 border-primary/40 text-primary'
+                    : 'bg-card/50 border-border/40 text-muted-foreground hover:border-primary/30'
+                  }
+                `}
+              >
+                <SlidersHorizontal className="w-4 h-4" />
+                <span className="text-sm font-medium">Filters</span>
+                {selectedGenres.length > 0 && (
+                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-primary text-primary-foreground text-[10px] font-bold">
+                    {selectedGenres.length}
                   </span>
-                  <div className="flex flex-wrap gap-1.5">
-                    {values.map((value) => {
-                      const isSelected = selectedGenres.some(
-                        s => s.toLowerCase() === value.toLowerCase()
-                      );
-                      return (
+                )}
+              </button>
+
+              {/* Expandable Filter Panel */}
+              <AnimatePresence>
+                {isFilterOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10, height: 0 }}
+                    animate={{ opacity: 1, y: 0, height: 'auto' }}
+                    exit={{ opacity: 0, y: -10, height: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full left-0 right-0 mt-2 z-20 overflow-hidden"
+                  >
+                    <div className="p-4 rounded-xl bg-card/95 backdrop-blur-md border border-border/50 shadow-xl">
+                      {/* Filter Categories */}
+                      <div className="space-y-4">
+                        {Object.entries(activeFilterGroups).map(([groupName, values]) => (
+                          <div key={groupName}>
+                            <h4 className="text-xs font-semibold uppercase tracking-wider text-foreground/70 mb-2">
+                              {groupName}
+                            </h4>
+                            <div className="flex flex-wrap gap-2">
+                              {values.map((value) => (
+                                <FilterChip
+                                  key={value}
+                                  value={value}
+                                  isSelected={selectedGenres.some(s => s.toLowerCase() === value.toLowerCase())}
+                                  onClick={() => toggleGenre(value)}
+                                />
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Clear All Button */}
+                      {selectedGenres.length > 0 && (
                         <button
                           type="button"
-                          key={value}
-                          onClick={() => toggleGenre(value)}
-                          className={`
-                            relative px-3 py-1 rounded-full text-[11px] font-medium
-                            transition-all duration-300 ease-out
-                            border backdrop-blur-sm
-                            ${isSelected
-                              ? 'bg-primary/20 border-primary/60 text-primary shadow-[0_0_12px_rgba(139,92,246,0.4)] scale-105'
-                              : 'bg-card/40 border-border/40 text-muted-foreground hover:border-primary/40 hover:text-foreground hover:bg-card/60'
-                            }
-                          `}
+                          onClick={() => setSelectedGenres([])}
+                          className="mt-4 w-full py-2 rounded-lg text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-card/60 border border-border/30 transition-colors"
                         >
-                          {/* Glow effect for selected */}
-                          {isSelected && (
-                            <span className="absolute inset-0 rounded-full bg-primary/10 blur-sm" />
-                          )}
-                          <span className="relative">{value}</span>
+                          Clear all filters
                         </button>
-                      );
-                    })}
-                  </div>
-                </div>
-              ))}
-
-              {/* Clear filters */}
-              <AnimatePresence>
-                {selectedGenres.length > 0 && (
-                  <motion.button
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.8 }}
-                    type="button"
-                    onClick={() => setSelectedGenres([])}
-                    className="flex items-center gap-1 px-2 py-1 rounded-full text-[10px] text-muted-foreground/70 hover:text-foreground hover:bg-card/40 transition-all"
-                  >
-                    <X className="w-3 h-3" />
-                    Clear
-                  </motion.button>
+                      )}
+                    </div>
+                  </motion.div>
                 )}
               </AnimatePresence>
             </div>
 
-            {/* Active filter indicator */}
+            {/* Desktop: Always Visible Filter Bar */}
+            <div className="hidden md:block">
+              <div className="flex items-center gap-3 p-3 rounded-xl bg-card/30 border border-border/20">
+                {Object.entries(activeFilterGroups).map(([groupName, values], groupIndex) => (
+                  <div key={groupName} className="flex items-center gap-3">
+                    {/* Divider between groups */}
+                    {groupIndex > 0 && (
+                      <div className="w-px h-8 bg-border/40" />
+                    )}
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground/80 min-w-fit">
+                        {groupName}
+                      </span>
+                      <div className="flex flex-wrap gap-1.5">
+                        {values.map((value) => (
+                          <FilterChip
+                            key={value}
+                            value={value}
+                            isSelected={selectedGenres.some(s => s.toLowerCase() === value.toLowerCase())}
+                            onClick={() => toggleGenre(value)}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+
+                {/* Clear filters */}
+                <AnimatePresence>
+                  {selectedGenres.length > 0 && (
+                    <motion.button
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      type="button"
+                      onClick={() => setSelectedGenres([])}
+                      className="flex items-center gap-1 px-3 py-1.5 rounded-full text-[10px] text-muted-foreground/70 hover:text-foreground hover:bg-card/40 transition-all ml-auto"
+                    >
+                      <X className="w-3 h-3" />
+                      Clear
+                    </motion.button>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
+
+            {/* Active filter indicator (both views) */}
             {selectedGenres.length > 0 && (
               <motion.p
                 initial={{ opacity: 0 }}
