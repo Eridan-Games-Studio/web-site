@@ -259,7 +259,15 @@ class HexBattlerApp {
     }
 }
 
-// Initialize when DOM ready
-document.addEventListener('DOMContentLoaded', () => {
-    window.app = new HexBattlerApp();
-});
+// Initialize
+function initGame() {
+    if (!window.app) {
+        window.app = new HexBattlerApp();
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGame);
+} else {
+    initGame();
+}
