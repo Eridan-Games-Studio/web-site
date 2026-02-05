@@ -1,0 +1,380 @@
+/**
+ * Hex Battle Simulator - Game Styles
+ * Modern dark theme with vibrant faction colors
+ */
+
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0a0a15 0%, #1a1a2e 50%, #16213e 100%);
+    color: #e0e0e0;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Screens */
+.screen {
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Lobby Screen */
+#lobbyScreen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a15 100%);
+}
+
+.lobby-container {
+    text-align: center;
+    max-width: 1200px;
+    padding: 2rem;
+}
+
+.game-title {
+    font-size: 4rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 60px rgba(102, 126, 234, 0.5);
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: #888;
+    margin-bottom: 3rem;
+    font-style: italic;
+}
+
+/* Panels */
+.panel {
+    background: rgba(30, 30, 50, 0.9);
+    border: 1px solid rgba(100, 100, 150, 0.3);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 1rem auto;
+    max-width: 800px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.panel h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+
+/* Buttons */
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    min-width: 180px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #7b8ff5 0%, #8b5cb8 100%);
+}
+
+.btn-host {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    color: white;
+}
+
+.btn-join {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+.btn-watch {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+}
+
+.btn-spectate {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    color: #333;
+}
+
+.btn-faction {
+    background: rgba(100, 100, 150, 0.3);
+    color: white;
+    border: 2px solid currentColor;
+    width: 100%;
+    padding: 0.8rem;
+}
+
+.btn-faction:hover {
+    background: rgba(100, 100, 150, 0.5);
+}
+
+.btn-back {
+    background: transparent;
+    color: #888;
+    border: 1px solid #444;
+    margin-top: 1rem;
+}
+
+.btn-back:hover {
+    background: rgba(100, 100, 100, 0.2);
+    color: #ccc;
+}
+
+.btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    min-width: auto;
+    background: rgba(100, 100, 150, 0.3);
+    color: white;
+}
+
+/* Room ID Display */
+.room-id-container {
+    margin: 1.5rem 0;
+}
+
+.room-id {
+    font-family: 'Courier New', monospace;
+    font-size: 1.8rem;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    margin: 0.5rem 0;
+    letter-spacing: 3px;
+    color: #38ef7d;
+    border: 1px solid #38ef7d;
+    display: inline-block;
+}
+
+.hint {
+    color: #888;
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+#connectionStatus {
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+/* Input Group */
+.input-group {
+    margin: 1rem 0;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #aaa;
+}
+
+.input-group input {
+    width: 100%;
+    max-width: 400px;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-family: 'Courier New', monospace;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid #444;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.input-group input::placeholder {
+    color: #666;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 15px rgba(102, 126, 234, 0.3);
+}
+
+/* Faction Cards */
+.faction-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.faction-card {
+    background: rgba(20, 20, 35, 0.8);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 2px solid;
+    transition: all 0.3s ease;
+}
+
+.faction-card:hover {
+    transform: scale(1.02);
+}
+
+.faction-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+}
+
+.faction-card p {
+    color: #999;
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.faction-card ul {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.faction-card ul li {
+    padding: 0.3rem 0;
+    color: #bbb;
+}
+
+.faction-card ul li::before {
+    content: "▸ ";
+    color: inherit;
+}
+
+/* Faction Colors */
+.faction-card.akvira {
+    border-color: #3c64c8;
+}
+
+.faction-card.akvira h3 {
+    color: #5a8aff;
+}
+
+.faction-card.akvira .btn-faction {
+    color: #5a8aff;
+}
+
+.faction-card.liguni {
+    border-color: #dc3c3c;
+}
+
+.faction-card.liguni h3 {
+    color: #ff6b6b;
+}
+
+.faction-card.liguni .btn-faction {
+    color: #ff6b6b;
+}
+
+.faction-card.dindrae {
+    border-color: #9632c8;
+}
+
+.faction-card.dindrae h3 {
+    color: #c86eff;
+}
+
+.faction-card.dindrae .btn-faction {
+    color: #c86eff;
+}
+
+/* Game Screen */
+#gameScreen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #32373f;
+}
+
+#gameCanvas {
+    max-width: 100%;
+    max-height: 100%;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .game-title {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .panel {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+    
+    .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        min-width: 150px;
+    }
+    
+    .faction-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .room-id {
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+    }
+}
+
+/* Animations */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.game-title {
+    animation: float 4s ease-in-out infinite;
+}
+
+#connectionStatus {
+    animation: pulse 2s ease-in-out infinite;
+}
