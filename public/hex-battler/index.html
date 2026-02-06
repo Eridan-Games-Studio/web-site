@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Hex Battle Simulator - A tactical hex-based battle game with three factions: Akvira, Liguni, and Dindrae. Play multiplayer with friends using peer-to-peer connections!">
+    <title>Hex Battle Simulator</title>
+    <link rel="stylesheet" href="css/game.css">
+</head>
+
+<body>
+    <!-- Password Screen -->
+    <div id="passwordScreen" class="screen"
+        style="display: flex; align-items: center; justify-content: center; background: radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a15 100%); z-index: 1000;">
+        <div class="panel" style="text-align: center;">
+            <h1 class="game-title" style="font-size: 3rem;">Restricted Access</h1>
+            <p class="subtitle">Enter password to access Hex Battler</p>
+            <div class="input-group">
+                <input type="password" id="passwordInput" placeholder="Password" style="margin-bottom: 1rem;">
+            </div>
+            <button id="btnSubmitPassword" class="btn btn-primary">Enter</button>
+            <p id="passwordError" style="color: #ff6b6b; margin-top: 1rem; display: none;">Access Denied</p>
+        </div>
+    </div>
+
+    <!-- Lobby Screen -->
+    <div id="lobbyScreen" class="screen" style="display: none;">
+        <div class="lobby-container">
+            <h1 class="game-title">Hex Battle Simulator</h1>
+            <p class="subtitle">Akvira vs Liguni vs Dindrae</p>
+
+            <!-- Mode Selection -->
+            <div id="modeSelect" class="panel">
+                <h2>Choose Mode</h2>
+                <div class="button-group">
+                    <button id="btnLocal" class="btn btn-primary">Local Game</button>
+                    <button id="btnHost" class="btn btn-host">Host Multiplayer</button>
+                    <button id="btnJoin" class="btn btn-join">Join Game</button>
+                    <button id="btnWatch" class="btn btn-watch">Watch AI Battle</button>
+                </div>
+            </div>
+
+            <!-- Room Info (for host) -->
+            <div id="roomInfo" class="panel" style="display: none;">
+                <h2>Room Created!</h2>
+                <div class="room-id-container">
+                    <p>Share this Room ID:</p>
+                    <div id="roomIdDisplay" class="room-id">...</div>
+                    <button class="btn btn-small"
+                        onclick="navigator.clipboard.writeText(document.getElementById('roomIdDisplay').textContent)">
+                        Copy
+                    </button>
+                </div>
+                <p class="hint">Waiting for opponent...</p>
+                <div id="connectionStatus">Not connected</div>
+            </div>
+
+            <!-- Join Dialog -->
+            <div id="joinDialog" class="panel" style="display: none;">
+                <h2>Join Game</h2>
+                <div class="input-group">
+                    <label for="roomIdInput">Enter Room ID:</label>
+                    <input type="text" id="roomIdInput" placeholder="Paste Room ID here">
+                </div>
+                <div class="button-group">
+                    <button id="btnConnectJoin" class="btn btn-primary">Join as Player</button>
+                    <button id="btnConnectSpectate" class="btn btn-spectate">Join as Spectator 👁</button>
+                </div>
+                <button class="btn btn-back"
+                    onclick="document.getElementById('joinDialog').style.display='none';document.getElementById('modeSelect').style.display='block';">
+                    ← Back
+                </button>
+            </div>
+
+            <!-- Faction Selection -->
+            <div id="factionSelect" class="panel" style="display: none;">
+                <h2 id="factionSelectTitle">Choose Your Faction</h2>
+                <div class="faction-grid">
+                    <div class="faction-card akvira">
+                        <h3>AKVIRA</h3>
+                        <p>The Avian Warriors</p>
+                        <ul>
+                            <li>Blackbeak Leader (10 HP)</li>
+                            <li>Formation Flying Bonus</li>
+                            <li>Ranged & Melee attacks</li>
+                            <li>Win: Kill Blackbeak</li>
+                        </ul>
+                        <button id="btnPlayAkvira" class="btn btn-faction">Play Akvira</button>
+                    </div>
+                    <div class="faction-card liguni">
+                        <h3>LIGUNI</h3>
+                        <p>The Symbiont Pairs</p>
+                        <ul>
+                            <li>Agon + Dhul Coupling</li>
+                            <li>Status Effects Galore</li>
+                            <li>Split & Recombine</li>
+                            <li>Win: Kill Marked Agon</li>
+                        </ul>
+                        <button id="btnPlayLiguni" class="btn btn-faction">Play Liguni</button>
+                    </div>
+                    <div class="faction-card dindrae">
+                        <h3>DINDRAE</h3>
+                        <p>The Elemental Colossi</p>
+                        <ul>
+                            <li>Multi-hex units</li>
+                            <li>Powerful Auras</li>
+                            <li>Ascension Powers</li>
+                            <li>Win: Destroy 3 Totems</li>
+                        </ul>
+                        <button id="btnPlayDindrae" class="btn btn-faction">Play Dindrae</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="gameScreen" class="screen" style="display: none;">
+        <canvas id="gameCanvas"></canvas>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+    <script src="js/constants.js"></script>
+    <script src="js/attacks.js"></script>
+    <script src="js/hexgrid.js"></script>
+    <script src="js/units.js"></script>
+    <script src="js/gamestate.js"></script>
+    <script src="js/renderer.js"></script>
+    <script src="js/ai.js"></script>
+    <script src="js/input.js"></script>
+    <script src="js/multiplayer.js"></script>
+    <script>
+        (function () {
+            const TARGET_HASH = "872d1449f92b849318b13ca7b3a1288c9c8ff0286146748b0587e3abfd590789";
+            async function checkPassword(password) {
+                const encoder = new TextEncoder();
+                const data = encoder.encode(password);
+                const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+                const hashArray = Array.from(new Uint8Array(hashBuffer));
+                const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+                return hashHex === TARGET_HASH;
+            }
+
+            function loadGame() {
+                document.getElementById('passwordScreen').style.display = 'none';
+                document.getElementById('lobbyScreen').style.display = 'flex';
+                const script = document.createElement('script');
+                script.src = 'js/main.js';
+                document.body.appendChild(script);
+            }
+
+            // Check session
+            if (sessionStorage.getItem('hex_auth') === 'true') {
+                loadGame();
+            }
+
+            // Handle login
+            function handleLogin() {
+                const pwd = document.getElementById('passwordInput').value;
+                checkPassword(pwd).then(isValid => {
+                    if (isValid) {
+                        sessionStorage.setItem('hex_auth', 'true');
+                        loadGame();
+                    } else {
+                        const error = document.getElementById('passwordError');
+                        error.style.display = 'block';
+                        error.classList.add('shake'); // You might want to add a shake animation
+                    }
+                });
+            }
+
+            document.getElementById('btnSubmitPassword').addEventListener('click', handleLogin);
+            document.getElementById('passwordInput').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') handleLogin();
+            });
+        })();
+    </script>
+</body>
+
+</html>
