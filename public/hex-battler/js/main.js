@@ -142,10 +142,13 @@ class HexBattlerApp {
     startGame(playerTeam, enemyTeam) {
         this.game.setupGame(playerTeam, playerTeam, enemyTeam);
 
-        // Create AI for enemy team
-        this.aiPlayers = {
-            [enemyTeam]: createAI(this.game, enemyTeam)
-        };
+        // Create AI for enemy team ONLY if not in multiplayer (or for future: if opponent is explicitly AI)
+        // For now, assume Multiplayer = PvP, so no AI needed
+        if (!this.multiplayer.isConnected) {
+            this.aiPlayers = {
+                [enemyTeam]: createAI(this.game, enemyTeam)
+            };
+        }
 
         if (this.multiplayer.isHost && this.multiplayer.isConnected) {
             this.multiplayer.startGame({ playerTeam, enemyTeam });

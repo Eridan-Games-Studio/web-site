@@ -73,6 +73,22 @@ class InputHandler {
 
     handlePlacementClick(pos) {
         const hexPos = this.game.grid.pixelToHex(pos.x, pos.y);
+
+        // If Client, send to Host
+        if (this.game.connectionMode === ConnectionMode.CLIENT && window.app && window.app.multiplayer) {
+            if (this.game.currentPlacingUnit) {
+                window.app.multiplayer.sendAction({
+                    type: 'PLACE_UNIT',
+                    unitId: this.game.currentPlacingUnit.id,
+                    q: hexPos.q,
+                    r: hexPos.r
+                });
+                // Optimistic placement or wait for sync?
+                // Wait for sync to avoid ID conflicts or state mismatch
+                return;
+            }
+        }
+
         if (this.game.validTargets.some(t => t.q === hexPos.q && t.r === hexPos.r)) {
             this.game.placeUnitManual(hexPos);
         }
@@ -86,6 +102,17 @@ class InputHandler {
 
         const hexPos = this.game.grid.pixelToHex(pos.x, pos.y);
         const unit = this.game.grid.getUnitAt(hexPos.q, hexPos.r);
+
+        // If Client, send selection to Host
+        if (this.game.connectionMode === ConnectionMode.CLIENT && window.app && window.app.multiplayer) {
+            if (unit && unit.team === this.game.currentTeam && !unit.exhausted) {
+                window.app.multiplayer.sendAction({
+                    type: 'SELECT_UNIT',
+                    unitId: unit.id
+                });
+                return;
+            }
+        }
 
         if (unit && unit.team === this.game.currentTeam && !unit.exhausted) {
             this.game.selectUnit(unit);
@@ -131,6 +158,27 @@ class InputHandler {
 
     executeAction(action) {
         const unit = this.game.selectedUnit;
+
+        // If Client, send immediate actions to Host
+        if (this.game.connectionMode === ConnectionMode.CLIENT && window.app && window.app.multiplayer) {
+            if (action === null) {
+                window.app.multiplayer.sendAction({
+                    type: 'ACTION',
+                    actionType: 'END_ACTIVATION'
+                });
+                return;
+            }
+
+            const immediateActions = [ActionType.AIM, ActionType.DODGE, ActionType.PEAL_CALL, ActionType.ROTATE, ActionType.ASCEND];
+            if (immediateActions.includes(action)) {
+                window.app.multiplayer.sendAction({
+                    type: 'ACTION',
+                    actionType: action,
+                    direction: 1 // Default for ROTATE
+                });
+                return;
+            }
+        }
 
         if (action === null) {
             // End Activation
@@ -235,6 +283,23 @@ class InputHandler {
 
     executeTargetSelection(targetPos) {
         const unit = this.game.selectedUnit;
+
+        // If Client, send ACTION to Host
+        if (this.game.connectionMode === ConnectionMode.CLIENT && window.app && window.app.multiplayer) {
+            window.app.multiplayer.sendAction({
+                type: 'ACTION',
+                actionType: this.game.selectedAction,
+                target: targetPos,
+                attackIndex: this.game.selectedAttackIndex,
+                // Add specific params if needed (e.g. rotation direction? Defaults to 1 for now)
+            });
+
+            // Clear local selection state to avoid confusion? 
+            // Or keep it until sync?
+            this.game.selectedAction = null;
+            this.game.validTargets = [];
+            return;
+        }
 
         switch (this.game.selectedAction) {
             case ActionType.MOVE:

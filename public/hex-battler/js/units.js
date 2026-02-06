@@ -3,12 +3,12 @@
  * All unit definitions for Akvira, Liguni, and Dindrae factions
  */
 
-let unitIdCounter = 0;
+// Removed global unitIdCounter to rely on deterministic IDs passed in config or generated uniquely if needed.
 
 // Base Unit class
 class Unit {
     constructor(config) {
-        this.id = unitIdCounter++;
+        this.id = config.id || `Unit_${Math.random().toString(36).substr(2, 9)}`;
         this.name = config.name;
         this.team = config.team;
         this.maxHealth = config.maxHealth;
@@ -39,6 +39,11 @@ class Unit {
         this.auraBonusMovement = 0;
         this.auraBonusRange = 0;
         this.auraMovementPenalty = 0;
+    }
+
+    setId(id) {
+        this.id = id;
+        return this;
     }
 
     hasStatus(effect) {
@@ -652,19 +657,32 @@ class EchoPool {
 // Factory function to create all Akvira units
 function createAkviraUnits() {
     return [
-        new AvianBlackbeak(),
-        new EagleGuard(),
-        new Sentry(),
-        new Commando()
+        new AvianBlackbeak().setId('Akvira_Avian_0'),
+        new EagleGuard().setId('Akvira_Eagle_0'),
+        new Sentry().setId('Akvira_Sentry_0'),
+        new Commando().setId('Akvira_Commando_0')
     ];
 }
 
 // Factory function to create Liguni units (returns coupled Liguns)
 function createLiguniUnits() {
-    const agons = [new Thom(), new Din(), new Borj(), new Sin()];
-    const dhuls = [new Mass0(), new Noh(), new Jahn(), new Isha()];
+    const agons = [
+        new Thom().setId('Liguni_Thom_0'),
+        new Din().setId('Liguni_Din_0'),
+        new Borj().setId('Liguni_Borj_0'),
+        new Sin().setId('Liguni_Sin_0')
+    ];
+    const dhuls = [
+        new Mass0().setId('Liguni_Mass0_0'),
+        new Noh().setId('Liguni_Noh_0'),
+        new Jahn().setId('Liguni_Jahn_0'),
+        new Isha().setId('Liguni_Isha_0')
+    ];
 
-    // Shuffle dhuls for random pairings
+    // Shuffle dhuls for random pairings - BUT we need to be careful with IDs if we want determinism across network.
+    // Ideally, the host decides the shuffle and sends the state.
+    // For now, let's keep the shuffle but ensure the LigunUnit gets a consistent ID based on its components.
+
     for (let i = dhuls.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [dhuls[i], dhuls[j]] = [dhuls[j], dhuls[i]];
@@ -676,7 +694,9 @@ function createLiguniUnits() {
         dhuls[i].isCoupled = true;
         agons[i].coupledDhul = dhuls[i];
         dhuls[i].coupledAgon = agons[i];
-        liguns.push(new LigunUnit(agons[i], dhuls[i]));
+
+        const ligunId = `Liguni_Ligun_${agons[i].name}_${dhuls[i].name}`;
+        liguns.push(new LigunUnit(agons[i], dhuls[i]).setId(ligunId));
     }
 
     return { agons, dhuls, liguns };
@@ -685,10 +705,10 @@ function createLiguniUnits() {
 // Factory function to create all Dindrae options
 function createDindraeOptions() {
     return [
-        new FireDindra(),
-        new EarthDindra(),
-        new WaterDindra(),
-        new AirDindra()
+        new FireDindra().setId('Dindrae_Fire_0'),
+        new EarthDindra().setId('Dindrae_Earth_0'),
+        new WaterDindra().setId('Dindrae_Water_0'),
+        new AirDindra().setId('Dindrae_Air_0')
     ];
 }
 

@@ -239,8 +239,72 @@ class MultiplayerManager {
 
     executeRemoteAction(action) {
         // Apply action from remote client
-        // This would need to integrate with InputHandler
-        console.log('Remote action:', action);
+        console.log('Remote action received:', action);
+
+        if (action.type === 'PLACE_UNIT') {
+            this.game.placeSpecificUnit(action.unitId, action.q, action.r);
+        }
+        else if (action.type === 'SELECT_UNIT') {
+            const unit = this.game.allUnits.find(u => u.id === action.unitId);
+            if (unit) {
+                this.game.selectUnit(unit);
+            }
+        }
+        else if (action.type === 'ACTION') {
+            const unit = this.game.selectedUnit;
+            if (!unit) return;
+
+            // Execute the specific action
+            switch (action.actionType) {
+                case ActionType.MOVE:
+                    this.game.executeMove(unit, action.target);
+                    break;
+                case ActionType.ATTACK:
+                    this.game.executeAttack(unit, action.target, action.attackIndex);
+                    break;
+                case ActionType.AIM:
+                    this.game.executeAim(unit);
+                    break;
+                case ActionType.DODGE:
+                    this.game.executeDodge(unit);
+                    break;
+                case ActionType.PEAL_CALL:
+                    this.game.executePealCall(unit);
+                    break;
+                case ActionType.THERMAL_GRENADE:
+                    this.game.executeThermalGrenade(unit, action.target);
+                    break;
+                case ActionType.ROTATE:
+                    this.game.executeRotation(unit, action.direction || 1);
+                    break;
+                case ActionType.TOTEM_BOOM:
+                    this.game.executeTotemBoom(unit, action.target);
+                    break;
+                case ActionType.ASCEND:
+                    this.game.executeAscension(unit);
+                    break;
+                case ActionType.DECOUPLE:
+                    this.game.executeDecouple(unit, action.target);
+                    break;
+                case ActionType.COUPLE:
+                    const target = this.game.grid.getUnitAt(action.target.q, action.target.r);
+                    if (target) {
+                        this.game.executeCouple(unit, target);
+                    }
+                    break;
+                case 'END_ACTIVATION':
+                    this.game.endUnitActivation();
+                    break;
+            }
+
+            // Check post-action states
+            if (this.game.selectedUnit && this.game.selectedUnit.actionsRemaining === 0) {
+                this.game.endUnitActivation();
+            }
+            if (this.game.checkGameOver()) {
+                this.game.phase = GamePhase.GAME_OVER;
+            }
+        }
 
         // After execution, broadcast new state
         this.broadcastState();

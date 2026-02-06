@@ -186,8 +186,16 @@ class GameState {
         this.unitsToPlace = [...this._getFactionUnits(team)];
 
         // Auto-place enemy
-        const enemyTeam = this.getOtherTeam(team);
-        this._placeTeamUnits(enemyTeam, team === this.teamB);
+        // Auto-place enemy ONLY if:
+        // 1. We are NOT a Host (so local game vs AI or hotseat)
+        // 2. OR we are Host but playing against AI (handled by not connecting? No, gamestate doesn't know connection status easily)
+        // Ideally: In Multiplayer HOST mode, we do NOT auto-place the enemy (Client).
+        // In Multiplayer CLIENT mode, we do NOT auto-place the enemy (Host) either (handled below by Client logic).
+
+        if (this.connectionMode !== ConnectionMode.HOST) {
+            const enemyTeam = this.getOtherTeam(team);
+            this._placeTeamUnits(enemyTeam, team === this.teamB);
+        }
 
         this.currentPlacingUnit = this.unitsToPlace[0] || null;
         this.validTargets = this.getAvailableDeploymentHexes(team);
@@ -222,6 +230,27 @@ class GameState {
 
         this.currentPlacingUnit = this.unitsToPlace[0];
         this.validTargets = this.getAvailableDeploymentHexes(this.placementTeam);
+        return true;
+    }
+
+    placeSpecificUnit(unitId, q, r) {
+        // Find unit by ID
+        const units = this._getFactionUnits(this.teamA).concat(this._getFactionUnits(this.teamB));
+        const unit = units.find(u => u.id === unitId);
+
+        if (!unit) {
+            console.error(`Unit not found for placement: ${unitId}`);
+            return false;
+        }
+
+        if (unit instanceof DindraeUnit) {
+            if (!unit.canFitAt(this.grid, q, r)) return false;
+            unit.placeAt(this.grid, q, r);
+        } else {
+            this.grid.placeUnit(unit, q, r);
+        }
+
+        this.log(`Placed ${unit.name} at (${q}, ${r})`);
         return true;
     }
 
