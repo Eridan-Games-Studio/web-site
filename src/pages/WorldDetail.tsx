@@ -5,8 +5,91 @@ import { ArrowLeft, ExternalLink, BookOpen, Gamepad2 } from 'lucide-react';
 import { Starfield } from '@/components/Starfield';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
-import { getWorldById } from '@/data/worlds';
+import { getWorldById, World } from '@/data/worlds';
 import { getGamesByWorld } from '@/data/games';
+
+// World theme colors for consistency
+const worldColors: Record<string, { accent: string; bg: string; border: string }> = {
+  'the-age-of-rika': {
+    accent: 'text-cyan-400',
+    bg: 'bg-cyan-500/10',
+    border: 'border-cyan-500/30',
+  },
+  'haven-world': {
+    accent: 'text-purple-400',
+    bg: 'bg-purple-500/10',
+    border: 'border-purple-500/30',
+  },
+  'atomic-horizon': {
+    accent: 'text-amber-400',
+    bg: 'bg-amber-500/10',
+    border: 'border-amber-500/30',
+  },
+};
+
+// Swipeable Pillar component for mobile
+const MobilePillarSwiper = ({ pillars, worldId }: { pillars: World['gameplayPillars']; worldId: string }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const colors = worldColors[worldId] || worldColors['the-age-of-rika'];
+
+  const nextPillar = () => {
+    setCurrentIndex((prev) => (prev + 1) % pillars.length);
+  };
+
+  const prevPillar = () => {
+    setCurrentIndex((prev) => (prev - 1 + pillars.length) % pillars.length);
+  };
+
+  return (
+    <div className="relative overflow-hidden pt-4 pb-8">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentIndex}
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -50 }}
+          transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+          className={`cosmic-card p-8 border ${colors.border} min-h-[250px] flex flex-col justify-center text-center`}
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          onDragEnd={(_, info) => {
+            if (info.offset.x < -50) nextPillar();
+            else if (info.offset.x > 50) prevPillar();
+          }}
+        >
+          <h4 className={`font-fantasy text-2xl font-bold ${colors.accent} mb-6 uppercase tracking-wider`}>
+            {pillars[currentIndex].title}
+          </h4>
+          <div className="space-y-4">
+            {pillars[currentIndex].text.split('\n\n').map((para, i) => (
+              <p key={i} className="text-muted-foreground text-sm leading-relaxed">
+                {para}
+              </p>
+            ))}
+          </div>
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Pagination Dots */}
+      <div className="flex justify-center gap-2 mt-4">
+        {pillars.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrentIndex(i)}
+            className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+              i === currentIndex ? `${colors.accent.replace('text-', 'bg-')} w-4` : 'bg-primary/20'
+            }`}
+            aria-label={`Go to pillar ${i + 1}`}
+          />
+        ))}
+      </div>
+
+      <p className="text-center text-[10px] text-muted-foreground/30 mt-4 uppercase tracking-widest animate-pulse">
+        ← Swipe to explore →
+      </p>
+    </div>
+  );
+};
 
 // World gallery images - only Rule of Rika has images for now
 const worldGalleryImages: Record<string, { src: string; title: string; description: string }[]> = {
@@ -238,7 +321,13 @@ const WorldDetail = () => {
               </p>
             </motion.div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {/* Mobile: Swipeable pillars */}
+            <div className="sm:hidden max-w-lg mx-auto">
+              <MobilePillarSwiper pillars={world.gameplayPillars} worldId={world.id} />
+            </div>
+
+            {/* Tablet/Desktop: Grid layout */}
+            <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
               {world.gameplayPillars.map((pillar, index) => (
                 <motion.div
                   key={index}

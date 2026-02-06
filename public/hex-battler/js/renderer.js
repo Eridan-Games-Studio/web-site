@@ -286,16 +286,6 @@ class Renderer {
             return;
         }
 
-        if (this.game.phase === GamePhase.SETUP) {
-            // Waiting state (multiplayer setup)
-            this.ctx.fillStyle = Colors.YELLOW;
-            this.ctx.font = 'bold 24px Arial';
-            this.ctx.textAlign = 'center';
-            const lastLog = this.game.combatLog[this.game.combatLog.length - 1] || 'Setting up...';
-            this.ctx.fillText(lastLog, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
-            return;
-        }
-
         // Turn info
         this.ctx.fillStyle = Colors.WHITE;
         this.ctx.font = 'bold 24px Arial';
@@ -321,18 +311,7 @@ class Renderer {
             this.ctx.fillStyle = 'rgba(255, 255, 0, 0.8)';
             this.ctx.font = 'bold 20px Arial';
             this.ctx.textAlign = 'center';
-            this.ctx.fillText('SPECTATOR MODE', SCREEN_WIDTH / 2, 30);
-        }
-
-        // Opponent's turn indicator (multiplayer)
-        if (this.game.connectionMode !== ConnectionMode.LOCAL &&
-            this.game.playerTeam !== null &&
-            this.game.currentTeam !== this.game.playerTeam &&
-            !this.game.isSpectator) {
-            this.ctx.fillStyle = 'rgba(255, 200, 50, 0.8)';
-            this.ctx.font = 'bold 20px Arial';
-            this.ctx.textAlign = 'right';
-            this.ctx.fillText("Opponent's Turn", SCREEN_WIDTH - 10, 55);
+            this.ctx.fillText('👁 SPECTATOR MODE', SCREEN_WIDTH / 2, 30);
         }
 
         // Connection status

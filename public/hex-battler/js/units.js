@@ -521,16 +521,6 @@ class DindraeUnit extends Unit {
     ascend() {
         this.isAscended = true;
     }
-
-    serialize() {
-        const base = super.serialize();
-        base.occupiedHexes = this.occupiedHexes.map(h => ({ q: h.q, r: h.r }));
-        base.currentRotation = this.currentRotation;
-        base.hasTotem = this.hasTotem;
-        base.isAscended = this.isAscended;
-        base.element = this.element;
-        return base;
-    }
 }
 
 // Specific Dindrae units
@@ -635,17 +625,6 @@ class AirDindra extends DindraeUnit {
     }
 }
 
-// Seeded shuffle for deterministic Liguni pairings across network
-function seededShuffle(arr, seed) {
-    let s = seed;
-    for (let i = arr.length - 1; i > 0; i--) {
-        s = (s * 1664525 + 1013904223) & 0xFFFFFFFF;
-        const j = ((s >>> 0) % (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    return arr;
-}
-
 // Echo Pool for Dindrae
 class EchoPool {
     constructor() {
@@ -686,10 +665,7 @@ function createAkviraUnits() {
 }
 
 // Factory function to create Liguni units (returns coupled Liguns)
-// seed parameter ensures identical pairings across network
-function createLiguniUnits(seed) {
-    if (seed === undefined) seed = Math.floor(Math.random() * 0xFFFFFFFF);
-
+function createLiguniUnits() {
     const agons = [
         new Thom().setId('Liguni_Thom_0'),
         new Din().setId('Liguni_Din_0'),
@@ -703,8 +679,14 @@ function createLiguniUnits(seed) {
         new Isha().setId('Liguni_Isha_0')
     ];
 
-    // Deterministic shuffle using seed so both host and client get identical pairings
-    seededShuffle(dhuls, seed);
+    // Shuffle dhuls for random pairings - BUT we need to be careful with IDs if we want determinism across network.
+    // Ideally, the host decides the shuffle and sends the state.
+    // For now, let's keep the shuffle but ensure the LigunUnit gets a consistent ID based on its components.
+
+    for (let i = dhuls.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [dhuls[i], dhuls[j]] = [dhuls[j], dhuls[i]];
+    }
 
     const liguns = [];
     for (let i = 0; i < agons.length; i++) {
@@ -737,6 +719,6 @@ if (typeof module !== 'undefined' && module.exports) {
         AgonUnit, DhulUnit, LigunUnit, Thom, Din, Borj, Sin,
         Mass0, Noh, Jahn, Isha,
         DindraeUnit, FireDindra, EarthDindra, WaterDindra, AirDindra,
-        EchoPool, seededShuffle, createAkviraUnits, createLiguniUnits, createDindraeOptions
+        EchoPool, createAkviraUnits, createLiguniUnits, createDindraeOptions
     };
 }

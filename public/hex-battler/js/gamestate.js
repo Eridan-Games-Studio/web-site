@@ -60,15 +60,14 @@ class GameState {
         this.isSpectator = false;
     }
 
-    setupGame(playerTeam = null, teamA = Team.AKVIRA, teamB = Team.LIGUNI, liguniSeed) {
+    setupGame(playerTeam = null, teamA = Team.AKVIRA, teamB = Team.LIGUNI) {
         this.playerTeam = playerTeam;
         this.teamA = teamA;
         this.teamB = teamB;
-        this.liguniSeed = liguniSeed;
 
         // Create faction units
-        this._createFactionUnits(teamA, liguniSeed);
-        this._createFactionUnits(teamB, liguniSeed);
+        this._createFactionUnits(teamA);
+        this._createFactionUnits(teamB);
 
         // Build allUnits
         this.allUnits = [];
@@ -101,43 +100,11 @@ class GameState {
         }
     }
 
-    // Setup from a multiplayer config (both players create identical state)
-    setupGameFromConfig(config) {
-        this.playerTeam = config.myTeam;
-        this.teamA = config.hostFaction;
-        this.teamB = config.clientFaction;
-        this.liguniSeed = config.liguniSeed;
-
-        // Create faction units with shared seed
-        this._createFactionUnits(this.teamA, config.liguniSeed);
-        this._createFactionUnits(this.teamB, config.liguniSeed);
-
-        // Build allUnits
-        this.allUnits = [];
-        if (this.teamA === Team.AKVIRA || this.teamB === Team.AKVIRA) {
-            this.allUnits.push(...this.akviraUnits);
-        }
-        if (this.teamA === Team.LIGUNI || this.teamB === Team.LIGUNI) {
-            this.allUnits.push(...this.liguniUnits);
-        }
-        if (this.teamA === Team.DINDRAE || this.teamB === Team.DINDRAE) {
-            this.allUnits.push(...this.dindraeUnits);
-        }
-
-        this.currentTeam = this.teamA;
-
-        // Auto-select Dindrae for multiplayer (no manual selection in MP for now)
-        this._autoSelectDindraeForAI();
-
-        // Enter placement phase for this player's team
-        this.startPlacementPhase(config.myTeam);
-    }
-
-    _createFactionUnits(team, liguniSeed) {
+    _createFactionUnits(team) {
         if (team === Team.AKVIRA) {
             this.akviraUnits = createAkviraUnits();
         } else if (team === Team.LIGUNI) {
-            const { agons, dhuls, liguns } = createLiguniUnits(liguniSeed);
+            const { agons, dhuls, liguns } = createLiguniUnits();
             this.agons = agons;
             this.dhuls = dhuls;
             this.liguns = liguns;
@@ -218,8 +185,14 @@ class GameState {
 
         this.unitsToPlace = [...this._getFactionUnits(team)];
 
-        // In multiplayer, don't auto-place enemy - each player places their own
-        if (this.connectionMode === ConnectionMode.LOCAL) {
+        // Auto-place enemy
+        // Auto-place enemy ONLY if:
+        // 1. We are NOT a Host (so local game vs AI or hotseat)
+        // 2. OR we are Host but playing against AI (handled by not connecting? No, gamestate doesn't know connection status easily)
+        // Ideally: In Multiplayer HOST mode, we do NOT auto-place the enemy (Client).
+        // In Multiplayer CLIENT mode, we do NOT auto-place the enemy (Host) either (handled below by Client logic).
+
+        if (this.connectionMode !== ConnectionMode.HOST) {
             const enemyTeam = this.getOtherTeam(team);
             this._placeTeamUnits(enemyTeam, team === this.teamB);
         }
@@ -1042,8 +1015,7 @@ class GameState {
         dhul.isCoupled = true;
         dhul.coupledAgon = agon;
 
-        const ligunId = `Liguni_Ligun_${agon.id}_${dhul.id}`;
-        const ligun = new LigunUnit(agon, dhul).setId(ligunId);
+        const ligun = new LigunUnit(agon, dhul);
         this.grid.placeUnit(ligun, agonPos.q, agonPos.r);
 
         this.liguniUnits.push(ligun);
@@ -1079,7 +1051,6 @@ class GameState {
             currentRound: this.currentRound,
             teamA: this.teamA,
             teamB: this.teamB,
-            playerTeam: this.playerTeam,
             winner: this.winner,
             combatLog: [...this.combatLog],
             selectedUnitId: this.selectedUnit?.id,
@@ -1088,7 +1059,6 @@ class GameState {
             selectedAttackIndex: this.selectedAttackIndex,
             echoPool: { current: this.echoPool.current, cap: this.echoPool.cap },
             dindraeTotemsRemaining: this.dindraeTotemsRemaining,
-            placementTeam: this.placementTeam,
             units: this.allUnits.map(u => u.serialize())
         };
     }

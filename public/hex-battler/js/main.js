@@ -23,11 +23,6 @@ class HexBattlerApp {
         this.lastAIUpdate = 0;
         this.aiDelay = 800; // ms between AI actions
 
-        // Multiplayer state
-        this.hostChosenFaction = null; // Host's faction pick (stored before client chooses)
-        this.isMultiplayer = false;
-        this.gameLoopStarted = false;
-
         // UI Elements
         this.lobbyScreen = document.getElementById('lobbyScreen');
         this.gameScreen = document.getElementById('gameScreen');
@@ -45,9 +40,9 @@ class HexBattlerApp {
         document.getElementById('btnWatch').addEventListener('click', () => this.watchAI());
 
         // Faction selection
-        document.getElementById('btnPlayAkvira').addEventListener('click', () => this.handleFactionClick(Team.AKVIRA));
-        document.getElementById('btnPlayLiguni').addEventListener('click', () => this.handleFactionClick(Team.LIGUNI));
-        document.getElementById('btnPlayDindrae').addEventListener('click', () => this.handleFactionClick(Team.DINDRAE));
+        document.getElementById('btnPlayAkvira').addEventListener('click', () => this.startGame(Team.AKVIRA, Team.LIGUNI));
+        document.getElementById('btnPlayLiguni').addEventListener('click', () => this.startGame(Team.LIGUNI, Team.AKVIRA));
+        document.getElementById('btnPlayDindrae').addEventListener('click', () => this.startGame(Team.DINDRAE, Team.LIGUNI));
 
         // Join dialog
         document.getElementById('btnConnectJoin').addEventListener('click', () => this.joinGame());
@@ -60,30 +55,8 @@ class HexBattlerApp {
         this.multiplayer.onRoomCreated = (roomId) => {
             this.showRoomId(roomId);
         };
-
-        // Client receives: host picked a faction, now you pick
-        this.multiplayer.onFactionPrompt = (hostFaction) => {
-            this.handleFactionPrompt(hostFaction);
-        };
-
-        // Host receives: client picked a faction
-        this.multiplayer.onFactionChosen = (clientFaction) => {
-            this.handleClientFactionChosen(clientFaction);
-        };
-
-        // Client receives: full game config, setup and start
-        this.multiplayer.onGameConfig = (config) => {
-            this.handleGameConfig(config);
-        };
-
-        // Client receives: host finished placement, your turn
-        this.multiplayer.onHostPlacementDone = (state) => {
-            this.handleHostPlacementDone(state);
-        };
-
-        // Host receives: client finished placement
-        this.multiplayer.onClientPlacementDone = (placements) => {
-            this.handleClientPlacementDone(placements);
+        this.multiplayer.onGameStart = (config) => {
+            this.handleRemoteGameStart(config);
         };
     }
 
@@ -93,27 +66,21 @@ class HexBattlerApp {
         document.getElementById('factionSelect').style.display = 'none';
         document.getElementById('joinDialog').style.display = 'none';
         document.getElementById('roomInfo').style.display = 'none';
-        this.hideWaitingStatus();
     }
 
     showGame() {
         this.lobbyScreen.style.display = 'none';
         this.gameScreen.style.display = 'block';
-        if (!this.gameLoopStarted) {
-            this.gameLoopStarted = true;
-            this.startGameLoop();
-        }
+        this.startGameLoop();
     }
 
     startLocalGame() {
-        this.isMultiplayer = false;
         document.getElementById('modeSelect').style.display = 'none';
         document.getElementById('factionSelect').style.display = 'block';
     }
 
     watchAI() {
         // AI vs AI mode
-        this.isMultiplayer = false;
         this.game.setupGame(null, Team.AKVIRA, Team.LIGUNI);
         this.aiPlayers = {
             [Team.AKVIRA]: createAI(this.game, Team.AKVIRA),
@@ -124,13 +91,12 @@ class HexBattlerApp {
 
     async hostGame() {
         try {
-            this.isMultiplayer = true;
             const roomId = await this.multiplayer.createRoom();
             document.getElementById('modeSelect').style.display = 'none';
             document.getElementById('roomInfo').style.display = 'block';
             document.getElementById('roomIdDisplay').textContent = roomId;
 
-            // Show faction selection for host
+            // Show faction selection after creating room
             document.getElementById('factionSelect').style.display = 'block';
         } catch (e) {
             alert('Failed to create room: ' + e.message);
@@ -150,12 +116,8 @@ class HexBattlerApp {
         }
 
         try {
-            this.isMultiplayer = true;
             await this.multiplayer.joinRoom(roomId, false);
-
-            // Show waiting status - will get WAITING_FOR_FACTION from host
-            document.getElementById('joinDialog').style.display = 'none';
-            this.showWaitingStatus('Connected! Waiting for host to pick a faction...');
+            this.showGame();
         } catch (e) {
             alert('Failed to join room: ' + e.message);
         }
@@ -169,7 +131,6 @@ class HexBattlerApp {
         }
 
         try {
-            this.isMultiplayer = true;
             await this.multiplayer.joinRoom(roomId, true);
             this.game.isSpectator = true;
             this.showGame();
@@ -178,220 +139,29 @@ class HexBattlerApp {
         }
     }
 
-    // Called when any faction button is clicked
-    handleFactionClick(faction) {
-        if (this.isMultiplayer && this.multiplayer.isHost) {
-            // Host picks faction - store it, tell client to pick
-            this.hostChosenFaction = faction;
-            this.multiplayer.sendFactionPrompt(faction);
-
-            // Hide faction select, show waiting
-            document.getElementById('factionSelect').style.display = 'none';
-            if (this.multiplayer.isConnected) {
-                this.showWaitingStatus(`You chose ${faction}. Waiting for opponent to pick...`);
-            } else {
-                this.showWaitingStatus(`You chose ${faction}. Waiting for opponent to connect and pick...`);
-            }
-        } else if (this.isMultiplayer && !this.multiplayer.isHost) {
-            // Client picks faction - send to host
-            this.multiplayer.sendFactionChoice(faction);
-            document.getElementById('factionSelect').style.display = 'none';
-            this.showWaitingStatus(`You chose ${faction}. Starting game...`);
-        } else {
-            // Local game - start immediately
-            this.startLocalGameWithFaction(faction);
-        }
-    }
-
-    // Local game: start with chosen faction vs default enemy
-    startLocalGameWithFaction(playerTeam) {
-        const enemyTeam = this.getDefaultEnemy(playerTeam);
+    startGame(playerTeam, enemyTeam) {
         this.game.setupGame(playerTeam, playerTeam, enemyTeam);
 
-        this.aiPlayers = {
-            [enemyTeam]: createAI(this.game, enemyTeam)
-        };
+        // Create AI for enemy team ONLY if not in multiplayer (or for future: if opponent is explicitly AI)
+        // For now, assume Multiplayer = PvP, so no AI needed
+        if (!this.multiplayer.isConnected) {
+            this.aiPlayers = {
+                [enemyTeam]: createAI(this.game, enemyTeam)
+            };
+        }
+
+        if (this.multiplayer.isHost && this.multiplayer.isConnected) {
+            this.multiplayer.startGame({ playerTeam, enemyTeam });
+        }
 
         this.showGame();
     }
 
-    getDefaultEnemy(faction) {
-        if (faction === Team.AKVIRA) return Team.LIGUNI;
-        if (faction === Team.LIGUNI) return Team.AKVIRA;
-        return Team.LIGUNI; // Dindrae vs Liguni
-    }
-
-    // ==================== MULTIPLAYER FLOW ====================
-
-    // Client: received prompt to pick faction (host already picked)
-    handleFactionPrompt(hostFaction) {
-        console.log('Host picked:', hostFaction, '- now pick yours');
-        this.hideWaitingStatus();
-
-        // Show faction select, but disable the host's faction
-        document.getElementById('factionSelect').style.display = 'block';
-
-        // Disable the button for the host's faction
-        const factionButtons = {
-            [Team.AKVIRA]: document.getElementById('btnPlayAkvira'),
-            [Team.LIGUNI]: document.getElementById('btnPlayLiguni'),
-            [Team.DINDRAE]: document.getElementById('btnPlayDindrae')
-        };
-
-        for (const [team, btn] of Object.entries(factionButtons)) {
-            if (team === hostFaction) {
-                btn.disabled = true;
-                btn.style.opacity = '0.4';
-                btn.textContent = `${team} (Host)`;
-            } else {
-                btn.disabled = false;
-                btn.style.opacity = '1';
-            }
-        }
-    }
-
-    // Host: client chose their faction, now start the game
-    handleClientFactionChosen(clientFaction) {
-        console.log('Client picked:', clientFaction);
-        this.hideWaitingStatus();
-
-        const hostFaction = this.hostChosenFaction;
-        const liguniSeed = Math.floor(Math.random() * 0xFFFFFFFF);
-
-        // Send game config to client
-        const config = {
-            hostFaction: hostFaction,
-            clientFaction: clientFaction,
-            liguniSeed: liguniSeed
-        };
-        this.multiplayer.sendGameConfig(config);
-
-        // Setup host's game
-        this.game.setupGameFromConfig({
-            ...config,
-            myTeam: hostFaction
-        });
-
-        // Store original finishPlacement to hook into it
-        this._hookPlacementFinish();
-
+    handleRemoteGameStart(config) {
+        // Remote game start - we are the enemy team
+        const myTeam = config.enemyTeam;
+        this.game.setupGame(myTeam, config.playerTeam, config.enemyTeam);
         this.showGame();
-    }
-
-    // Client: received full game config from host
-    handleGameConfig(config) {
-        console.log('Game config received:', config);
-        this.hideWaitingStatus();
-
-        // Setup client's game with same config
-        this.game.setupGameFromConfig({
-            ...config,
-            myTeam: config.clientFaction
-        });
-
-        // Show waiting message - host places first
-        this.showWaitingStatus('Host is placing units...');
-
-        // Start game loop for rendering but don't allow input yet
-        this.showGame();
-    }
-
-    // Hook into finishPlacement to send HOST_PLACEMENT_DONE
-    _hookPlacementFinish() {
-        const originalFinish = this.game.finishPlacement.bind(this.game);
-        this.game.finishPlacement = () => {
-            if (this.multiplayer.isHost && this.multiplayer.isConnected) {
-                // Host finished placement - don't start battle yet
-                // Place units on grid, then notify client
-                this.game.phase = GamePhase.SETUP; // Pause - waiting for client
-                this.game.currentPlacingUnit = null;
-                this.game.unitsToPlace = [];
-                this.game.validTargets = [];
-                this.game.placementTeam = null;
-                this.game.log('Waiting for opponent to place units...');
-
-                this.multiplayer.sendHostPlacementDone();
-            } else if (this.game.connectionMode === ConnectionMode.CLIENT) {
-                // Client finished placement - send placements to host
-                const clientTeam = this.game.playerTeam;
-                const clientUnits = this.game._getFactionUnits(clientTeam);
-                const placements = clientUnits
-                    .filter(u => u.hexPos)
-                    .map(u => ({
-                        unitId: u.id,
-                        q: u.hexPos.q,
-                        r: u.hexPos.r
-                    }));
-
-                this.game.phase = GamePhase.SETUP; // Pause - waiting for host to start battle
-                this.game.currentPlacingUnit = null;
-                this.game.unitsToPlace = [];
-                this.game.validTargets = [];
-                this.game.placementTeam = null;
-                this.game.log('Waiting for game to start...');
-
-                this.multiplayer.sendClientPlacementDone(placements);
-            } else {
-                // Local game - proceed normally
-                originalFinish();
-            }
-        };
-    }
-
-    // Client: host finished placement, now client places
-    handleHostPlacementDone(state) {
-        console.log('Host placement done, applying state');
-
-        // Apply host's state (units are now placed on host's side)
-        this.multiplayer.applyState(state);
-
-        // Hide waiting
-        this.hideWaitingStatus();
-
-        // Now client enters placement for their team
-        const myTeam = this.game.playerTeam;
-        this.game.startPlacementPhase(myTeam);
-
-        // Hook placement finish
-        this._hookPlacementFinish();
-    }
-
-    // Host: client finished placement, place client's units and start battle
-    handleClientPlacementDone(placements) {
-        console.log('Client placement done, applying placements:', placements);
-
-        // Place client's units on host's grid
-        for (const p of placements) {
-            this.game.placeSpecificUnit(p.unitId, p.q, p.r);
-        }
-
-        // Start the battle
-        this.game.phase = GamePhase.SELECT_UNIT;
-        this.game.log(`Battle begins! ${this.game.teamA} vs ${this.game.teamB}`);
-
-        // Broadcast the final state
-        this.multiplayer.broadcastState();
-    }
-
-    // ==================== UI HELPERS ====================
-
-    showWaitingStatus(message) {
-        let el = document.getElementById('waitingStatus');
-        if (!el) {
-            el = document.createElement('div');
-            el.id = 'waitingStatus';
-            el.className = 'panel';
-            el.style.textAlign = 'center';
-            el.style.marginTop = '1rem';
-            document.querySelector('.lobby-container').appendChild(el);
-        }
-        el.textContent = message;
-        el.style.display = 'block';
-    }
-
-    hideWaitingStatus() {
-        const el = document.getElementById('waitingStatus');
-        if (el) el.style.display = 'none';
     }
 
     showRoomId(roomId) {
@@ -406,8 +176,6 @@ class HexBattlerApp {
         }
     }
 
-    // ==================== GAME LOOP ====================
-
     startGameLoop() {
         const loop = (timestamp) => {
             this.update(timestamp);
@@ -418,7 +186,7 @@ class HexBattlerApp {
     }
 
     update(timestamp) {
-        // Handle AI turns (only in non-multiplayer or for AI opponents)
+        // Handle AI turns
         if (this.game.phase === GamePhase.SELECT_UNIT || this.game.phase === GamePhase.SELECT_ACTION) {
             const currentTeam = this.game.currentTeam;
             const ai = this.aiPlayers[currentTeam];
@@ -426,15 +194,13 @@ class HexBattlerApp {
             if (ai && timestamp - this.lastAIUpdate > this.aiDelay) {
                 this.executeAITurn(ai);
                 this.lastAIUpdate = timestamp;
-
-                // Broadcast after AI action if host
-                if (this.multiplayer.isHost && this.multiplayer.isConnected) {
-                    this.multiplayer.broadcastState();
-                }
             }
         }
 
-        // NOTE: No per-frame broadcastState() - only after state changes
+        // Sync state to clients if host
+        if (this.multiplayer.isHost && this.multiplayer.isConnected) {
+            this.multiplayer.broadcastState();
+        }
     }
 
     executeAITurn(ai) {

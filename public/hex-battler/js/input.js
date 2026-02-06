@@ -29,18 +29,12 @@ class InputHandler {
         };
     }
 
-    // Check if it's this player's turn to act
-    isMyTurn() {
-        if (this.game.connectionMode === ConnectionMode.LOCAL) return true;
-        if (this.game.playerTeam === null) return true; // AI watch mode
-        return this.game.currentTeam === this.game.playerTeam;
-    }
-
     handleClick(e) {
         if (this.game.isSpectator) return;
 
         const pos = this.getCanvasPosition(e);
 
+        // Handle different phases
         switch (this.game.phase) {
             case GamePhase.DINDRAE_SELECT:
                 this.handleDindraeSelectClick(pos);
@@ -49,21 +43,19 @@ class InputHandler {
                 this.handlePlacementClick(pos);
                 break;
             case GamePhase.SELECT_UNIT:
-                if (!this.isMyTurn()) return;
                 this.handleSelectUnitClick(pos);
                 break;
             case GamePhase.SELECT_ACTION:
-                if (!this.isMyTurn()) return;
                 this.handleSelectActionClick(pos);
                 break;
             case GamePhase.SELECT_TARGET:
-                if (!this.isMyTurn()) return;
                 this.handleSelectTargetClick(pos);
                 break;
         }
     }
 
     handleDindraeSelectClick(pos) {
+        // Check card clicks
         if (this.renderer.dindraeCardRects) {
             for (const card of this.renderer.dindraeCardRects) {
                 if (this.isInRect(pos, card)) {
@@ -73,6 +65,7 @@ class InputHandler {
             }
         }
 
+        // Check confirm button
         if (this.renderer.confirmBtnRect && this.isInRect(pos, this.renderer.confirmBtnRect)) {
             this.game.confirmDindraeSelection();
         }
@@ -81,44 +74,53 @@ class InputHandler {
     handlePlacementClick(pos) {
         const hexPos = this.game.grid.pixelToHex(pos.x, pos.y);
 
-        // In multiplayer, placement is done locally by each player for their own units.
-        // Client places on their local grid, then sends results when done.
-        // So both host and client just use placeUnitManual.
+        // If Client, send to Host
+        if (this.game.connectionMode === ConnectionMode.CLIENT && window.app && window.app.multiplayer) {
+            if (this.game.currentPlacingUnit) {
+                window.app.multiplayer.sendAction({
+                    type: 'PLACE_UNIT',
+                    unitId: this.game.currentPlacingUnit.id,
+                    q: hexPos.q,
+                    r: hexPos.r
+                });
+                // Optimistic placement or wait for sync?
+                // Wait for sync to avoid ID conflicts or state mismatch
+                return;
+            }
+        }
+
         if (this.game.validTargets.some(t => t.q === hexPos.q && t.r === hexPos.r)) {
             this.game.placeUnitManual(hexPos);
-
-            // Host broadcasts after placement actions
-            if (this.game.connectionMode === ConnectionMode.HOST && window.app && window.app.multiplayer) {
-                // Only broadcast during battle, not during placement setup
-            }
         }
     }
 
     handleSelectUnitClick(pos) {
+        // Only allow selecting own units if not AI turn
+        if (this.game.playerTeam !== null && this.game.currentTeam !== this.game.playerTeam) {
+            return; // AI's turn
+        }
+
         const hexPos = this.game.grid.pixelToHex(pos.x, pos.y);
         const unit = this.game.grid.getUnitAt(hexPos.q, hexPos.r);
 
-        if (!unit || unit.team !== this.game.currentTeam || unit.exhausted) return;
-
-        // Client: send selection to host
+        // If Client, send selection to Host
         if (this.game.connectionMode === ConnectionMode.CLIENT && window.app && window.app.multiplayer) {
-            window.app.multiplayer.sendAction({
-                type: 'SELECT_UNIT',
-                unitId: unit.id
-            });
-            return;
+            if (unit && unit.team === this.game.currentTeam && !unit.exhausted) {
+                window.app.multiplayer.sendAction({
+                    type: 'SELECT_UNIT',
+                    unitId: unit.id
+                });
+                return;
+            }
         }
 
-        // Host or local: select unit directly
-        this.game.selectUnit(unit);
-
-        // Host: broadcast after selection
-        if (this.game.connectionMode === ConnectionMode.HOST && window.app && window.app.multiplayer) {
-            window.app.multiplayer.broadcastState();
+        if (unit && unit.team === this.game.currentTeam && !unit.exhausted) {
+            this.game.selectUnit(unit);
         }
     }
 
     handleSelectActionClick(pos) {
+        // Check action button clicks
         const buttons = this.renderer.getActionButtonRects();
 
         for (const btn of buttons) {
@@ -133,18 +135,21 @@ class InputHandler {
         if (this.game.grid.isValidHex(hexPos.q, hexPos.r)) {
             const unit = this.game.grid.getUnitAt(hexPos.q, hexPos.r);
             if (unit && unit === this.game.selectedUnit) {
-                // Clicked on selected unit again
+                // Clicked on selected unit again - maybe show menu
             }
         }
     }
 
     handleSelectTargetClick(pos) {
         const hexPos = this.game.grid.pixelToHex(pos.x, pos.y);
+
+        // Check if clicking valid target
         const isValid = this.game.validTargets.some(t => t.q === hexPos.q && t.r === hexPos.r);
 
         if (isValid) {
             this.executeTargetSelection(hexPos);
         } else {
+            // Cancel selection
             this.game.selectedAction = null;
             this.game.validTargets = [];
             this.game.phase = GamePhase.SELECT_ACTION;
@@ -154,7 +159,7 @@ class InputHandler {
     executeAction(action) {
         const unit = this.game.selectedUnit;
 
-        // Client: send all actions to host
+        // If Client, send immediate actions to Host
         if (this.game.connectionMode === ConnectionMode.CLIENT && window.app && window.app.multiplayer) {
             if (action === null) {
                 window.app.multiplayer.sendAction({
@@ -164,24 +169,20 @@ class InputHandler {
                 return;
             }
 
-            // Immediate actions (no target selection needed) - send directly
             const immediateActions = [ActionType.AIM, ActionType.DODGE, ActionType.PEAL_CALL, ActionType.ROTATE, ActionType.ASCEND];
             if (immediateActions.includes(action)) {
                 window.app.multiplayer.sendAction({
                     type: 'ACTION',
                     actionType: action,
-                    direction: 1
+                    direction: 1 // Default for ROTATE
                 });
                 return;
             }
-
-            // Target-selection actions: proceed locally to show valid targets,
-            // then send the final action when target is clicked
         }
 
         if (action === null) {
+            // End Activation
             this.game.endUnitActivation();
-            this._broadcastIfHost();
             return;
         }
 
@@ -202,21 +203,19 @@ class InputHandler {
 
             case ActionType.AIM:
                 this.game.executeAim(unit);
-                this._broadcastIfHost();
                 break;
 
             case ActionType.DODGE:
                 this.game.executeDodge(unit);
-                this._broadcastIfHost();
                 break;
 
             case ActionType.PEAL_CALL:
                 this.game.executePealCall(unit);
-                this._broadcastIfHost();
                 break;
 
             case ActionType.THERMAL_GRENADE:
                 this.game.selectedAction = ActionType.THERMAL_GRENADE;
+                // Get hexes in range 4
                 if (unit.hexPos) {
                     this.game.validTargets = this.game.grid.getHexesInRange(unit.hexPos.q, unit.hexPos.r, 4);
                     this.game.phase = GamePhase.SELECT_TARGET;
@@ -225,7 +224,6 @@ class InputHandler {
 
             case ActionType.ROTATE:
                 this.game.executeRotation(unit, 1);
-                this._broadcastIfHost();
                 break;
 
             case ActionType.TOTEM_BOOM:
@@ -238,7 +236,6 @@ class InputHandler {
 
             case ActionType.ASCEND:
                 this.game.executeAscension(unit);
-                this._broadcastIfHost();
                 break;
 
             case ActionType.DECOUPLE:
@@ -261,7 +258,6 @@ class InputHandler {
         // Check if unit still has actions
         if (unit.actionsRemaining === 0) {
             this.game.endUnitActivation();
-            this._broadcastIfHost();
         }
     }
 
@@ -276,6 +272,7 @@ class InputHandler {
         if (this.game.validTargets.length > 0) {
             this.game.phase = GamePhase.SELECT_TARGET;
         } else if (index < unit.attacks.length - 1) {
+            // Try next attack
             this.selectAttack(index + 1);
         } else {
             this.game.log('No valid attack targets in range!');
@@ -287,21 +284,23 @@ class InputHandler {
     executeTargetSelection(targetPos) {
         const unit = this.game.selectedUnit;
 
-        // Client: send target action to host
+        // If Client, send ACTION to Host
         if (this.game.connectionMode === ConnectionMode.CLIENT && window.app && window.app.multiplayer) {
             window.app.multiplayer.sendAction({
                 type: 'ACTION',
                 actionType: this.game.selectedAction,
                 target: targetPos,
-                attackIndex: this.game.selectedAttackIndex
+                attackIndex: this.game.selectedAttackIndex,
+                // Add specific params if needed (e.g. rotation direction? Defaults to 1 for now)
             });
 
+            // Clear local selection state to avoid confusion? 
+            // Or keep it until sync?
             this.game.selectedAction = null;
             this.game.validTargets = [];
             return;
         }
 
-        // Host or local: execute directly
         switch (this.game.selectedAction) {
             case ActionType.MOVE:
                 this.game.executeMove(unit, targetPos);
@@ -334,23 +333,16 @@ class InputHandler {
         this.game.selectedAction = null;
         this.game.validTargets = [];
 
+        // Check if unit still active
         if (this.game.selectedUnit && this.game.selectedUnit.actionsRemaining > 0) {
             this.game.phase = GamePhase.SELECT_ACTION;
         } else if (this.game.selectedUnit) {
             this.game.endUnitActivation();
         }
 
+        // Check game over
         if (this.game.checkGameOver()) {
             this.game.phase = GamePhase.GAME_OVER;
-        }
-
-        this._broadcastIfHost();
-    }
-
-    // Helper: broadcast state if we're the host
-    _broadcastIfHost() {
-        if (this.game.connectionMode === ConnectionMode.HOST && window.app && window.app.multiplayer) {
-            window.app.multiplayer.broadcastState();
         }
     }
 
@@ -382,6 +374,7 @@ class InputHandler {
                 this.game.phase = GamePhase.SELECT_ACTION;
             }
         }
+        // Number keys for attack selection
         if (e.key >= '1' && e.key <= '9') {
             const index = parseInt(e.key) - 1;
             if (this.game.phase === GamePhase.SELECT_ACTION && this.game.selectedUnit) {

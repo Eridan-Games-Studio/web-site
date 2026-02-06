@@ -3,7 +3,9 @@
     "allow": [
       "Bash(move \"h:\\\\ERIDAN\\\\web-site\\\\calling-quiz.html\" \"h:\\\\ERIDAN\\\\web-site\\\\quizes\\\\calling-quiz.html\")",
       "Bash(move \"h:\\\\ERIDAN\\\\web-site\\\\quiz-script.js\" \"h:\\\\ERIDAN\\\\web-site\\\\quizes\\\\quiz-script.js\")",
-      "Bash(move:*)"
+      "Bash(move:*)",
+      "Read(//h/ERIDAN/TTS.RIKA/RoR/**)",
+      "Bash(python -m py_compile:*)"
     ]
   }
 }
