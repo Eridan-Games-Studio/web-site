@@ -19,7 +19,6 @@
     "mechanics": ["Dice", "Cards", "Draft", "Unit placement"],
     "features": ["Unique races", "Assymetric strategies", "Designed for Pro play"],
     "world": "the-age-of-rika",
-    "wiki_url": "https://eridan-games-studio.github.io/eridan-wiki/#/games/rika-board-game",
     "distributionOrder": 2,
     "developers": {
       "gameDirector": "Dino Đorić",
@@ -68,7 +67,7 @@
     "mechanics": ["Dice rolling", "Guided Imagination", "Narrative control"],
     "features": ["Physical Components", "Print-and-Play"],
     "world": "the-age-of-rika",
-    "wiki_url": "https://eridan-games-studio.github.io/eridan-wiki/#/games/rika-rpg",
+    
     "distributionOrder": 3,
     "developers": {
       "gameDirector": "Nikola Serdarević",
@@ -124,7 +123,7 @@
     "mechanics": ["Resource management", "Puzzle", "Individual goals", "Engine building", "Semi-cooperative"],
     "features": ["Crisis Solving", "Cooperation", "Physical Components"],
     "world": "the-age-of-rika",
-    "wiki_url": "https://eridan-games-studio.github.io/eridan-wiki/#/games/engines-of-discord",
+    
     "distributionOrder": 4,
     "developers": {
       "gameDirector": "Siniša Družeta",
