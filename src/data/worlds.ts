@@ -12,6 +12,7 @@ export interface World {
   games: string[];
   tagline: string;
   wikiUrl: string;
+  worldAnvilUrl?: string;
   gameplayPillars: GameplayPillar[];
 }
 
@@ -25,6 +26,7 @@ export const worlds: World[] = [
     games: ["rika-board-game", "rika-rpg", "engines-of-discord"],
     tagline: "A mythic space opera with radically alien species at the forefront. Political intrigue, galaxy-spanning conflicts, and high-stakes adventures!",
     wikiUrl: "https://eridan-games-studio.github.io/eridan-wiki/#/worlds/rule-of-rika/rule-of-rika",
+    worldAnvilUrl: "https://www.worldanvil.com/w/the-rule-of-rika-tomfurlanis",
     gameplayPillars: [
       {
         title: "Deep Embodiment",

@@ -277,19 +277,34 @@ const WorldDetail = () => {
             <p className="text-xl sm:text-2xl text-muted-foreground mt-4 max-w-2xl mx-auto">
               {world.tagline}
             </p>
-            {world.wikiUrl && (
-              <motion.a
-                href={world.wikiUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-violet-600 hover:bg-violet-500 text-white rounded-lg transition-colors font-medium"
-              >
-                <BookOpen className="w-5 h-5" />
-                Dive Deeper into the Wiki
-              </motion.a>
-            )}
+            <div className="flex flex-wrap justify-center gap-3 mt-6">
+              {world.wikiUrl && (
+                <motion.a
+                  href={world.wikiUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-violet-600 hover:bg-violet-500 text-white rounded-lg transition-colors font-medium"
+                >
+                  <BookOpen className="w-5 h-5" />
+                  Dive Deeper into the Wiki
+                </motion.a>
+              )}
+              {world.worldAnvilUrl && (
+                <motion.a
+                  href={world.worldAnvilUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-amber-600 hover:bg-amber-500 text-white rounded-lg transition-colors font-medium"
+                >
+                  <ExternalLink className="w-5 h-5" />
+                  Explore on World Anvil
+                </motion.a>
+              )}
+            </div>
           </motion.div>
         </div>
       </section>
