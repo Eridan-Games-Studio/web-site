@@ -59,7 +59,7 @@ export const HeroSection = () => {
                 transition={{ delay: 0.4 }}
                 className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4"
               >
-                Eridan Games Studio
+                Eridan Games
               </motion.p>
               <h1 className="font-fantasy text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-wide leading-tight [text-wrap:balance]">
                 Where shores

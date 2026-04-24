@@ -1,6 +1,6 @@
 # Meet the Team - Codebase Overview
 
-This document outlines the code and files connected to the **"Meet the Team"** section on the Eridan Games Studio website. This section features a dynamic grid of team members that, when clicked, opens an interactive "Character Sheet" modal.
+This document outlines the code and files connected to the **"Meet the Team"** section on the Eridan Games website. This section features a dynamic grid of team members that, when clicked, opens an interactive "Character Sheet" modal.
 
 ---
 
@@ -13,7 +13,7 @@ The main container for the team section is located in `about.html`. It serves as
 <section class="team-section">
     <div class="section-header">
         <h2>Meet the Team</h2>
-        <p>The creative minds behind Eridan Games Studio, bringing diverse talents and shared passion to every project. In order of joining:</p>
+        <p>The creative minds behind Eridan Games, bringing diverse talents and shared passion to every project. In order of joining:</p>
     </div>
     <div id="team-members-container" class="team-members-grid">
         <!-- Team members will be loaded dynamically here -->

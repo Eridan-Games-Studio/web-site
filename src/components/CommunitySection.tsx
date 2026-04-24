@@ -42,7 +42,7 @@ export const CommunitySection = () => {
             </h2>
 
             <p className="text-muted-foreground text-sm max-w-sm">
-              Join our community and get the major announcements from Eridan Games Studio straight in your inbox.
+              Join our community and get the major announcements from Eridan Games straight in your inbox.
             </p>
 
             <form onSubmit={handleSubmit} className="flex max-w-sm">

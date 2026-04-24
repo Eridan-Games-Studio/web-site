@@ -67,7 +67,7 @@ const timeline = [
   },
   {
     year: '2025',
-    title: 'Eridan Games Studio and "The Rule of Rika"',
+    title: 'Eridan Games and "The Rule of Rika"',
     events: [
       'Tina leaves the group early 2025.',
       'Through Sven, we contact Vuk who joins us in March as a freelancer.',
@@ -124,7 +124,7 @@ const About = () => {
               <div>
                 <h2 className="font-fantasy text-3xl font-semibold mb-6">Our Mission</h2>
                 <p className="text-muted-foreground text-lg mb-4">
-                  At Eridan Games Studio, we believe that games have the power to empower, inspire, connect, and transform.
+                  At Eridan Games, we believe that games have the power to empower, inspire, connect, and transform.
                 </p>
                 <p className="text-muted-foreground text-lg">
                   We're committed to pushing the boundaries of systems and storytelling while maintaining a player-first design.
@@ -182,7 +182,7 @@ const About = () => {
             >
               <h2 className="font-fantasy text-3xl font-semibold mb-4">Meet the Team</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                The creative minds behind Eridan Games Studio, bringing diverse talents and shared passion to every project. In order of joining:
+                The creative minds behind Eridan Games, bringing diverse talents and shared passion to every project. In order of joining:
               </p>
             </motion.div>
 
