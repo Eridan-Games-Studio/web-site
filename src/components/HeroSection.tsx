@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { Megaphone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { games } from '@/data/games';
 
@@ -153,8 +153,81 @@ export const HeroSection = () => {
                 <span className="text-primary group-hover:translate-x-1 group-focus-visible:translate-x-1 transition-transform" aria-hidden="true">→</span>
               </Link>
             </motion.div>
+
           </motion.div>
         </div>
+
+        {/* Quizzes & News Band — full-width row of link boxes */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.7 + games.length * 0.1 }}
+          className="mt-6"
+        >
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 [&>a]:flex-1 [&>a]:min-w-[180px] [&>a]:max-w-[280px]">
+            {/* Quiz 1 */}
+            <Link
+              to="/quizes/quiz_haven/calling-quiz.html"
+              className="group relative flex flex-col justify-between gap-2 px-4 py-3 rounded-lg cosmic-card border-border/30 hover:border-primary/50 focus-visible:border-primary/50 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background min-h-[88px]"
+            >
+              <span className="self-start px-2 py-0.5 text-[10px] uppercase tracking-wider rounded-full border border-cosmic-purple/40 bg-cosmic-purple/10 text-cosmic-purple">
+                Quiz
+              </span>
+              <span className="font-fantasy text-sm font-semibold text-foreground group-hover:text-primary group-focus-visible:text-primary transition-colors line-clamp-2">
+                What H.A.V.E.N calling are you?
+              </span>
+            </Link>
+
+            {/* Quiz 2 — reserved for later use
+            <Link
+              to="#"
+              className="group relative flex flex-col justify-between gap-2 px-4 py-3 rounded-lg cosmic-card border-border/30 hover:border-primary/50 focus-visible:border-primary/50 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background min-h-[88px]"
+            >
+              <span className="self-start px-2 py-0.5 text-[10px] uppercase tracking-wider rounded-full border border-cosmic-purple/40 bg-cosmic-purple/10 text-cosmic-purple">
+                Quiz
+              </span>
+              <span className="font-fantasy text-sm font-semibold text-foreground group-hover:text-primary group-focus-visible:text-primary transition-colors line-clamp-2">
+                Quiz title placeholder
+              </span>
+            </Link>
+            */}
+
+            {/* News 1 */}
+            <Link
+              to="https://www.youtube.com/watch?v=vSR7JrLh3NE"
+              className="group relative flex flex-col justify-between gap-2 px-4 py-3 rounded-lg cosmic-card border-border/30 hover:border-primary/50 focus-visible:border-primary/50 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background min-h-[88px]"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-1.5">
+                  <span className="px-2 py-0.5 text-[10px] uppercase tracking-wider rounded-full border border-amber-400/40 bg-amber-400/10 text-amber-400">
+                    News
+                  </span>
+                  <span className="px-2 py-0.5 text-[10px] uppercase tracking-wider rounded-full border border-cyan-400/40 bg-cyan-400/10 text-cyan-400">
+                    Video
+                  </span>
+                </div>
+                <Megaphone className="w-4 h-4 text-amber-400/70 group-hover:text-amber-400 transition-colors" aria-hidden="true" />
+              </div>
+              <span className="font-fantasy text-sm font-semibold text-foreground group-hover:text-primary group-focus-visible:text-primary transition-colors line-clamp-2">
+                H.A.V.E.N: Identity, your power!
+              </span>
+            </Link>
+
+            {/* News 2 — reserved for later use
+            <Link
+              to="#"
+              className="group relative flex flex-col justify-between gap-2 px-4 py-3 rounded-lg cosmic-card border-border/30 hover:border-primary/50 focus-visible:border-primary/50 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background min-h-[88px]"
+            >
+              <span className="self-start px-2 py-0.5 text-[10px] uppercase tracking-wider rounded-full border border-amber-400/40 bg-amber-400/10 text-amber-400">
+                News
+              </span>
+              <span className="font-fantasy text-sm font-semibold text-foreground group-hover:text-primary group-focus-visible:text-primary transition-colors line-clamp-2">
+                Big news headline placeholder
+              </span>
+            </Link>
+            */}
+          </div>
+        </motion.div>
       </div>
 
     </section>
