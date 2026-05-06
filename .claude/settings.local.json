@@ -5,7 +5,8 @@
       "Bash(move \"h:\\\\ERIDAN\\\\web-site\\\\quiz-script.js\" \"h:\\\\ERIDAN\\\\web-site\\\\quizes\\\\quiz-script.js\")",
       "Bash(move:*)",
       "Read(//h/ERIDAN/TTS.RIKA/RoR/**)",
-      "Bash(python -m py_compile:*)"
+      "Bash(python -m py_compile:*)",
+      "PowerShell(Move-Item -Path \"h:\\\\OBSIDIAN\\\\ERIDAN\\\\GITHUB\\\\eridan2.0\\\\quizes\" -Destination \"h:\\\\OBSIDIAN\\\\ERIDAN\\\\GITHUB\\\\eridan2.0\\\\public\\\\quizes\")"
     ]
   }
 }
