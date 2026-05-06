@@ -121,7 +121,7 @@ const callingData = {
 // =========================================================
 // Step pagination controller
 // =========================================================
-const TOTAL_QUESTIONS = 25;
+const TOTAL_QUESTIONS = 15;
 const TOTAL_STEPS = 5;
 
 const form = document.getElementById('quiz-form');
@@ -337,7 +337,7 @@ form.addEventListener('submit', function(e) {
     // Tiebreaker by key questions
     const tied = Object.keys(scores).filter(c => scores[c] === maxScore);
     if (tied.length > 1) {
-        const tiebreakers = ['q25', 'q2', 'q5', 'q11', 'q18'];
+        const tiebreakers = ['q15', 'q2', 'q3', 'q7', 'q11'];
         for (const q of tiebreakers) {
             const ans = formData.get(q);
             if (tied.includes(ans)) { resultCalling = ans; break; }
